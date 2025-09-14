@@ -312,9 +312,9 @@
 			grid-template-areas:
 				'featured featured featured featured featured featured . . . image-1 image-1 image-1'
 				'featured featured featured featured featured featured . . . image-1 image-1 image-1'
-				'featured featured featured featured featured featured . title title image-1 image-1 image-1'
-				'featured featured featured featured featured featured . title title image-1 image-1 image-1'
-				'featured featured featured featured featured featured . title title image-1 image-1 image-1';
+				'featured featured featured featured featured featured title title title image-1 image-1 image-1'
+				'featured featured featured featured featured featured title title title image-1 image-1 image-1'
+				'featured featured featured featured featured featured title title title image-1 image-1 image-1';
 		}
 	}
 

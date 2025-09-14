@@ -1,10 +1,13 @@
 ---
 title: Who is my neta?
-description: See legislative activity and declared assets, criminal cases of MLAs from the 17th Lok Sabha — or explore candidates contesting in the 2024 Lok Sabha elections.
+description: See legislative activity and affidavits of MLAs from the 17th Lok Sabha — or explore candidates contesting in the 2024 elections.
 base_url: https://whoismyneta.com
 slug: whoismyneta
 published: true
-image: /images/2024-whoismyneta.webp
+image: /images/who-1.png
+gallery:
+  - /images/who-2.png
+  - /images/who-3.png
 type: interactive
 date: 2024-04-14T00:00:00.000Z
 tags:
