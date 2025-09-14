@@ -48,11 +48,9 @@
 				</div>
 
 				<div class="gallery-buttons">
-					{#if post.base_url}
-						<Button href={post.base_url} variant="default" size="sm" class="gallery-btn">
-							View Project
-						</Button>
-					{/if}
+					<Button href="/{new Date(post.date).getFullYear()}/{post.slug}" variant="default" size="sm" class="gallery-btn">
+						View Project
+					</Button>
 					{#if post.code}
 						<Button href={post.code} variant="outline" size="sm" class="gallery-btn">
 							Source Code
