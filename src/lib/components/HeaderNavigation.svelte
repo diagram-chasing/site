@@ -34,7 +34,7 @@
 				<NavigationMenu.List class="flex flex-col items-end justify-end gap-1">
 					{@render navLink('/', 'home')}
 					{@render navLink('/authors', 'authors')}
-					{@render navLink('/ideas', 'ideas')}
+					<!-- {@render navLink('/ideas', 'ideas')} -->
 					{@render navLink('/support', 'support')}
 				</NavigationMenu.List>
 			</NavigationMenu.Root>

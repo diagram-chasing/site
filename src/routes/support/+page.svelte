@@ -76,11 +76,11 @@
 
 <div class="my-4 w-full">
 	<main class="mx-auto max-w-4xl space-y-12 px-4">
-		<div class="space-y-6">
+		<div class="max-w-2xl space-y-6">
 			<h1 class="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl">
 				Support Diagram Chasing
 			</h1>
-			<p class="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+			<p class="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
 				Diagram Chasing creates data-driven stories, interactive tools, and open datasets of public
 				interest. As of September 2025, we've been building and sharing this work for one year.
 			</p>
@@ -102,7 +102,7 @@
 			</p>
 		</div>
 
-		<div class="space-y-6">
+		<div class="max-w-2xl space-y-6">
 			<p class="text-lg">
 				Our goal is to build a sustainable publication that can take on more ambitious projects. We
 				are committed to quality, which means paying our collaborators fairly for their work and
@@ -165,7 +165,7 @@
 			</div>
 		</div>
 
-		<div class="space-y-6">
+		<div class="max-w-2xl space-y-6">
 			<h2 class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
 				Become a Supporter
 			</h2>
@@ -188,10 +188,9 @@
 
 		<div>
 			<p class="max-w-2xl text-muted-foreground">
-				Financial support is powerful, but it's not the only way to help. Sharing our work with your
-				network, engaging with our stories, or building on our open data are all invaluable
-				contributions. Thank you for being part of our effort to make complex information accessible
-				and our democracy more transparent.
+				Financial support is great, but it's not the only way to help. Sharing our work with your
+				network, engaging with our stories, or building on our open data are all welcome
+				contributions. Thank you!
 			</p>
 		</div>
 	</main>

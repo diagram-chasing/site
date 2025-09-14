@@ -1,52 +1,55 @@
-<script>
+<script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	let separatorSymbols = ['⁄', '𑗄', '‒', '⁓', '‗'];
-	function hashCode(str) {
-		let hash = 0;
-		for (let i = 0; i < str.length; i++) {
-			const char = str.charCodeAt(i);
-			hash = (hash << 5) - hash + char;
-			hash = hash & hash;
-		}
-		return Math.abs(hash);
-	}
 
-	function getSeparatorSymbol(author) {
-		return separatorSymbols[hashCode(author.slug) % separatorSymbols.length];
-	}
+	export let data;
+	$: ({ authors } = data);
 </script>
 
 <SEO
 	title="Authors | Diagram Chasing"
-	description="People working with Diagram Chasing"
-	keywords="data viz, india data, data storytellying, gis, data blog"
+	description="Meet the team behind Diagram Chasing's data-driven stories and interactive tools"
+	keywords="data viz, india data, data storytelling, authors, team"
 	twitterHandle="@diagram_chasing"
 	author="Diagram Chasing"
 	ogImage="sharecard.jpg"
 />
 
-<div class="container font-mono text-sm leading-relaxed">
-	<header>
-		<h1 class="mt-2 text-2xl font-bold">Authors</h1>
-		<p class="font-roboto mb-2">People who have contributed to Diagram Chasing's work.</p>
-	</header>
+<div class="my-4 w-full">
+	<main class="mx-auto max-w-2xl space-y-12 px-4">
+		<div class="space-y-6">
+			<div class="space-y-2">
+				<p class="font-mono text-sm text-muted-foreground">$ ~/authors</p>
+				<h1 class="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+					Authors
+				</h1>
+			</div>
 
-	<p class="font-mono text-xs text-gray-500">~/authors ls</p>
-	<section class="w-full space-y-4">
-		{#each data.authors.sort((a, b) => b.storyCount - a.storyCount) as author, i}
-			{@const last = i === data.authors.length - 1}
-			<a
-				href="/authors/{author.slug}"
-				class="group flex w-full justify-between p-1 pl-0 no-underline {!last ? '' : 'py-3'}"
-			>
-				<h3 class="text-lg font-bold">{author.name}</h3>
-				<p class="text-right font-mono text-sm text-gray-700 tabular-nums group-hover:no-underline">
-					{author.storyCount} / {data.totalStories}
-				</p>
-			</a>
-			{#if !last}
-				<Separator symbol={getSeparatorSymbol(author)} className="m-0 p-0" padding="px-0" />
-			{/if}
-		{/each}
-	</section>
+			<p class="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+				People who have contributed to Diagram Chasing
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-3">
+			{#each authors as author}
+				<a
+					href="/authors/{author.slug}"
+					class="group block space-y-4 rounded-lg border bg-card p-6 transition-all hover:bg-muted/50"
+				>
+					<div class="space-y-2">
+						<h2
+							class="font-serif text-xl font-bold text-foreground transition-colors group-hover:text-foreground/80"
+						>
+							{author.name}
+						</h2>
+					</div>
+				</a>
+			{/each}
+		</div>
+	</main>
 </div>
+
+<style>
+	a {
+		text-decoration: none;
+	}
+</style>
