@@ -4,9 +4,13 @@ description: Finding namesake candidates in India's elections and how they impac
 base_url: https://blr-rains.netlify.app
 slug: votes-in-a-name
 published: true
-image: /images/2024-votes-in-a-name.webp
+image: /images/votes-in-a-name-1.png
+gallery:
+  - /images/votes-in-a-name-3.png
+  - /images/votes-in-a-name-5.png
+  - /images/votes-in-a-name-4.png
 type: stories
-date: 2024-12-03T00:00:00.000Z
+date: 2024-12-03
 tags:
   - elections
   - india

@@ -5,17 +5,13 @@ export interface Post {
     slug: string;
     published: boolean;
     image: string;
-    gallery?: GalleryImage[];
+    gallery?: string[]; // Array of image paths
     type: 'interactive' | 'article' | 'stories';
     date: string;
     tags: string[];
     authors: string[];
     code?: string;
     body?: string;
-}
-
-export interface GalleryImage {
-    image: string;
 }
 
 export interface Author {

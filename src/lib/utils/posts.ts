@@ -49,19 +49,14 @@ class PostsAPI {
             // Process gallery images if they exist
             if (post.gallery && Array.isArray(post.gallery)) {
                 const processedGallery = [];
-                for (const galleryItem of post.gallery) {
-                    if (galleryItem.image) {
-                        const imageName = galleryItem.image.replace('/images/', '');
-                        const imagePath = `/src/content/images/${imageName}`;
-                        const imageLoader = postImages[imagePath];
-                        if (imageLoader) {
-                            processedGallery.push({
-                                ...galleryItem,
-                                image: (await imageLoader()) as string
-                            });
-                        } else {
-                            processedGallery.push(galleryItem);
-                        }
+                for (const imagePath of post.gallery) {
+                    const imageName = imagePath.replace('/images/', '');
+                    const fullImagePath = `/src/content/images/${imageName}`;
+                    const imageLoader = postImages[fullImagePath];
+                    if (imageLoader) {
+                        processedGallery.push((await imageLoader()) as string);
+                    } else {
+                        processedGallery.push(imagePath);
                     }
                 }
                 post.gallery = processedGallery;
