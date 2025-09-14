@@ -4,97 +4,124 @@
 
 	const expenses = [
 		{
-			category: 'Web Hosting & Infrastructure',
-			amount: 240,
-			description: 'Domain, CDN, database hosting'
+			category: 'Domains',
+			amount: null,
+			description: null,
+			isHeader: true
 		},
 		{
-			category: 'Data Sources & APIs',
-			amount: 680,
-			description: 'Election data, demographic datasets, API subscriptions'
+			category: 'cbfc.watch',
+			amount: 2600,
+			description: 'Domain registration and maintenance',
+			isIndented: true
 		},
 		{
-			category: 'Design & Development Tools',
-			amount: 420,
-			description: 'Software licenses, design assets'
+			category: 'whoismyneta.com',
+			amount: 1000,
+			description: 'Domain registration and maintenance',
+			isIndented: true
 		},
 		{
-			category: 'Research Materials',
-			amount: 180,
-			description: 'Books, academic papers, reference materials'
+			category: 'diagramchasing.fun',
+			amount: 2300,
+			description: 'Domain registration and maintenance',
+			isIndented: true
 		},
 		{
-			category: 'Hardware & Equipment',
-			amount: 320,
-			description: 'Computing resources, backup storage'
+			category: 'CBFC Watch',
+			amount: null,
+			description: null,
+			isHeader: true
+		},
+		{
+			category: 'Commissioned Art',
+			amount: 9000,
+			description: 'Art and icons for homepage',
+			isIndented: true
+		},
+		{
+			category: 'Research and prototyping costs',
+			amount: 5000,
+			description: 'LLM prototyping, data cleaning and trials',
+			isIndented: true
+		},
+		{
+			category: 'Upcoming Projects',
+			amount: null,
+			description: null,
+			isHeader: true
+		},
+		{
+			category: 'How India Spends Time - Art budget (Estimate)',
+			amount: 20000,
+			description: 'Artwork for story based on the National Time Use Survey',
+			isIndented: true
 		}
 	];
 
-	const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+	const totalExpenses = expenses.reduce((sum, expense) => sum + (expense.amount || 0), 0);
+
+	/**
+	 * Formats a number as Indian currency (e.g., ₹1,00,000).
+	 * @param value The number to format.
+	 * @returns A formatted currency string or an empty string if the value is null.
+	 */
+	const formatCurrency = (value: number | null): string => {
+		if (value === null || typeof value === 'undefined') {
+			return '';
+		}
+		return `₹${value.toLocaleString('en-IN')}`;
+	};
 </script>
 
 <div class="my-4 w-full">
 	<main class="mx-auto max-w-4xl space-y-12 px-4">
-		<!-- Header Section -->
 		<div class="space-y-6">
-			<h1
-				class="font-serif text-3xl leading-tight font-black tracking-tighter text-foreground md:text-5xl lg:text-6xl"
-			>
-				Support our work
+			<h1 class="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+				Support Diagram Chasing
 			</h1>
 			<p class="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-				Data-driven storytelling takes time, resources, and dedication. Your support helps us
-				continue creating meaningful visualizations and insights that make complex information
-				accessible to everyone.
+				Diagram Chasing creates data-driven stories, interactive tools, and open datasets of public
+				interest. As of September 2025, we've been building and sharing this work for one year.
+			</p>
+			<p class="text-lg">
+				In that time, we've
+				<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2024/votes-in-a-name"
+					>uncovered electoral confusion caused by namesake candidates</a
+				>,
+				<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2024/blr-water-log"
+					>mapped Bangalore's natural drainage systems</a
+				>, and made
+				<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2025/time-use-explorer"
+					>India's 10-million-row Time Use Survey searchable in any browser</a
+				>. Our project, CBFC Watch, is the largest analyzable dataset of
+				<a target="_blank" rel="noopener" href="https://cbfc.watch">film censorship in India</a>.
+				All our code, data, and methods are published on
+				<a target="_blank" rel="noopener" href="https://github.com/diagram-chasing">GitHub</a> under
+				open licenses.
 			</p>
 		</div>
 
-		<!-- What We Do Section -->
 		<div class="space-y-6">
-			<h2 class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-				What we do
-			</h2>
-			<div class="grid gap-8 md:grid-cols-2">
-				<div class="space-y-4">
-					<h3 class="font-serif text-xl font-semibold text-foreground">Research & Analysis</h3>
-					<p class="leading-relaxed text-muted-foreground">
-						We dive deep into complex datasets, from election results to demographic trends,
-						transforming raw numbers into compelling narratives that reveal hidden patterns and
-						insights.
-					</p>
-				</div>
-				<div class="space-y-4">
-					<h3 class="font-serif text-xl font-semibold text-foreground">Data Visualization</h3>
-					<p class="leading-relaxed text-muted-foreground">
-						Every chart, map, and interactive element is carefully crafted to make information not
-						just accessible, but engaging and memorable for our audience.
-					</p>
-				</div>
-				<div class="space-y-4">
-					<h3 class="font-serif text-xl font-semibold text-foreground">Open Source</h3>
-					<p class="leading-relaxed text-muted-foreground">
-						We believe in transparency. Our methodologies, code, and datasets are shared openly,
-						contributing to the broader community of data storytellers.
-					</p>
-				</div>
-				<div class="space-y-4">
-					<h3 class="font-serif text-xl font-semibold text-foreground">Educational Impact</h3>
-					<p class="leading-relaxed text-muted-foreground">
-						Beyond publishing, we create resources that help others understand data literacy,
-						statistical thinking, and the art of visual communication.
-					</p>
-				</div>
-			</div>
+			<p class="text-lg">
+				Our goal is to build a sustainable publication that can take on more ambitious projects. We
+				are committed to quality, which means paying our collaborators fairly for their work and
+				commissioning original art and design. We will never use AI-generated content.
+			</p>
+			<p class="text-lg">
+				Until now, all expenses for infrastructure, research, and commissions have come directly out
+				of our own pockets. To make this work sustainable and expand our scope, we need your help.
+			</p>
+			<p class="text-lg">
+				We're experimenting with a patron-based model. We've tallied our expenses to date, plus the
+				estimated costs for our next project. Once we cover this amount, we will pause contributions
+				until new costs arise. As a token of our gratitude, we'd be proud to list your name as a
+				Friend of Diagram Chasing.
+			</p>
 		</div>
 
-		<!-- Expenses Section -->
 		<div class="space-y-6">
-			<h2 class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-				Ongoing Expenses
-			</h2>
-			<p class="text-muted-foreground">
-				Transparency is important to us. Here's where your support goes:
-			</p>
+			<p class="text-muted-foreground">Here's where your support goes:</p>
 
 			<div class="rounded-lg border bg-card p-1">
 				<Table.Root>
@@ -107,109 +134,73 @@
 					</Table.Header>
 					<Table.Body>
 						{#each expenses as expense}
-							<Table.Row>
-								<Table.Cell class="font-medium">{expense.category}</Table.Cell>
-								<Table.Cell class="text-muted-foreground">{expense.description}</Table.Cell>
-								<Table.Cell class="text-right font-mono">${expense.amount}</Table.Cell>
+							<Table.Row class={expense.isHeader ? 'bg-muted/20' : ''}>
+								<Table.Cell
+									class={expense.isHeader
+										? 'font-bold text-foreground'
+										: expense.isIndented
+											? 'pl-8 font-medium text-muted-foreground'
+											: 'font-medium'}
+								>
+									{expense.category}
+								</Table.Cell>
+								<Table.Cell class="text-muted-foreground ">
+									{expense.description || ''}
+								</Table.Cell>
+								<Table.Cell class="text-right font-mono">
+									{formatCurrency(expense.amount)}
+								</Table.Cell>
 							</Table.Row>
 						{/each}
 					</Table.Body>
 					<Table.Footer>
 						<Table.Row>
 							<Table.Cell colspan={2} class="font-semibold">Total Operating Expenses</Table.Cell>
-							<Table.Cell class="text-right font-mono font-semibold">${totalExpenses}</Table.Cell>
+							<Table.Cell class="text-right font-mono font-semibold"
+								>{formatCurrency(totalExpenses)}</Table.Cell
+							>
 						</Table.Row>
 					</Table.Footer>
 				</Table.Root>
 			</div>
 		</div>
 
-		<!-- Support Section -->
 		<div class="space-y-6">
 			<h2 class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-				How you can help
+				Become a Supporter
 			</h2>
-			<div class="space-y-8">
-				<div class="rounded-lg border bg-muted/20 p-6">
-					<div class="space-y-4">
-						<h3 class="font-serif text-xl font-semibold text-foreground">Monthly Support</h3>
-						<p class="leading-relaxed text-muted-foreground">
-							Join our community of supporters and help us maintain consistent funding for ongoing
-							projects. Every contribution, no matter the size, makes a meaningful difference.
-						</p>
-						<div class="flex flex-wrap gap-4">
-							<Button variant="default" size="lg" class="font-semibold">Support Monthly</Button>
-							<Button variant="outline" size="lg" class="font-semibold">One-time Donation</Button>
-						</div>
-					</div>
-				</div>
-
-				<div class="grid gap-6 md:grid-cols-3">
-					<div class="space-y-3 text-center">
-						<div class="font-serif text-2xl font-bold text-foreground">$10/month</div>
-						<div class="text-sm text-muted-foreground">Covers basic hosting and domain costs</div>
-					</div>
-					<div class="space-y-3 text-center">
-						<div class="font-serif text-2xl font-bold text-foreground">$25/month</div>
-						<div class="text-sm text-muted-foreground">
-							Funds data subscriptions and research tools
-						</div>
-					</div>
-					<div class="space-y-3 text-center">
-						<div class="font-serif text-2xl font-bold text-foreground">$50/month</div>
-						<div class="text-sm text-muted-foreground">
-							Enables new projects and deeper analysis
-						</div>
-					</div>
-				</div>
+			<p>
+				If you find our work valuable, do consider making a contribution. Your support directly
+				funds the projects listed above and allows us to keep our work independent and freely
+				accessible. We accept payments through Razorpay, which supports UPI and all major cards.
+			</p>
+			<div class="pt-2">
+				<form class="flex w-full">
+					<script
+						src="https://checkout.razorpay.com/v1/payment-button.js"
+						data-payment_button_id="pl_QTZ3rX1jlkGMR8"
+						async
+					>
+					</script>
+				</form>
 			</div>
 		</div>
 
-		<!-- Other Ways Section -->
-		<div class="space-y-6">
-			<h2 class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-				Other ways to support
-			</h2>
-			<div class="grid gap-6 md:grid-cols-2">
-				<div class="space-y-3">
-					<h3 class="font-semibold text-foreground">Share our work</h3>
-					<p class="text-sm text-muted-foreground">
-						The most valuable support is spreading awareness. Share our projects with colleagues,
-						students, and anyone interested in data storytelling.
-					</p>
-				</div>
-				<div class="space-y-3">
-					<h3 class="font-semibold text-foreground">Contribute data or insights</h3>
-					<p class="text-sm text-muted-foreground">
-						Have interesting datasets or domain expertise? We're always looking for collaboration
-						opportunities and fresh perspectives.
-					</p>
-				</div>
-				<div class="space-y-3">
-					<h3 class="font-semibold text-foreground">Feedback and suggestions</h3>
-					<p class="text-sm text-muted-foreground">
-						Your thoughts help us improve. Whether it's technical feedback or ideas for future
-						projects, we value your input.
-					</p>
-				</div>
-				<div class="space-y-3">
-					<h3 class="font-semibold text-foreground">Professional partnerships</h3>
-					<p class="text-sm text-muted-foreground">
-						Organizations interested in data visualization consulting or educational workshops can
-						reach out for collaboration opportunities.
-					</p>
-				</div>
-			</div>
-		</div>
-
-		<!-- Thank You -->
-		<div class="rounded-lg bg-muted/30 p-8 text-center">
-			<h3 class="mb-4 font-serif text-xl font-semibold text-foreground">Thank you</h3>
-			<p class="mx-auto max-w-2xl text-muted-foreground">
-				Whether you support us financially, share our work, or simply engage with our content,
-				you're part of making complex information more accessible and democracy more transparent.
-				We're grateful for your interest and support.
+		<div>
+			<p class="max-w-2xl text-muted-foreground">
+				Financial support is powerful, but it's not the only way to help. Sharing our work with your
+				network, engaging with our stories, or building on our open data are all invaluable
+				contributions. Thank you for being part of our effort to make complex information accessible
+				and our democracy more transparent.
 			</p>
 		</div>
 	</main>
 </div>
+
+<style>
+	a {
+		/* font-weight: 600; */
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
+</style>
