@@ -1,0 +1,168 @@
+backend:
+  name: github
+  repo: thedivtagguy/website
+  skip_ci: true
+media_folder: "src/lib/assets/images"
+public_folder: "src/lib/assets/images"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    media_folder: "images/blog/{{slug}}"
+    public_folder: "/images/blog"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    media_folder: "/src/content/projects/images/{{slug}}"
+    public_folder: "/images/projects/{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          required: true,
+        }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "select",
+          options: ["Work", "Byline", "Mini", "Random"],
+          required: true,
+          hint: "Select the type of project.",
+        }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          options: ["Personal", "Client"],
+          required: false,
+        }
+      - {
+          label: "Is a Favorite?",
+          name: "favorite",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Layout",
+          name: "layout",
+          widget: "select",
+          options: ["single", "double", "banner", "thin"],
+          default: "single",
+          hint: "Controls the card width and layout style on the projects page. Thin creates a 100px tall banner.",
+        }
+      - {
+          label: "Feature on Homepage?",
+          name: "showOnHomepage",
+          widget: "boolean",
+          default: false,
+          hint: 'Only applies to projects of type "Work".',
+        }
+      - {
+          label: "Project Link",
+          name: "projectLink",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Github Link",
+          name: "githubLink",
+          widget: "string",
+          required: false,
+          hint: 'Only applies to projects of type "Mini".',
+        }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          allow_add: true,
+          required: false,
+          field: { label: "Tag", name: "tag", widget: "string" },
+        }
+      - {
+          label: "Tools",
+          name: "tools",
+          widget: "list",
+          allow_add: true,
+          required: false,
+          field: { label: "Tool", name: "tool", widget: "string" },
+        }
+      - {
+          label: "Thumbnail",
+          name: "thumbnail",
+          widget: "image",
+          required: true,
+        }
+      - {
+          label: "Social Details",
+          name: "social",
+          widget: "object",
+          required: false,
+          fields:
+            [
+              {
+                label: "Twitter URL",
+                name: "twitter",
+                widget: "string",
+                required: false,
+              },
+              {
+                label: "Mastodon URL",
+                name: "mastodon",
+                widget: "string",
+                required: false,
+              },
+              {
+                label: "Blog URL",
+                name: "blog",
+                widget: "string",
+                required: false,
+              },
+            ],
+          hint: 'Only applies to projects of type "Mini".',
+        }
+      - {
+          label: "Client",
+          name: "client",
+          widget: "relation",
+          collection: "clients",
+          value_field: "title",
+          search_fields: ["title"],
+          display_fields: ["title"],
+          required: false,
+          hint: 'Link to a client entry. Only applies to projects of type "Work" or "Byline".',
+        }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  - name: "clients"
+    label: "Clients"
+    folder: "src/content/metadata/clients"
+    create: true
+    slug: "{{title | slugify}}"
+    format: "frontmatter"
+    media_folder: "src/lib/assets/images/clients"
+    public_folder: "/images/clients"
+    fields:
+      - { label: "Name", name: "title", widget: "string", required: true }
+      - { label: "Logo", name: "logo", widget: "image" }
