@@ -2,8 +2,9 @@ export interface Post {
     title: string;
     description: string;
     base_url?: string;
-    slug: string;
+    slug?: string;
     published: boolean;
+    external?: boolean;
     image: string;
     gallery?: string[]; // Array of image paths
     type: 'interactive' | 'article' | 'stories';

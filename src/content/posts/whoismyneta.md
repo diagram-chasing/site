@@ -4,6 +4,7 @@ description: See legislative activity and affidavits of MLAs from the 17th Lok S
 base_url: https://whoismyneta.com
 slug: whoismyneta
 published: true
+external: true
 image: /images/who-1.png
 gallery:
   - /images/who-2.png
