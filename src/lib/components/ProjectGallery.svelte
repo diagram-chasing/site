@@ -41,7 +41,9 @@
 
 				<div class="gallery-authors">
 					{#each post.authors as author, i}
-						<span>{author}{i < post.authors.length - 1 ? ', ' : ''}</span>
+						<a href="/authors/{author}" class="author-link">
+							{author.charAt(0).toUpperCase() + author.slice(1)}
+						</a>{i < post.authors.length - 1 ? ', ' : ''}
 					{/each}
 				</div>
 
@@ -172,6 +174,17 @@
 		font-size: var(--text-authors);
 		font-weight: 500;
 		color: var(--foreground);
+	}
+
+	.author-link {
+		color: var(--foreground);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		transition: color 0.2s ease;
+	}
+
+	.author-link:hover {
+		color: rgb(100 116 139);
 	}
 
 	.gallery-buttons {
