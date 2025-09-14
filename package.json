@@ -50,6 +50,7 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.7",
 		"@fontsource/atkinson-hyperlegible": "^5.2.7",
-		"@sveltejs/enhanced-img": "^0.8.1"
+		"@sveltejs/enhanced-img": "^0.8.1",
+		"svelte-action-balancer": "^1.0.4"
 	}
 }

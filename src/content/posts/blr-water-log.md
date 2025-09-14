@@ -4,7 +4,10 @@ description: Natural drains crisscross Bangalore and are often the places which 
 base_url: https://blr-rains.netlify.app
 slug: blr-water-log
 published: true
-image: /images/2024-blr-water-log.webp
+image: /images/water-1.png
+gallery:
+  - /images/water-2.png
+  - /images/water-3.png
 type: interactive
 date: 2024-11-18T00:00:00.000Z
 tags:
