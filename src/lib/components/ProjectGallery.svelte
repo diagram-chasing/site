@@ -48,7 +48,12 @@
 				</div>
 
 				<div class="gallery-buttons">
-					<Button href={post.base_url?.startsWith('http') ? post.base_url : `/${new Date(post.date).getFullYear()}/${post.slug}`} variant="default" size="sm" class="gallery-btn">
+					<Button
+						href={!post.slug ? post.base_url : `/${new Date(post.date).getFullYear()}/${post.slug}`}
+						variant="default"
+						size="sm"
+						class="gallery-btn"
+					>
 						View Project
 					</Button>
 					{#if post.code}
