@@ -106,7 +106,8 @@
 			<p class="text-lg">
 				Our goal is to build a sustainable publication that can take on more ambitious projects. We
 				are committed to quality, which means paying our collaborators fairly for their work and
-				commissioning original art and design. We will never use AI-generated content.
+				commissioning original art and design. We will never use AI-generated illustrations, art,
+				designs, or written content in our work.
 			</p>
 			<p class="text-lg">
 				Until now, all expenses for infrastructure, research, and commissions have come directly out
