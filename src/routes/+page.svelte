@@ -8,7 +8,7 @@
 </script>
 
 <div class="my-4 w-full">
-	<main class="mx-auto space-y-4 px-4">
+	<main class="mx-auto space-y-8 px-4">
 		{#each posts as post}
 			<ProjectGallery {post} />
 		{/each}
