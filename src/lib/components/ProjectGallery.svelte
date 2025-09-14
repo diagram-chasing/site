@@ -49,7 +49,7 @@
 
 				<div class="gallery-buttons">
 					<Button
-						href={!post.slug ? post.base_url : `/${new Date(post.date).getFullYear()}/${post.slug}`}
+						href={post.external ? post.base_url : (post.slug ? `/${new Date(post.date).getFullYear()}/${post.slug}` : post.base_url)}
 						variant="default"
 						size="sm"
 						class="gallery-btn"
