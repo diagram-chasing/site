@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Table from '$lib/components/ui/table';
 	import { Button } from '$lib/components/ui/button';
+	import SEO from '$lib/components/SEO.svelte';
 
 	const expenses = [
 		{
@@ -73,6 +74,12 @@
 		return `₹${value.toLocaleString('en-IN')}`;
 	};
 </script>
+
+<SEO
+	title="Support Diagram Chasing"
+	description="Support independent data journalism and visualization work in India. Help fund research for public interest projects."
+	keywords="support, donate, data journalism, india, public interest, crowdfunding"
+/>
 
 <div class="my-4 w-full">
 	<main class="mx-auto max-w-4xl space-y-12 px-4">

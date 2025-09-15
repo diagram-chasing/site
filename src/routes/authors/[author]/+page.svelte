@@ -8,10 +8,10 @@
 
 <SEO
 	title="{author.name} | Diagram Chasing"
-	description="Our public log of what we're working on and all our other ideas"
-	keywords="data viz, india data, data storytellying, gis, data blog"
+	description="{author.description}"
+	keywords="data viz, india data, data storytelling, gis, data blog, {author.name}"
 	twitterHandle="@diagram_chasing"
-	author="Diagram Chasing"
+	author={author.name}
 	ogImage="sharecard.jpg"
 />
 <div class="my-4 w-full">
