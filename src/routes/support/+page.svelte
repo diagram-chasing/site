@@ -2,65 +2,14 @@
 	import * as Table from '$lib/components/ui/table';
 	import { Button } from '$lib/components/ui/button';
 	import SEO from '$lib/components/SEO.svelte';
+	import expensesData from '$lib/data/expenses.json';
+	import receivedFundsData from '$lib/data/received-funds.json';
 
-	const expenses = [
-		{
-			category: 'Domains',
-			amount: null,
-			description: null,
-			isHeader: true
-		},
-		{
-			category: 'cbfc.watch',
-			amount: 2600,
-			description: 'Domain registration and maintenance',
-			isIndented: true
-		},
-		{
-			category: 'whoismyneta.com',
-			amount: 1000,
-			description: 'Domain registration and maintenance',
-			isIndented: true
-		},
-		{
-			category: 'diagramchasing.fun',
-			amount: 2300,
-			description: 'Domain registration and maintenance',
-			isIndented: true
-		},
-		{
-			category: 'CBFC Watch',
-			amount: null,
-			description: null,
-			isHeader: true
-		},
-		{
-			category: 'Commissioned Art',
-			amount: 9000,
-			description: 'Art and icons for homepage',
-			isIndented: true
-		},
-		{
-			category: 'Research and prototyping costs',
-			amount: 5000,
-			description: 'LLM prototyping, data cleaning and trials',
-			isIndented: true
-		},
-		{
-			category: 'Upcoming Projects',
-			amount: null,
-			description: null,
-			isHeader: true
-		},
-		{
-			category: 'How India Spends Time - Art budget (Estimate)',
-			amount: 20000,
-			description: 'Artwork for story based on the National Time Use Survey',
-			isIndented: true
-		}
-	];
-
+	const expenses = expensesData;
+	const receivedFunds = receivedFundsData;
 	const totalExpenses = expenses.reduce((sum, expense) => sum + (expense.amount || 0), 0);
+	const totalReceived = receivedFunds.reduce((sum, fund) => sum + fund.amount, 0);
+	const totalRemaining = totalExpenses - totalReceived;
 
 	/**
 	 * Formats a number as Indian currency (e.g., ₹1,00,000).
@@ -142,7 +91,13 @@
 					</Table.Header>
 					<Table.Body>
 						{#each expenses as expense}
-							<Table.Row class={expense.isHeader ? 'bg-muted/20' : ''}>
+							<Table.Row
+								class={expense.isHeader
+									? 'bg-muted/20'
+									: expense.isCovered
+										? 'bg-green-50 line-through opacity-60'
+										: ''}
+							>
 								<Table.Cell
 									class={expense.isHeader
 										? 'font-bold text-foreground'
@@ -151,6 +106,9 @@
 											: 'font-medium'}
 								>
 									{expense.category}
+									{#if expense.isCovered && !expense.isHeader}
+										<span class="ml-2 font-semibold text-green-600">✓ Covered</span>
+									{/if}
 								</Table.Cell>
 								<Table.Cell class="text-muted-foreground ">
 									{expense.description || ''}
@@ -167,6 +125,23 @@
 							<Table.Cell class="text-right font-mono font-semibold"
 								>{formatCurrency(totalExpenses)}</Table.Cell
 							>
+						</Table.Row>
+						{#if totalReceived > 0}
+							<Table.Row>
+								<Table.Cell colspan={2} class="font-medium text-green-600"
+									>Amount Received</Table.Cell
+								>
+								<Table.Cell class="text-right font-mono font-medium text-green-600">
+									{formatCurrency(totalReceived)}
+								</Table.Cell>
+							</Table.Row>
+						{/if}
+
+						<Table.Row>
+							<Table.Cell colspan={2} class="text-base font-semibold">Amount Remaining</Table.Cell>
+							<Table.Cell class="text-right font-mono text-lg font-semibold">
+								{formatCurrency(Math.max(0, totalRemaining))}
+							</Table.Cell>
 						</Table.Row>
 					</Table.Footer>
 				</Table.Root>
