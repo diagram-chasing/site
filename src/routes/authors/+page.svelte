@@ -7,7 +7,7 @@
 
 <SEO
 	title="Authors | Diagram Chasing"
-	description="Meet the team behind Diagram Chasing's data-driven stories and interactive tools"
+	description="People who have contributed to our work"
 	keywords="data viz, india data, data storytelling, authors, team"
 	twitterHandle="@diagram_chasing"
 	author="Diagram Chasing"

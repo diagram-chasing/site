@@ -1,6 +1,6 @@
 ---
 name: Aman Bhargava
-description: Aman is a designer & front-end developer with an interest in data viz and maps.
+description: Aman is a designer & developer with an interest in data viz and maps.
 slug: aman
 image: ''
 links:
