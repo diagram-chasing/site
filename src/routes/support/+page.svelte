@@ -138,7 +138,7 @@
 						{/if}
 
 						<Table.Row>
-							<Table.Cell colspan={2} class="text-base font-semibold">Amount Remaining</Table.Cell>
+							<Table.Cell colspan={2} class="text-md font-semibold">Amount Remaining</Table.Cell>
 							<Table.Cell class="text-right font-mono text-lg font-semibold">
 								{formatCurrency(Math.max(0, totalRemaining))}
 							</Table.Cell>
