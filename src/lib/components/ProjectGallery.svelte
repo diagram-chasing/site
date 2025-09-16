@@ -49,7 +49,11 @@
 
 				<div class="gallery-buttons">
 					<Button
-						href={post.external ? post.base_url : (post.slug ? `/${new Date(post.date).getFullYear()}/${post.slug}` : post.base_url)}
+						href={post.external
+							? post.base_url
+							: post.slug
+								? `/${new Date(post.date).getFullYear()}/${post.slug}`
+								: post.base_url}
 						variant="default"
 						size="sm"
 						class="gallery-btn"
@@ -138,6 +142,8 @@
 		gap: clamp(0.5rem, 1vw, 0.75rem);
 		grid-area: title;
 		padding: clamp(0.5rem, 1vw, 1rem);
+		min-width: min-content;
+		overflow-wrap: break-word;
 	}
 
 	.gallery-year {
@@ -159,6 +165,7 @@
 
 	.gallery-content {
 		max-width: 65ch;
+		min-width: 280px;
 		display: flex;
 		flex-direction: column;
 		gap: clamp(0.5rem, 1vw, 0.75rem);
@@ -255,7 +262,7 @@
 		}
 
 		.gallery-grid {
-			grid-template-columns: repeat(6, 1fr);
+			grid-template-columns: repeat(4, 1fr) minmax(280px, 2fr);
 			grid-template-rows: repeat(4, 1fr);
 		}
 
