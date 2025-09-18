@@ -13,30 +13,30 @@
 <!-- A single SVG element to create the entire logo -->
 <svg
 	class="logo-svg"
-	viewBox="0 0 132 132"
+	viewBox="0 0 136 136"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	style={`width: ${size}px;`}
 >
 	<!-- Outer border rings -->
-	<circle cx="66" cy="66" r="65" fill="none" stroke="#000000" stroke-width="4" />
-	<circle cx="66" cy="66" r="65" fill="none" stroke="rgb(0,26,98,0.4)" stroke-width="4" />
+	<circle cx="68" cy="68" r="65" fill="none" stroke="#000000" stroke-width="4" />
+	<circle cx="68" cy="68" r="65" fill="none" stroke="rgb(0,26,98,0.4)" stroke-width="4" />
 
 	<!-- Inner border rings -->
-	<circle cx="66" cy="66" r="48" fill="none" stroke="#000000" stroke-width="1" />
-	<circle cx="66" cy="66" r="46" fill="none" stroke="#000000" stroke-width="1" />
+	<circle cx="68" cy="68" r="48" fill="none" stroke="#000000" stroke-width="1" />
+	<circle cx="68" cy="68" r="46" fill="none" stroke="#000000" stroke-width="1" />
 
 	<defs>
 		<!-- A circular path to place the text on -->
-		<path id="text-path" d="M66 126A60 60 0 1 0 66 6a60 60 0 0 0 0 120" fill="none" />
+		<path id="text-path" d="M68 128A60 60 0 1 0 68 8a60 60 0 0 0 0 120" fill="none" />
 		<!-- A circular clip path to make the image round -->
 		<clipPath id="circle-clip">
-			<circle cx="66" cy="66" r="46" />
+			<circle cx="68" cy="68" r="46" />
 		</clipPath>
 	</defs>
 
 	<!-- The image, centered, clipped, and using the imported Logo variable -->
-	<image href={Logo} x="20" y="20" width="92" height="92" clip-path="url(#circle-clip)" />
+	<image href={Logo} x="22" y="22" width="92" height="92" clip-path="url(#circle-clip)" />
 
 	<!-- The curved text element -->
 	<text>
