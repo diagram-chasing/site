@@ -43,7 +43,7 @@
 									rel="noopener noreferrer"
 									class="text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
 								>
-									{platform}: {url.replace(/^https?:\/\//, '')}
+									{platform}: {url.replace(/^https?:\/\//, '').replace(/^mailto:/, '')}
 								</a>
 							{/if}
 						{/each}
