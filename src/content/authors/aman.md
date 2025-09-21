@@ -4,7 +4,7 @@ description: Aman is a designer & developer with an interest in data viz and map
 slug: aman
 image: ''
 links:
-  email: aman@diagramchasing.fun
+  email: mailto:aman@diagramchasing.fun
   github: https://github.com/thedivtagguy
   twitter: https://twitter.com/thedivtagguy
   bluesky: https://bsky.app/profile/aman.bh

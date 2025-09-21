@@ -21,6 +21,7 @@ export interface Author {
     slug: string;
     image?: string;
     links?: {
+        email?: string;
         github?: string;
         twitter?: string;
         bluesky?: string;

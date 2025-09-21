@@ -113,6 +113,12 @@ collections:
           fields:
             [
               {
+                label: "Email",
+                name: "email",
+                widget: "string",
+                required: false,
+              },
+              {
                 label: "GitHub",
                 name: "github",
                 widget: "string",
