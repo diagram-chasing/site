@@ -4,7 +4,7 @@ description: Vivek is an open-data enthusiast and a contributor to the OpenStree
 slug: vivek
 image: ""
 links:
-  email: vivek@diagramchasing.fun
+  email: mailto:vivek@diagramchasing.fun
   github: https://github.com/Vonter
   twitter: https://twitter.com/Vonterinon
   bluesky: https://bsky.app/profile/vonter.bsky.social
