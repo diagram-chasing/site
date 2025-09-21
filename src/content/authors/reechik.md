@@ -4,6 +4,7 @@ description: Reechik is an illustrator and animator who works across digital and
 slug: reechik
 image: ''
 links:
+  email: ''
   github: ''
   twitter: ''
   bluesky: ''
