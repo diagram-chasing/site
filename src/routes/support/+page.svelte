@@ -173,14 +173,14 @@
 					{#if totalReceived > 0}
 						<div>
 							<div class="font-mono text-lg font-bold">{formatCurrency(totalReceived)}</div>
-							<div class="text-sm">Amount Received</div>
+							<div class="text-sm">Received</div>
 						</div>
 					{/if}
 					<div>
 						<div class="font-mono text-xl font-bold">
 							{formatCurrency(Math.max(0, totalRemaining))}
 						</div>
-						<div class="text-sm">Amount Remaining</div>
+						<div class="text-sm">Remaining</div>
 					</div>
 				</div>
 			</div>
