@@ -1,11 +1,13 @@
 <script lang="ts">
 	import Logo from './Logo.svelte';
+	import RssIcon from '@lucide/svelte/icons/rss';
 
 	const currentYear = new Date().getFullYear();
 
 	const links = [
 		{ name: 'Authors', href: '/authors' },
 		{ name: 'Support', href: '/support' },
+		{ name: 'RSS', href: '/rss.xml', icon: true },
 		{ name: 'GitHub', href: 'https://github.com/diagram-chasing', external: true }
 	];
 </script>
@@ -29,8 +31,11 @@
 						<a
 							href={link.href}
 							{...link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
-							class="text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
+							class="flex items-center gap-1 text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
 						>
+							{#if link.icon}
+								<RssIcon size={14} />
+							{/if}
 							{link.name}
 						</a>
 					{/each}
