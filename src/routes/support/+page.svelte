@@ -77,7 +77,9 @@
 	<main class="mx-auto max-w-4xl space-y-12 px-6">
 		<div class="space-y-12">
 			<!-- Support CTA - Float Right on Desktop, Hidden on Mobile -->
-			<div class="md:float-right md:mb-6 md:ml-8 md:w-64 border border-foreground/20 p-6 hidden md:block">
+			<div
+				class="hidden border border-foreground/20 p-6 md:float-right md:mb-6 md:ml-8 md:block md:w-64"
+			>
 				<div class="mb-2">
 					<div class="font-mono text-xl font-bold">
 						{formatCurrency(Math.max(0, totalRemaining))}
@@ -102,30 +104,33 @@
 				</h1>
 
 				<div class="space-y-6 text-lg leading-relaxed">
-					<p>
-						Independent data journalism creating stories, interactive tools, and open datasets of
-						public interest. We've been building and sharing this work for one year.
+					<p class="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+						Diagram Chasing creates data-driven stories, interactive tools, and open datasets of
+						public interest. As of September 2025, we've been building and sharing this work for one
+						year.
 					</p>
-					<p>
-						We've
+					<p class="text-lg">
+						In that time, we've
 						<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2024/votes-in-a-name"
-							>uncovered electoral confusion</a
+							>uncovered electoral confusion caused by namesake candidates</a
 						>,
 						<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2024/blr-water-log"
-							>mapped Bangalore's drainage</a
-						>, made
+							>mapped Bangalore's natural drainage systems</a
+						>, and made
 						<a
 							target="_blank"
 							rel="noopener"
 							href="https://diagramchasing.fun/2025/time-use-explorer"
-							>India's Time Use Survey searchable</a
-						>, and created the largest
-						<a target="_blank" rel="noopener" href="https://cbfc.watch">film censorship dataset</a> in
-						India.
+							>India's 10-million-row Time Use Survey searchable in any browser</a
+						>. Our project, CBFC Watch, is the largest analyzable dataset of
+						<a target="_blank" rel="noopener" href="https://cbfc.watch">film censorship in India</a
+						>. All our code, data, and methods are published on
+						<a target="_blank" rel="noopener" href="https://github.com/diagram-chasing">GitHub</a> under
+						open licenses.
 					</p>
 
 					<!-- Support CTA - Mobile Version (appears after intro) -->
-					<div class="md:hidden border border-foreground/20 p-6">
+					<div class="border border-foreground/20 p-6 md:hidden">
 						<div class="mb-4 text-center">
 							<div class="font-mono text-xl font-bold">
 								{formatCurrency(Math.max(0, totalRemaining))}
@@ -140,18 +145,28 @@
 							>
 							</script>
 						</form>
-						<p class="text-xs text-center">UPI and all major cards via Razorpay.</p>
+						<p class="text-center text-xs">UPI and all major cards via Razorpay.</p>
 					</div>
-					<p>
-						Our goal is to build a sustainable publication that pays collaborators fairly and
-						commissions original art and design. We never use AI-generated content.
-					</p>
-					<p>
-						We're experimenting with a patron-based model. Once we cover our expenses, we'll pause
-						contributions until new costs arise. Supporters become <strong
-							>Friends of Diagram Chasing</strong
-						>.
-					</p>
+
+					<div class="max-w-2xl space-y-6">
+						<p class="text-lg">
+							Our goal is to build a sustainable publication that can take on more ambitious
+							projects. We are committed to quality, which means paying our collaborators fairly for
+							their work and commissioning original art and design. We will never use AI-generated
+							illustrations, art, designs, or written content in our work.
+						</p>
+						<p class="text-lg">
+							Until now, all expenses for infrastructure, research, and commissions have come
+							directly out of our own pockets. To make this work sustainable and expand our scope,
+							we need your help.
+						</p>
+						<p class="text-lg">
+							We're experimenting with a patron-based model. We've tallied our expenses to date,
+							plus the estimated costs for our next project. Once we cover this amount, we will
+							pause contributions until new costs arise. As a token of our gratitude, we'd be proud
+							to list your name as a Friend of Diagram Chasing.
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
