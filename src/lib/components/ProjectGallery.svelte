@@ -18,6 +18,12 @@
 	});
 
 	const gridClass = $derived(`gallery-${allImages.length}`);
+	const titleLengthClass = $derived(() => {
+		const length = post.title.length;
+		if (length > 30) return 'title-extra-long';
+		if (length > 15) return 'title-long';
+		return '';
+	});
 </script>
 
 <!-- Editorial Grid Layout -->
@@ -29,7 +35,7 @@
 				<div class="gallery-year">
 					{new Date(post.date).getFullYear()}
 				</div>
-				<h1 use:balancer class="gallery-heading">
+				<h1 use:balancer class="gallery-heading {titleLengthClass}">
 					{post.title}
 				</h1>
 			</div>
@@ -141,9 +147,9 @@
 		justify-content: end;
 		gap: clamp(0.5rem, 1vw, 0.75rem);
 		grid-area: title;
-		padding: clamp(0.5rem, 1vw, 1rem);
+		padding: clamp(0.5rem, 1vw, 1.5rem);
 		min-width: min-content;
-		overflow-wrap: break-word;
+		/* overflow-wrap: break-word; */
 	}
 
 	.gallery-year {
@@ -161,6 +167,14 @@
 		font-weight: 900;
 		letter-spacing: -0.025em;
 		color: var(--foreground);
+	}
+
+	.gallery-heading.title-long {
+		font-size: clamp(1.5rem, 1.75rem + 2vw, 2.5rem) !important;
+	}
+
+	.gallery-heading.title-extra-long {
+		font-size: clamp(1.25rem, 1.5rem + 1.5vw, 2rem) !important;
 	}
 
 	.gallery-content {
