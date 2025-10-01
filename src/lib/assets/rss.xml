@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Diagram Chasing</title>
+        <link>https://diagramchasing.fun/</link>
+        <description>Data-driven works of various interests, shared once in a while</description>
+        <lastBuildDate>Wed, 24 Sep 2025 04:52:10 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Feed for Node.js</generator>
+        <language>en</language>
+        <ttl>60</ttl>
+        <image>
+            <title>Diagram Chasing</title>
+            <url>https://diagramchasing.fun/sharecard.jpg</url>
+            <link>https://diagramchasing.fun/</link>
+        </image>
+        <copyright>© 2025 Diagram Chasing. All rights reserved.</copyright>
+        <atom:link href="https://diagramchasing.fun/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[CBFC Watch]]></title>
+            <link>https://diagramchasing.fun/2025/cbfc-watch</link>
+            <guid isPermaLink="true">https://diagramchasing.fun/2025/cbfc-watch</guid>
+            <pubDate>Sun, 14 Sep 2025 16:47:00 GMT</pubDate>
+            <description><![CDATA[18k movies, 1 lakh censorship records for movies released in India in a searchable database]]></description>
+            <enclosure length="0" type="image/avif" url="https://diagramchasing.fun/_app/immutable/assets/cbfc-2.ZTJMEhUN.avif"/>
+        </item>
+        <item>
+            <title><![CDATA[India Time Use Explorer]]></title>
+            <link>https://diagramchasing.fun/2025/time-use-explorer</link>
+            <guid isPermaLink="true">https://diagramchasing.fun/2025/time-use-explorer</guid>
+            <pubDate>Sun, 20 Apr 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Explore the Time Use Survey data of India in your browser.]]></description>
+            <enclosure length="0" type="image/avif" url="https://diagramchasing.fun/_app/immutable/assets/time-use-3.B3BY6TtY.avif"/>
+        </item>
+        <item>
+            <title><![CDATA[Votes in a name?]]></title>
+            <link>https://diagramchasing.fun/2024/votes-in-a-name</link>
+            <guid isPermaLink="true">https://diagramchasing.fun/2024/votes-in-a-name</guid>
+            <pubDate>Tue, 03 Dec 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Finding namesake candidates in India's elections and how they impact the election.]]></description>
+            <enclosure length="0" type="image/avif" url="https://diagramchasing.fun/_app/immutable/assets/votes-in-a-name-1.B3ijL_tT.avif"/>
+        </item>
+        <item>
+            <title><![CDATA[BLR Water Log]]></title>
+            <link>https://diagramchasing.fun/2024/blr-water-log</link>
+            <guid isPermaLink="true">https://diagramchasing.fun/2024/blr-water-log</guid>
+            <pubDate>Mon, 18 Nov 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Natural drains crisscross Bangalore and are often the places which are the first to flood. We mapped where these are.]]></description>
+            <enclosure length="0" type="image/avif" url="https://diagramchasing.fun/_app/immutable/assets/water-1.BTceMuhM.avif"/>
+        </item>
+        <item>
+            <title><![CDATA[The new residents in Hurricane Milton's path]]></title>
+            <link>https://diagramchasing.fun/2024/milton</link>
+            <guid isPermaLink="true">https://diagramchasing.fun/2024/milton</guid>
+            <pubDate>Thu, 10 Oct 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Mapping recent population growth and housing in areas threatened by Hurricane Milton.]]></description>
+            <enclosure length="0" type="image/avif" url="https://diagramchasing.fun/_app/immutable/assets/milton-1.Bzk2Jo3D.avif"/>
+        </item>
+        <item>
+            <title><![CDATA[Who is my neta?]]></title>
+            <link>https://diagramchasing.fun/2024/whoismyneta</link>
+            <guid isPermaLink="true">https://diagramchasing.fun/2024/whoismyneta</guid>
+            <pubDate>Sun, 14 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[See legislative activity and affidavits of MLAs from the 17th Lok Sabha — or explore candidates contesting in the 2024 elections.]]></description>
+            <enclosure length="0" type="image/avif" url="https://diagramchasing.fun/_app/immutable/assets/who-1.pCyfaMHo.avif"/>
+        </item>
+    </channel>
+</rss>
