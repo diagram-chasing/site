@@ -52,4 +52,7 @@
 	<meta name="revisit-after" content="7 days" />
 	<meta name="distribution" content="global" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<!-- RSS URL -->
+	<link rel="alternate" type="application/rss+xml" title="Diagram Chasing" href="/rss.xml" />
 </svelte:head>
