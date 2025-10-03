@@ -19,14 +19,14 @@
 		"category": "whoismyneta.com",
 		"amount": 1000,
 		"isIndented": true,
-		"isCovered": false
+		"isCovered": true
 	},
 	{
 		"id": 4,
 		"category": "diagramchasing.fun",
 		"amount": 2300,
 		"isIndented": true,
-		"isCovered": false
+		"isCovered": true
 	},
 	{
 		"id": 5,
@@ -66,6 +66,6 @@
 		"amount": 20000,
 		"description": "Artwork for story based on the National Time Use Survey",
 		"isIndented": true,
-		"isCovered": false
+		"isCovered": true
 	}
 ]
