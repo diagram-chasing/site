@@ -53,7 +53,13 @@
 	const friends: Friend[] = [
 		{ name: 'Gaurav Singh' },
 		{ name: 'Divya Ribeiro' },
-		{ name: 'Netra K' }
+		{ name: 'Netra K' },
+		{ name: 'Varini G' },
+		{ name: 'Arun Giridhar' },
+		{ name: 'Sukheth Kallupalli' },
+		{ name: 'Arun Augustine' },
+		{ name: 'Dheeraj Reddy' },
+		{ name: 'Rishabh Srivastava' }
 	];
 
 	/**
@@ -246,10 +252,10 @@
 
 			<div class="border-b border-foreground/20 pb-2">
 				{#if friends.some((friend) => !friend.isPlaceholder)}
-					<ul class=" list-disc list-inside">
+					<ul class=" list-inside list-disc">
 						{#each friends as friend}
 							{#if !friend.isPlaceholder}
-								<li class="py-1 font-medium text-md">{friend.name}</li>
+								<li class="text-md py-1 font-medium">{friend.name}</li>
 							{/if}
 						{/each}
 					</ul>
@@ -257,11 +263,11 @@
 					<p class="italic">Your name could be here!</p>
 				{/if}
 			</div>
-				<p class="max-w-2xl">
-					Financial support is great, but it's not the only way to help. Sharing our work with your
-					network, engaging with our stories, or building on our open data are all welcome
-					contributions. Thank you!
-				</p>
+			<p class="max-w-2xl">
+				Financial support is great, but it's not the only way to help. Sharing our work with your
+				network, engaging with our stories, or building on our open data are all welcome
+				contributions. Thank you!
+			</p>
 		</div> -->
 
 		<!-- Alternative Support -->
