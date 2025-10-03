@@ -54,12 +54,9 @@
 		{ name: 'Gaurav Singh' },
 		{ name: 'Divya Ribeiro' },
 		{ name: 'Netra K' },
-		{ name: 'Varini G' },
-		{ name: 'Arun Giridhar' },
+		{ name: 'Rishabh Srivastava' },
 		{ name: 'Sukheth Kallupalli' },
-		{ name: 'Arun Augustine' },
-		{ name: 'Dheeraj Reddy' },
-		{ name: 'Rishabh Srivastava' }
+		{ name: 'Arun Antony' }
 	];
 
 	/**
@@ -244,33 +241,30 @@
 		</div>
 
 		<!-- Friends of the Site -->
-		<!-- <div class="space-y-4">
-			<h2 class="font-serif text-2xl font-bold">Friends of Diagram Chasing</h2>
-			<p class="max-w-2xl">
-				We're grateful to these wonderful people who support independent data journalism in India.
-			</p>
-
-			<div class="border-b border-foreground/20 pb-2">
-				{#if friends.some((friend) => !friend.isPlaceholder)}
-					<ul class=" list-inside list-disc">
-						{#each friends as friend}
-							{#if !friend.isPlaceholder}
-								<li class="text-md py-1 font-medium">{friend.name}</li>
-							{/if}
-						{/each}
-					</ul>
-				{:else}
-					<p class="italic">Your name could be here!</p>
-				{/if}
+		<div class="space-y-4">
+			<div class="space-y-4 border-b border-foreground/20 pb-3">
+				<h2 class="font-serif text-2xl font-bold">Friends of Diagram Chasing</h2>
+				<p class="max-w-2xl">
+					We're grateful to these wonderful people who support independent data journalism in India.
+				</p>
 			</div>
-			<p class="max-w-2xl">
-				Financial support is great, but it's not the only way to help. Sharing our work with your
-				network, engaging with our stories, or building on our open data are all welcome
-				contributions. Thank you!
-			</p>
-		</div> -->
 
-		<!-- Alternative Support -->
+			<div class="grid gap-4 md:grid-cols-2">
+				<div>
+					{#if friends.some((friend) => !friend.isPlaceholder)}
+						<div class="space-y-2">
+							{#each friends as friend}
+								{#if !friend.isPlaceholder}
+									<div class="font-mono text-base">{friend.name}</div>
+								{/if}
+							{/each}
+						</div>
+					{:else}
+						<div class="font-mono text-sm italic opacity-60">Your name could be here</div>
+					{/if}
+				</div>
+			</div>
+		</div>
 	</main>
 </div>
 
