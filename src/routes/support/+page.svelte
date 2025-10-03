@@ -56,7 +56,11 @@
 		{ name: 'Netra K' },
 		{ name: 'Rishabh Srivastava' },
 		{ name: 'Sukheth Kallupalli' },
-		{ name: 'Arun Antony' }
+		{ name: 'Arun Antony' },
+		{ name: 'Varini G' },
+		{ name: 'Dheeraj Rajaram Reddy' },
+
+
 	];
 
 	/**
