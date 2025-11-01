@@ -36,6 +36,7 @@
 					{@render navLink('/authors', 'authors')}
 					<!-- {@render navLink('/ideas', 'ideas')} -->
 					{@render navLink('/support', 'support')}
+					{@render navLink('/join', 'join')}
 				</NavigationMenu.List>
 			</NavigationMenu.Root>
 		</div>
