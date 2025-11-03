@@ -42,7 +42,7 @@
 		"amount": 9000,
 		"description": "Art and icons for homepage",
 		"isIndented": true,
-		"isCovered": false
+		"isCovered": true
 	},
 	{
 		"id": 7,
@@ -50,7 +50,7 @@
 		"amount": 5000,
 		"description": "LLM prototyping, data cleaning and trials",
 		"isIndented": true,
-		"isCovered": false
+		"isCovered": true
 	},
 	{
 		"id": 8,
@@ -58,7 +58,7 @@
 		"amount": null,
 		"description": null,
 		"isHeader": true,
-		"isCovered": false
+		"isCovered": true
 	},
 	{
 		"id": 9,
