@@ -10,7 +10,7 @@ export async function GET() {
 		id: 'https://diagramchasing.fun/',
 		link: 'https://diagramchasing.fun/',
 		language: 'en',
-		favicon: 'https://diagramchasing.fun/favicon.ico',
+		favicon: 'https://diagramchasing.fun/favicon.png',
 		copyright: `© ${new Date().getFullYear().toString()} Diagram Chasing. All rights reserved.`,
 		generator: 'Feed for Node.js',
 		feedLinks: {
