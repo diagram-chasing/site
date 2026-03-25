@@ -63,15 +63,13 @@
 
 	<!-- Friends -->
 	<div>
-		<h2 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-			Friends of Diagram Chasing
-		</h2>
-		<p class="mb-6 max-w-2xl text-sm text-muted-foreground">
+		<h2 class="font-serif text-lg font-bold">Friends of Diagram Chasing</h2>
+		<p class="mt-2 mb-6 max-w-2xl text-sm text-muted-foreground">
 			We're grateful to these people who support independent data journalism in India.
 		</p>
-		<div class="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 md:grid-cols-4">
+		<div class="flex flex-wrap gap-2">
 			{#each friends as friend}
-				<div class="text-sm text-foreground">{friend}</div>
+				<span class="rounded-full border border-border px-3 py-1 text-sm text-foreground">{friend}</span>
 			{/each}
 		</div>
 	</div>
