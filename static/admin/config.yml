@@ -191,6 +191,30 @@ collections:
                 ],
             }
 
+  - name: "support"
+    label: "Support"
+    files:
+      - name: "support"
+        label: "Supporters"
+        file: "src/content/support.md"
+        format: "frontmatter"
+        fields:
+          - {
+              label: "Title",
+              name: "title",
+              widget: "string",
+              default: "Support",
+            }
+          - {
+              label: "Friends",
+              name: "friends",
+              widget: "list",
+              fields:
+                [
+                  { label: "Name", name: "name", widget: "string" },
+                ],
+            }
+
   - name: "ideas"
     label: "Ideas"
     files:

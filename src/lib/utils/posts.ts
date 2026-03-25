@@ -14,11 +14,13 @@ const postImages = import.meta.glob(
 );
 
 const pressModule = import.meta.glob('/src/content/press.md');
+const supportModule = import.meta.glob('/src/content/support.md');
 
 class PostsAPI {
     private postsCache: Post[] | null = null;
     private authorsCache: Author[] | null = null;
     private pressCache: PressItem[] | null = null;
+    private supportFriendsCache: string[] | null = null;
 
     async loadPost(slug: string): Promise<Post | null> {
         const path = `/src/content/posts/${slug}.md`;
@@ -172,6 +174,27 @@ class PostsAPI {
             }
         } catch (error) {
             console.error('Error loading press items:', error);
+        }
+
+        return [];
+    }
+
+    async getSupportFriends(): Promise<string[]> {
+        if (this.supportFriendsCache) return this.supportFriendsCache;
+
+        const path = '/src/content/support.md';
+        const loader = supportModule[path];
+        if (!loader) return [];
+
+        try {
+            const module = await loader();
+            const metadata = (module as any).metadata;
+            if (metadata?.friends && Array.isArray(metadata.friends)) {
+                this.supportFriendsCache = metadata.friends.map((f: { name: string }) => f.name);
+                return this.supportFriendsCache!;
+            }
+        } catch (error) {
+            console.error('Error loading support friends:', error);
         }
 
         return [];

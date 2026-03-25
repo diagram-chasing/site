@@ -1,16 +1,8 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 
-	const friends = [
-		'Gaurav Singh',
-		'Divya Ribeiro',
-		'Netra K',
-		'Rishabh Srivastava',
-		'Sukheth Kallupalli',
-		'Arun Antony',
-		'Varini G',
-		'Dheeraj Rajaram Reddy'
-	];
+	let { data } = $props();
+	const friends = data.friends;
 </script>
 
 <SEO
