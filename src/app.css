@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'Cartridge';
-  src: url('./lib/assets/fonts/Cartridge-Light.woff2') format('woff2');
+  src: url('https://pub-57f73e0399dd4d548042da0b0e925712.r2.dev/Cartridge/Cartridge-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Cartridge';
-  src: url('./lib/assets/fonts/Cartridge-Regular.woff2') format('woff2');
+  src: url('https://pub-57f73e0399dd4d548042da0b0e925712.r2.dev/Cartridge/Cartridge-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Cartridge';
-  src: url('./lib/assets/fonts/Cartridge-Semibold.woff2') format('woff2');
+  src: url('https://pub-57f73e0399dd4d548042da0b0e925712.r2.dev/Cartridge/Cartridge-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Cartridge';
-  src: url('./lib/assets/fonts/Cartridge-Bold.woff2') format('woff2');
+  src: url('https://pub-57f73e0399dd4d548042da0b0e925712.r2.dev/Cartridge/Cartridge-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -37,7 +37,7 @@
 
 @font-face {
   font-family: 'Cartridge';
-  src: url('./lib/assets/fonts/Cartridge-Black.woff2') format('woff2');
+  src: url('https://pub-57f73e0399dd4d548042da0b0e925712.r2.dev/Cartridge/Cartridge-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -303,8 +303,8 @@
 
 body {
   letter-spacing: var(--tracking-normal);
-
 }
+
 
 
 .font-serif {

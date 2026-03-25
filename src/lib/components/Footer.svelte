@@ -30,9 +30,9 @@
 	</div>
 
 	<!-- Nav links -->
-	<ul class="mt-5 mb-[15px] max-w-full list-none p-0 text-center">
+	<ul class="mt-5 mb-[15px] flex flex-wrap justify-center gap-x-4 gap-y-1 list-none p-0">
 		{#each pageLinks as link}
-			<li class="mx-2 my-0 inline pl-[0.3em] leading-[1.6em]">
+			<li class="my-0 p-0">
 				<a
 					href={link.href}
 					class="text-base leading-[1.6em] tracking-[0.125em] text-foreground uppercase no-underline transition-colors hover:text-muted-foreground max-sm:text-sm"

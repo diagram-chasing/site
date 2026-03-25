@@ -2,6 +2,7 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
+	import * as Table from '$lib/components/ui/table/index.js';
 	import type { PageData } from './$types';
 	import Logo from '$lib/components/Logo.svelte';
 	import { MediaQuery } from 'svelte/reactivity';
@@ -29,8 +30,8 @@
 
 	<div class="flex flex-col gap-2">
 		<p
-			class="m-0 text-center font-serif text-[34px] leading-none
-						 font-bold tracking-tight sm:text-left sm:text-[50px]
+			class="m-0 mx-auto w-fit font-serif text-[34px] leading-none
+						 font-bold tracking-tight sm:mx-0 sm:text-[50px]
 						 lg:text-[54px]"
 		>
 			Diagram Chasing
@@ -65,34 +66,54 @@
 
 	<!-- news & Talks -->
 	{#if news.length > 0}
-		<section class="mt-20 border-t border-border pt-10">
-			<h2 class=" font-serif font-bold uppercase">Seen Around</h2>
-			<div class="divide-y divide-border">
-				{#each news as item}
-					<a
-						href={item.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="group flex flex-wrap items-baseline gap-x-4 gap-y-1 py-4 no-underline"
-					>
-						<span class="text-xs tracking-wide text-muted-foreground uppercase">
-							{item.type ?? 'news'}
-						</span>
-						<span class="font-serif text-base leading-tight font-bold">
-							{item.source}
-						</span>
-						<span
-							class="basis-full text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-foreground sm:flex-1 sm:basis-auto"
+		<section class="mt-16 border-t border-border pt-6">
+			<h2 class="my-4 font-serif font-bold uppercase">Seen Around</h2>
+			<Table.Root class="overflow-clip">
+				<Table.Header class="hidden">
+					<Table.Row class="m-0 h-0 border-none p-0 hover:bg-transparent">
+						<Table.Head class="pl-0 text-xs tracking-wide uppercase"></Table.Head>
+						<Table.Head class="text-xs tracking-wide uppercase"></Table.Head>
+						<Table.Head class="w-full text-xs tracking-wide uppercase"></Table.Head>
+						<Table.Head></Table.Head>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					{#each news as item}
+						<Table.Row
+							class="group relative hover:bg-transparent max-sm:block max-sm:border-b max-sm:py-3"
 						>
-							{item.title}
-						</span>
-						<ArrowUpRight
-							size={14}
-							class="shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-						/>
-					</a>
-				{/each}
-			</div>
+							<Table.Cell
+								class="pl-0 text-xs font-medium tracking-wide text-muted-foreground uppercase max-sm:inline-block max-sm:p-0 max-sm:pr-3"
+							>
+								{item.type ?? 'news'}
+							</Table.Cell>
+							<Table.Cell
+								class="font-serif text-base leading-tight font-bold max-sm:inline-block max-sm:p-0"
+							>
+								{item.source}
+							</Table.Cell>
+							<Table.Cell
+								class="w-full text-sm leading-relaxed whitespace-normal text-muted-foreground transition-colors group-hover:text-foreground max-sm:mt-1 max-sm:block max-sm:p-0"
+							>
+								<a
+									href={item.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="no-underline after:absolute after:inset-0"
+								>
+									{item.title}
+								</a>
+							</Table.Cell>
+							<Table.Cell class="pr-0 text-right max-sm:hidden">
+								<ArrowUpRight
+									size={14}
+									class="ml-auto text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+								/>
+							</Table.Cell>
+						</Table.Row>
+					{/each}
+				</Table.Body>
+			</Table.Root>
 		</section>
 	{/if}
 </div>
