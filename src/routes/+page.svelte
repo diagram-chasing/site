@@ -5,16 +5,12 @@
 	import * as Table from '$lib/components/ui/table/index.js';
 	import type { PageData } from './$types';
 	import Logo from '$lib/components/Logo.svelte';
-	import { MediaQuery } from 'svelte/reactivity';
-
 	let { data }: { data: PageData } = $props();
 
 	const { posts, news } = data;
 
 	const featuredPost = $derived(posts[0]);
 	const remainingPosts = $derived(posts.slice(1));
-
-	const isSmall = new MediaQuery('max-width: 639px', true);
 </script>
 
 <SEO
@@ -26,7 +22,9 @@
 <div
 	class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
 >
-	<Logo size={isSmall.current ? 72 : 150} />
+	<div class="[--logo-size:72px] sm:[--logo-size:150px]">
+		<Logo size={150} />
+	</div>
 
 	<div class="flex flex-col gap-2">
 		<p

@@ -22,7 +22,7 @@
 	viewBox="0 0 136 136"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	style="width: {size}px; height: {size}px;"
+	style="width: var(--logo-size, {size}px); height: var(--logo-size, {size}px);"
 >
 	<defs>
 		<path id={pathTopId} d="M 16 68 a 52 52 0 1 1 104 0" fill="none" />
