@@ -1,11 +1,9 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import GithubIcon from '@lucide/svelte/icons/github';
-	import TwitterIcon from '@lucide/svelte/icons/twitter';
+	import { SiGithub as GithubIcon, SiX as TwitterIcon, SiInstagram as InstagramIcon } from '@icons-pack/svelte-simple-icons';
 	import GlobeIcon from '@lucide/svelte/icons/globe';
 	import MailIcon from '@lucide/svelte/icons/mail';
-	import InstagramIcon from '@lucide/svelte/icons/instagram';
 	import AtSignIcon from '@lucide/svelte/icons/at-sign';
 	import type { PageData } from './$types';
 
