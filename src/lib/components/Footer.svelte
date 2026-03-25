@@ -18,62 +18,48 @@
 	];
 </script>
 
-<footer class="border-t border-border bg-background">
-	<div class="mx-auto max-w-5xl px-4 py-12">
-		<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-			<!-- Brand -->
-			<div class="flex items-start gap-3">
-				<Logo size={40} />
-				<div>
-					<span class="font-serif text-lg font-bold text-foreground">Diagram Chasing</span>
-					<p class="mt-1 text-sm text-muted-foreground">
-						Data-driven works of public interest.
-					</p>
-				</div>
-			</div>
-
-			<!-- Pages -->
-			<div>
-				<h4 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-					Pages
-				</h4>
-				<nav class="flex flex-col gap-2">
-					{#each pageLinks as link}
-						<a
-							href={link.href}
-							class="text-sm text-foreground no-underline transition-colors hover:text-muted-foreground"
-						>
-							{link.name}
-						</a>
-					{/each}
-				</nav>
-			</div>
-
-			<!-- Connect -->
-			<div>
-				<h4 class="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-					Connect
-				</h4>
-				<nav class="flex flex-col gap-2">
-					{#each connectLinks as link}
-						<a
-							href={link.href}
-							{...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-							class="flex items-center gap-1.5 text-sm text-foreground no-underline transition-colors hover:text-muted-foreground"
-						>
-							<link.icon size={14} />
-							{link.name}
-						</a>
-					{/each}
-				</nav>
-			</div>
-		</div>
-
-		<!-- Copyright -->
-		<div class="mt-10 border-t border-border pt-6">
-			<p class="text-xs text-muted-foreground">
-				&copy; {currentYear} Diagram Chasing
-			</p>
-		</div>
+<footer
+	class="mx-0 mb-0 px-0 py-8 text-center text-lg leading-normal text-foreground antialiased max-sm:px-5 max-sm:py-10 max-sm:text-base"
+>
+	<!-- Logo -->
+	<div class="mb-3.5 flex justify-center">
+		<a href="/" class="inline-flex flex-col items-center gap-2 text-foreground no-underline">
+			<Logo size={48} />
+			<span class="font-serif text-xl font-bold tracking-tight">Diagram Chasing</span>
+		</a>
 	</div>
+
+	<!-- Nav links -->
+	<ul class="mt-5 mb-[15px] max-w-full list-none p-0 text-center">
+		{#each pageLinks as link}
+			<li class="mx-2 my-0 inline pl-[0.3em] leading-[1.6em]">
+				<a
+					href={link.href}
+					class="text-base leading-[1.6em] tracking-[0.125em] text-foreground uppercase no-underline transition-colors hover:text-muted-foreground max-sm:text-sm"
+					>{link.name}</a
+				>
+			</li>
+		{/each}
+	</ul>
+
+	<!-- Copyright -->
+	<p class="mt-2 p-0 text-base leading-normal text-muted-foreground">
+		&copy; {currentYear} Diagram Chasing
+	</p>
+
+	<!-- Social/connect icon links -->
+	<ul class="mt-3 list-none p-0 px-5 text-center">
+		{#each connectLinks as link}
+			<li class="mx-1.5 my-0 inline-block p-0 leading-[1.6em]">
+				<a
+					href={link.href}
+					{...link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+					class="inline-flex items-center text-foreground no-underline transition-colors hover:text-muted-foreground"
+					aria-label={link.name}
+				>
+					<link.icon size={24} class="opacity-80 max-sm:h-5 max-sm:w-5" />
+				</a>
+			</li>
+		{/each}
+	</ul>
 </footer>

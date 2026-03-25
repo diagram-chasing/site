@@ -45,12 +45,8 @@ collections:
           widget: "list",
           required: false,
           max: 4,
-          field: { 
-            label: "Image", 
-            name: "image", 
-            widget: "image" 
-          },
-          hint: "Optional additional images for the project (max 4)"
+          field: { label: "Image", name: "image", widget: "image" },
+          hint: "Optional additional images for the project (max 4)",
         }
       - {
           label: "Type",
@@ -85,7 +81,7 @@ collections:
           name: "external",
           widget: "boolean",
           default: false,
-          hint: "Check if this project links to an external site instead of an internal page"
+          hint: "Check if this project links to an external site instead of an internal page",
         }
       - { label: "Body", name: "body", widget: "markdown", required: false }
 
@@ -151,23 +147,23 @@ collections:
             ],
         }
 
-  - name: "press"
-    label: "Press & Mentions"
+  - name: "news"
+    label: "news & Mentions"
     files:
-      - name: "press"
-        label: "Press Items"
-        file: "src/content/press.md"
+      - name: "news"
+        label: "news Items"
+        file: "src/content/news.md"
         format: "frontmatter"
         fields:
           - {
               label: "Title",
               name: "title",
               widget: "string",
-              default: "Press & Mentions",
+              default: "news & Mentions",
             }
           - {
-              label: "Press",
-              name: "press",
+              label: "news",
+              name: "news",
               widget: "list",
               fields:
                 [
@@ -185,8 +181,8 @@ collections:
                     label: "Type",
                     name: "type",
                     widget: "select",
-                    options: ["press", "talk"],
-                    default: "press",
+                    options: ["news", "talk"],
+                    default: "news",
                   },
                 ],
             }
@@ -209,10 +205,7 @@ collections:
               label: "Friends",
               name: "friends",
               widget: "list",
-              fields:
-                [
-                  { label: "Name", name: "name", widget: "string" },
-                ],
+              fields: [{ label: "Name", name: "name", widget: "string" }],
             }
 
   - name: "ideas"

@@ -1,8 +1,47 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/inter';
 @import '@fontsource/atkinson-hyperlegible/400.css';
 @import '@fontsource/atkinson-hyperlegible/700.css';
 @import "tw-animate-css";
+
+@font-face {
+  font-family: 'Cartridge';
+  src: url('./lib/assets/fonts/Cartridge-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cartridge';
+  src: url('./lib/assets/fonts/Cartridge-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cartridge';
+  src: url('./lib/assets/fonts/Cartridge-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cartridge';
+  src: url('./lib/assets/fonts/Cartridge-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cartridge';
+  src: url('./lib/assets/fonts/Cartridge-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* https://tailwindcss.com/docs/colors#customizing-your-colors */
 
@@ -195,7 +234,7 @@
 
   /* Typography */
   --font-sans: 'Atkinson Hyperlegible', sans-serif;
-  --font-serif: 'Inter Variable', sans-serif;
+  --font-serif: 'Cartridge', sans-serif;
   --font-mono: monospace;
 
   /* Radius */
@@ -264,17 +303,12 @@
 
 body {
   letter-spacing: var(--tracking-normal);
+
 }
 
 
 .font-serif {
-  font-family: 'Inter Variable', sans-serif;
-  font-variation-settings:
-    'wght' 800,
-    'wdth' 0,
-    'slnt' 0;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  font-family: 'Cartridge', sans-serif;
 }
 
 @layer base {

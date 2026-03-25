@@ -1,4 +1,4 @@
-import type { Post, Author, PressItem } from '../types/content';
+import type { Post, Author, newsItem } from '../types/content';
 
 // Lazy import modules for better performance
 const postModules = import.meta.glob('/src/content/posts/*.md');
@@ -13,13 +13,13 @@ const postImages = import.meta.glob(
     }
 );
 
-const pressModule = import.meta.glob('/src/content/press.md');
+const newsModule = import.meta.glob('/src/content/news.md');
 const supportModule = import.meta.glob('/src/content/support.md');
 
 class PostsAPI {
     private postsCache: Post[] | null = null;
     private authorsCache: Author[] | null = null;
-    private pressCache: PressItem[] | null = null;
+    private newsCache: newsItem[] | null = null;
     private supportFriendsCache: string[] | null = null;
 
     async loadPost(slug: string): Promise<Post | null> {
@@ -31,7 +31,7 @@ class PostsAPI {
         try {
             const module = await loader();
             const metadata = (module as any).metadata;
-            
+
             if (!metadata) return null;
 
             const post = {
@@ -158,22 +158,22 @@ class PostsAPI {
         return posts.slice(0, limit);
     }
 
-    async getPress(): Promise<PressItem[]> {
-        if (this.pressCache) return this.pressCache;
+    async getnews(): Promise<newsItem[]> {
+        if (this.newsCache) return this.newsCache;
 
-        const path = '/src/content/press.md';
-        const loader = pressModule[path];
+        const path = '/src/content/news.md';
+        const loader = newsModule[path];
         if (!loader) return [];
 
         try {
             const module = await loader();
             const metadata = (module as any).metadata;
-            if (metadata?.press && Array.isArray(metadata.press)) {
-                this.pressCache = metadata.press as PressItem[];
-                return this.pressCache;
+            if (metadata?.news && Array.isArray(metadata.news)) {
+                this.newsCache = metadata.news as newsItem[];
+                return this.newsCache;
             }
         } catch (error) {
-            console.error('Error loading press items:', error);
+            console.error('Error loading news items:', error);
         }
 
         return [];
@@ -216,4 +216,4 @@ class PostsAPI {
 export const postsAPI = new PostsAPI();
 
 // Export types for external use
-export type { Post, Author, PressItem };
+export type { Post, Author, newsItem };

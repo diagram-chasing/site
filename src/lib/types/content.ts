@@ -30,12 +30,12 @@ export interface Author {
     };
 }
 
-export interface PressItem {
+export interface newsItem {
     title: string;
     source: string;
     url: string;
     date: string;
-    type?: 'press' | 'talk';
+    type?: 'news' | 'talk';
 }
 
 export interface Idea {

@@ -30,22 +30,26 @@
 	}
 </script>
 
-<header class="w-full border-b border-border bg-background {className}">
+<header class="w-full bg-background {className}">
 	<!-- Top bar: branding -->
-	<div class="mx-auto max-w-5xl px-4 pt-6 pb-4">
+	<div class="mx-auto max-w-5xl px-4 py-4">
 		<div class="flex items-center justify-between">
-			<!-- Left: Logo + Wordmark + Tagline -->
-			<a href="/" class="flex items-center gap-3 no-underline">
-				<Logo size={48} />
-				<div>
-					<span class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-						Diagram Chasing
-					</span>
-					<p class="hidden text-sm text-muted-foreground md:block">
-						Data-driven works of public interest
-					</p>
+			<div class="h-13">
+				<div
+					class="{$page.url.pathname === '/' ? 'hidden' : 'flex'} items-center justify-center gap-2"
+				>
+					<a href="/" class="  -mt-1">
+						<Logo size={55} />
+					</a>
+					<div>
+						<span
+							class="m-0 font-serif text-2xl leading-0 font-bold tracking-tight text-foreground md:text-3xl"
+						>
+							Diagram <br /> Chasing
+						</span>
+					</div>
 				</div>
-			</a>
+			</div>
 
 			<!-- Right: Mobile hamburger -->
 			<button
@@ -65,9 +69,9 @@
 				{#each links as link}
 					<a
 						href={link.href}
-						class="text-sm font-bold uppercase tracking-wide transition-colors no-underline
+						class="text-sm font-bold tracking-wide uppercase no-underline transition-colors
 							{isActive(link.href, $page.url.pathname)
-							? 'text-foreground'
+							? 'text-foreground underline underline-offset-4'
 							: 'text-muted-foreground hover:text-foreground'}"
 					>
 						{link.label}
@@ -84,7 +88,7 @@
 				{#each links as link}
 					<a
 						href={link.href}
-						class="text-sm font-bold uppercase tracking-wide transition-colors no-underline
+						class="text-sm font-bold tracking-wide uppercase no-underline transition-colors
 							{isActive(link.href, $page.url.pathname)
 							? 'text-foreground'
 							: 'text-muted-foreground hover:text-foreground'}"

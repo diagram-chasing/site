@@ -3,23 +3,23 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
     try {
-        const [posts, authors, press] = await Promise.all([
+        const [posts, authors, news] = await Promise.all([
             postsAPI.getPublishedPosts(),
             postsAPI.getAllAuthors(),
-            postsAPI.getPress()
+            postsAPI.getnews()
         ]);
 
         return {
             posts,
             authors,
-            press
+            news
         };
     } catch (error) {
         console.error('Error loading posts:', error);
         return {
             posts: [],
             authors: [],
-            press: []
+            news: []
         };
     }
 };
