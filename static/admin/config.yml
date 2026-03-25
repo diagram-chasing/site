@@ -151,6 +151,46 @@ collections:
             ],
         }
 
+  - name: "press"
+    label: "Press & Mentions"
+    files:
+      - name: "press"
+        label: "Press Items"
+        file: "src/content/press.md"
+        format: "frontmatter"
+        fields:
+          - {
+              label: "Title",
+              name: "title",
+              widget: "string",
+              default: "Press & Mentions",
+            }
+          - {
+              label: "Press",
+              name: "press",
+              widget: "list",
+              fields:
+                [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Source", name: "source", widget: "string" },
+                  { label: "URL", name: "url", widget: "string" },
+                  {
+                    label: "Date",
+                    name: "date",
+                    widget: "datetime",
+                    type: "date",
+                    format: "YYYY-MM-DD",
+                  },
+                  {
+                    label: "Type",
+                    name: "type",
+                    widget: "select",
+                    options: ["press", "talk"],
+                    default: "press",
+                  },
+                ],
+            }
+
   - name: "ideas"
     label: "Ideas"
     files:
@@ -174,7 +214,8 @@ collections:
                   {
                     label: "Date",
                     name: "date",
-                    widget: "date",
+                    widget: "datetime",
+                    type: "date",
                     format: "YYYY-MM-DD",
                   },
                   { label: "Pitch", name: "pitch", widget: "string" },

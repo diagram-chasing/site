@@ -1,55 +1,77 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import GithubIcon from '@lucide/svelte/icons/github';
+	import TwitterIcon from '@lucide/svelte/icons/twitter';
+	import GlobeIcon from '@lucide/svelte/icons/globe';
+	import MailIcon from '@lucide/svelte/icons/mail';
+	import InstagramIcon from '@lucide/svelte/icons/instagram';
+	import AtSignIcon from '@lucide/svelte/icons/at-sign';
+	import ArrowRight from '@lucide/svelte/icons/arrow-right';
+	import type { PageData } from './$types';
 
-	export let data;
-	$: ({ authors } = data);
+	let { data }: { data: PageData } = $props();
+	const { authors } = data;
+
+	const socialIcons = {
+		github: GithubIcon,
+		twitter: TwitterIcon,
+		website: GlobeIcon,
+		email: MailIcon,
+		instagram: InstagramIcon,
+		bluesky: AtSignIcon
+	} as const;
 </script>
 
 <SEO
 	title="Authors | Diagram Chasing"
 	description="People who have contributed to our work"
 	keywords="data viz, india data, data storytelling, authors, team"
-	twitterHandle="@diagram_chasing"
-	author="Diagram Chasing"
-	ogImage="sharecard.jpg"
 />
 
-<div class="my-4 w-full">
-	<main class="mx-auto max-w-2xl space-y-12 px-4">
-		<div class="space-y-6">
-			<div class="space-y-2">
-				<p class="font-mono text-sm text-muted-foreground">$ ~/authors</p>
-				<h1 class="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-					Authors
-				</h1>
-			</div>
+<div class="mx-auto max-w-5xl px-4 py-12">
+	<div class="mb-10">
+		<h1 class="font-serif" style="font-size: var(--text-display);">Authors</h1>
+		<p class="mt-3 max-w-2xl text-lg text-muted-foreground">
+			People who have contributed to Diagram Chasing.
+		</p>
+	</div>
 
-			<p class="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-				People who have contributed to Diagram Chasing
-			</p>
-		</div>
+	<div class="divide-y divide-border">
+		{#each authors as author}
+			<a
+				href="/authors/{author.slug}"
+				class="group flex items-start justify-between gap-6 py-8 no-underline first:pt-0"
+			>
+				<div class="max-w-xl">
+					<h2
+						class="font-serif text-xl font-bold text-foreground transition-colors group-hover:text-primary md:text-2xl"
+					>
+						{author.name}
+					</h2>
 
-		<div class="flex flex-col gap-3">
-			{#each authors as author}
-				<a
-					href="/authors/{author.slug}"
-					class="group block space-y-4 rounded-lg border bg-card p-6 transition-all hover:bg-muted/50"
-				>
-					<div class="space-y-2">
-						<h2
-							class="font-serif text-xl font-bold text-foreground transition-colors group-hover:text-foreground/80"
-						>
-							{author.name}
-						</h2>
-					</div>
-				</a>
-			{/each}
-		</div>
-	</main>
+					{#if author.description}
+						<p class="mt-2 leading-relaxed text-muted-foreground">
+							{author.description}
+						</p>
+					{/if}
+
+					{#if author.links}
+						<div class="mt-3 flex gap-3">
+							{#each Object.entries(author.links) as [platform, url]}
+								{#if url && platform in socialIcons}
+									{@const Icon = socialIcons[platform as keyof typeof socialIcons]}
+									<Icon size={15} class="text-muted-foreground" />
+								{/if}
+							{/each}
+						</div>
+					{/if}
+				</div>
+
+				<ArrowRight
+					size={18}
+					class="mt-1 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1"
+				/>
+			</a>
+		{/each}
+	</div>
 </div>
-
-<style>
-	a {
-		text-decoration: none;
-	}
-</style>

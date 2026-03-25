@@ -1,138 +1,98 @@
 <script lang="ts">
-	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
+	import { page } from '$app/stores';
 	import Logo from './Logo.svelte';
-	import { cn } from '$lib/utils.js';
+	import Menu from '@lucide/svelte/icons/menu';
+	import X from '@lucide/svelte/icons/x';
+
 	interface Props {
 		class?: string;
 	}
 
 	let { class: className = '' }: Props = $props();
+
+	let menuOpen = $state(false);
+
+	$effect(() => {
+		$page.url.pathname;
+		menuOpen = false;
+	});
+
+	const links = [
+		{ href: '/', label: 'Work' },
+		{ href: '/authors', label: 'Authors' },
+		{ href: '/support', label: 'Support' },
+		{ href: '/community', label: 'Community' }
+	];
+
+	function isActive(href: string, pathname: string): boolean {
+		if (href === '/') return pathname === '/';
+		return pathname.startsWith(href);
+	}
 </script>
 
-<header class="w-full text-paper {className}">
-	<div class="header-grid">
-		<!-- Title -->
-		<div class="header-title flex gap-4 md:flex-row">
-			<Logo size={120} />
-			<div class="flex flex-col justify-start gap-4">
-				<h1
-					class="w-fit text-left font-serif text-2xl font-bold tracking-tight text-black md:text-4xl lg:text-5xl"
-				>
-					Diagram <br /> Chasing
-				</h1>
-				<p class="w-full pb-2 text-sm text-black md:px-4 md:text-base lg:hidden lg:text-center">
-					Data-driven works of various interests, shared once in a while
-				</p>
-			</div>
+<header class="w-full border-b border-border bg-background {className}">
+	<!-- Top bar: branding -->
+	<div class="mx-auto max-w-5xl px-4 pt-6 pb-4">
+		<div class="flex items-center justify-between">
+			<!-- Left: Logo + Wordmark + Tagline -->
+			<a href="/" class="flex items-center gap-3 no-underline">
+				<Logo size={48} />
+				<div>
+					<span class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+						Diagram Chasing
+					</span>
+					<p class="hidden text-sm text-muted-foreground md:block">
+						Data-driven works of public interest
+					</p>
+				</div>
+			</a>
 
-			<!-- Mobile Tagline -->
+			<!-- Right: Mobile hamburger -->
+			<button
+				class="flex items-center justify-center text-foreground md:hidden"
+				onclick={() => (menuOpen = !menuOpen)}
+				aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+			>
+				{#if menuOpen}
+					<X size={22} />
+				{:else}
+					<Menu size={22} />
+				{/if}
+			</button>
+
+			<!-- Right: Desktop nav -->
+			<nav class="hidden items-center gap-6 md:flex">
+				{#each links as link}
+					<a
+						href={link.href}
+						class="text-sm font-bold uppercase tracking-wide transition-colors no-underline
+							{isActive(link.href, $page.url.pathname)
+							? 'text-foreground'
+							: 'text-muted-foreground hover:text-foreground'}"
+					>
+						{link.label}
+					</a>
+				{/each}
+			</nav>
 		</div>
-
-		<!-- Navigation -->
-		<div class="header-nav">
-			<NavigationMenu.Root class="header-nav" viewport={false}>
-				<NavigationMenu.List class="flex flex-col items-end justify-end gap-1">
-					{@render navLink('/', 'home')}
-					{@render navLink('/authors', 'authors')}
-					<!-- {@render navLink('/ideas', 'ideas')} -->
-					{@render navLink('/support', 'support')}
-					{@render navLink('/community', 'community')}
-				</NavigationMenu.List>
-			</NavigationMenu.Root>
-		</div>
-
-		{#snippet navLink(href: string, text: string)}
-			<NavigationMenu.Item>
-				<NavigationMenu.Link>
-					{#snippet child()}
-						<a
-							{href}
-							class={cn(
-								'bg-transparent p-0 text-xs font-bold tracking-wide text-black uppercase transition-colors duration-200 hover:bg-transparent hover:text-red-400 focus:bg-transparent md:text-sm'
-							)}
-						>
-							{text}
-						</a>
-					{/snippet}
-				</NavigationMenu.Link>
-			</NavigationMenu.Item>
-		{/snippet}
 	</div>
 
-	<!-- Tagline -->
-	<p class="hidden w-full px-4 pb-2 text-sm text-black md:w-[30ch] md:pl-6 md:text-xl lg:block">
-		Data-driven works of various interests, shared once in a while
-	</p>
+	<!-- Mobile dropdown -->
+	{#if menuOpen}
+		<nav class="border-t border-border px-4 py-4 md:hidden">
+			<div class="mx-auto flex max-w-5xl flex-col gap-3">
+				{#each links as link}
+					<a
+						href={link.href}
+						class="text-sm font-bold uppercase tracking-wide transition-colors no-underline
+							{isActive(link.href, $page.url.pathname)
+							? 'text-foreground'
+							: 'text-muted-foreground hover:text-foreground'}"
+					>
+						{link.label}
+					</a>
+				{/each}
+			</div>
+		</nav>
+	{/if}
 </header>
-
-<style>
-	.header-grid {
-		display: grid;
-		width: 100%;
-		padding: 2rem 1rem;
-		gap: 1rem;
-		grid-template-columns: 1fr;
-		grid-template-areas:
-			'title'
-			'nav';
-		align-items: center;
-		justify-items: center;
-	}
-
-	.header-title {
-		grid-area: title;
-		text-align: center;
-	}
-
-	.header-nav {
-		grid-area: nav;
-		justify-self: center;
-	}
-
-	/* Mobile Layout */
-	@media (max-width: 767px) {
-		.header-grid {
-			grid-template-columns: 1fr auto;
-			grid-template-areas: 'title nav';
-			justify-items: stretch;
-		}
-
-		.header-title {
-			text-align: left;
-			justify-self: start;
-		}
-
-		.header-nav {
-			justify-self: end;
-		}
-	}
-
-	/* Desktop Layout - 12 column grid */
-	@media (min-width: 900px) {
-		.header-grid {
-			grid-template-columns: repeat(12, 1fr);
-			grid-template-areas: ' title title title title title . . . . . . . nav';
-			padding: 1rem 1.5rem;
-			gap: 1rem;
-			align-items: center;
-		}
-
-		.header-title {
-			justify-self: start;
-		}
-
-		.header-title h1 {
-			font-size: 3rem;
-		}
-
-		.header-nav {
-			justify-self: end;
-		}
-	}
-
-	@media (min-width: 1280px) {
-		.header-title h1 {
-			font-size: 3.75rem;
-		}
-	}
-</style>

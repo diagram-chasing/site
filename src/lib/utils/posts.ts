@@ -1,4 +1,4 @@
-import type { Post, Author } from '../types/content';
+import type { Post, Author, PressItem } from '../types/content';
 
 // Lazy import modules for better performance
 const postModules = import.meta.glob('/src/content/posts/*.md');
@@ -13,9 +13,12 @@ const postImages = import.meta.glob(
     }
 );
 
+const pressModule = import.meta.glob('/src/content/press.md');
+
 class PostsAPI {
     private postsCache: Post[] | null = null;
     private authorsCache: Author[] | null = null;
+    private pressCache: PressItem[] | null = null;
 
     async loadPost(slug: string): Promise<Post | null> {
         const path = `/src/content/posts/${slug}.md`;
@@ -153,6 +156,27 @@ class PostsAPI {
         return posts.slice(0, limit);
     }
 
+    async getPress(): Promise<PressItem[]> {
+        if (this.pressCache) return this.pressCache;
+
+        const path = '/src/content/press.md';
+        const loader = pressModule[path];
+        if (!loader) return [];
+
+        try {
+            const module = await loader();
+            const metadata = (module as any).metadata;
+            if (metadata?.press && Array.isArray(metadata.press)) {
+                this.pressCache = metadata.press as PressItem[];
+                return this.pressCache;
+            }
+        } catch (error) {
+            console.error('Error loading press items:', error);
+        }
+
+        return [];
+    }
+
     async searchPosts(term: string): Promise<Post[]> {
         const searchTerm = term.toLowerCase();
         const posts = await this.getAllPosts();
@@ -169,4 +193,4 @@ class PostsAPI {
 export const postsAPI = new PostsAPI();
 
 // Export types for external use
-export type { Post, Author };
+export type { Post, Author, PressItem };

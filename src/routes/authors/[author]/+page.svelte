@@ -1,117 +1,81 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import Image from '$lib/components/ui/Image.svelte';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import GithubIcon from '@lucide/svelte/icons/github';
+	import TwitterIcon from '@lucide/svelte/icons/twitter';
+	import GlobeIcon from '@lucide/svelte/icons/globe';
+	import MailIcon from '@lucide/svelte/icons/mail';
+	import InstagramIcon from '@lucide/svelte/icons/instagram';
+	import AtSignIcon from '@lucide/svelte/icons/at-sign';
+	import type { PageData } from './$types';
 
-	export let data;
-	$: ({ author, posts } = data);
+	let { data }: { data: PageData } = $props();
+	const { author, posts } = data;
+
+	const publishedPosts = $derived(
+		posts
+			.filter((p) => p.published)
+			.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+	);
+
+	const socialConfig = [
+		{ key: 'website', label: 'Website', icon: GlobeIcon },
+		{ key: 'github', label: 'GitHub', icon: GithubIcon },
+		{ key: 'twitter', label: 'Twitter', icon: TwitterIcon },
+		{ key: 'bluesky', label: 'Bluesky', icon: AtSignIcon },
+		{ key: 'instagram', label: 'Instagram', icon: InstagramIcon },
+		{ key: 'email', label: 'Email', icon: MailIcon }
+	] as const;
 </script>
 
 <SEO
 	title="{author.name} | Diagram Chasing"
-	description="{author.description}"
-	keywords="data viz, india data, data storytelling, gis, data blog, {author.name}"
-	twitterHandle="@diagram_chasing"
-	author={author.name}
-	ogImage="sharecard.jpg"
+	description={author.description}
+	keywords="data viz, india data, data storytelling, {author.name}"
 />
-<div class="my-4 w-full">
-	<main class="mx-auto max-w-2xl space-y-12 px-4">
-		<!-- Author Header -->
-		<div class="space-y-6">
-			<div class="space-y-2">
-				<p class="font-mono text-sm text-muted-foreground">
-					$ ~/authors/{author.slug}
-				</p>
-				<h1 class="font-serif text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-					{author.name}
-				</h1>
-			</div>
 
-			<p class="max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-				{author.description}
-			</p>
+<div class="mx-auto max-w-5xl px-4 py-12">
+	<!-- Author header -->
+	<div class="mb-10">
+		<h1 class="font-serif" style="font-size: var(--text-display);">{author.name}</h1>
 
-			{#if author.links && Object.keys(author.links).length > 0}
-				<div class="space-y-2">
-					<p class="text-sm font-medium text-foreground">Connect:</p>
-					<div class="flex flex-wrap gap-4">
-						{#each Object.entries(author.links) as [platform, url]}
-							{#if url}
-								<a
-									href={url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-sm text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground"
-								>
-									{platform}: {url.replace(/^https?:\/\//, '').replace(/^mailto:/, '')}
-								</a>
-							{/if}
-						{/each}
-					</div>
-				</div>
-			{/if}
-		</div>
+		<p class="mt-3 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+			{author.description}
+		</p>
 
-		<!-- Projects Section -->
-		{#if posts.length > 0}
-			<div class="space-y-6">
-				<div class="space-y-2">
-					<p class="font-mono text-sm text-muted-foreground">
-						$ ~/authors/{author.slug} ls
-					</p>
-					<h2 class="font-serif text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-						Projects
-					</h2>
-				</div>
-
-				<div class="grid gap-6 md:gap-8">
-					{#each posts
-						.filter((post) => post.published)
-						.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) as post}
+		{#if author.links && Object.values(author.links).some(Boolean)}
+			<div class="mt-4 flex flex-wrap gap-4">
+				{#each socialConfig as { key, label, icon: Icon }}
+					{@const url = author.links?.[key as keyof typeof author.links]}
+					{#if url}
 						<a
-							href="/{post.slug}"
-							class="group block overflow-hidden rounded-lg border bg-card transition-all hover:bg-muted/50"
+							href={key === 'email' && !url.startsWith('mailto:') ? `mailto:${url}` : url}
+							target={key === 'email' ? undefined : '_blank'}
+							rel={key === 'email' ? undefined : 'noopener noreferrer'}
+							class="flex items-center gap-1.5 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground"
 						>
-							<div class="grid gap-0 md:grid-cols-3">
-								<!-- Featured Image -->
-								<div class="aspect-[4/3] overflow-hidden md:aspect-square">
-									<Image
-										src={post.image}
-										alt={post.title}
-										class="h-full w-full object-cover transition-transform group-hover:scale-105"
-										loading="lazy"
-										sizes="(max-width: 768px) 100vw, 33vw"
-									/>
-								</div>
-
-								<!-- Project Info -->
-								<div class="space-y-3 p-6 md:col-span-2">
-									<div class="space-y-2">
-										<div class="flex items-center gap-2 text-xs text-muted-foreground">
-											<span>{new Date(post.date).getFullYear()}</span>
-											<span>•</span>
-											<span class="capitalize">{post.type}</span>
-										</div>
-										<h3
-											class="font-serif text-xl font-bold text-foreground transition-colors group-hover:text-foreground/80"
-										>
-											{post.title}
-										</h3>
-									</div>
-
-									<p class="text-sm leading-relaxed text-muted-foreground">
-										{post.description}
-									</p>
-								</div>
-							</div>
+							<Icon size={14} />
+							<span>{label}</span>
 						</a>
-					{/each}
-				</div>
-			</div>
-		{:else}
-			<div class="py-12 text-center">
-				<p class="text-muted-foreground">No projects yet.</p>
+					{/if}
+				{/each}
 			</div>
 		{/if}
-	</main>
+	</div>
+
+	<!-- Projects -->
+	{#if publishedPosts.length > 0}
+		<div>
+			<h2 class="mb-6 text-xs font-medium uppercase tracking-widest text-muted-foreground">
+				Projects
+			</h2>
+			<div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+				{#each publishedPosts as post, i}
+					<ProjectCard {post} />
+				{/each}
+			</div>
+		</div>
+	{:else}
+		<p class="text-muted-foreground">No projects yet.</p>
+	{/if}
 </div>

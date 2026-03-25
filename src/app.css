@@ -221,6 +221,13 @@
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
   --tracking-widest: 0.1em;
+
+  /* Typography scale */
+  --text-display: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  --text-heading: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+
+  /* Section spacing */
+  --section-gap: clamp(3rem, 4vw, 5rem);
 }
 
 /* Dark mode overrides */

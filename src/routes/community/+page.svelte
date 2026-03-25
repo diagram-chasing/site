@@ -13,7 +13,6 @@
 		document.body.appendChild(script);
 
 		return () => {
-			// Cleanup: remove script when component unmounts
 			document.body.removeChild(script);
 		};
 	});
@@ -21,18 +20,26 @@
 
 <SEO
 	title="Join Diagram Chasing's Community"
-	description="Collaborate with uson data journalism and visualization projects"
+	description="Collaborate with us on data journalism and visualization projects"
 	keywords="data journalism, collaboration, diagram chasing, join community"
 />
 
-<iframe
-	data-tally-src="https://tally.so/embed/nGNPl2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-	loading="lazy"
-	width="100%"
-	height="1768"
-	frameborder="0"
-	marginheight="0"
-	marginwidth="0"
-	title="Join Diagram Chasing's Community"
-	class="mx-auto mb-18 max-w-3xl"
-></iframe>
+<div class="mx-auto max-w-3xl px-4 py-12">
+	<div class="mb-10">
+		<h1 class="font-serif" style="font-size: var(--text-display);">Community</h1>
+		<p class="mt-3 text-lg text-muted-foreground">
+			Collaborate with us on data journalism and visualization projects.
+		</p>
+	</div>
+
+	<iframe
+		data-tally-src="https://tally.so/embed/nGNPl2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+		loading="lazy"
+		width="100%"
+		height="1768"
+		frameborder="0"
+		marginheight="0"
+		marginwidth="0"
+		title="Join Diagram Chasing's Community"
+	></iframe>
+</div>

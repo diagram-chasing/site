@@ -30,6 +30,14 @@ export interface Author {
     };
 }
 
+export interface PressItem {
+    title: string;
+    source: string;
+    url: string;
+    date: string;
+    type?: 'press' | 'talk';
+}
+
 export interface Idea {
     date: string;
     pitch: string;
