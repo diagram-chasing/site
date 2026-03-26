@@ -210,58 +210,50 @@ collections:
 
   - name: "ideas"
     label: "Ideas"
-    files:
-      - name: "ideas"
-        label: "Project Ideas"
-        file: "src/content/ideas.md"
-        format: "frontmatter"
-        fields:
-          - {
-              label: "Title",
-              name: "title",
-              widget: "string",
-              default: "Project Ideas",
-            }
-          - {
-              label: "Ideas",
-              name: "ideas",
-              widget: "list",
-              fields:
-                [
-                  {
-                    label: "Date",
-                    name: "date",
-                    widget: "datetime",
-                    type: "date",
-                    format: "YYYY-MM-DD",
-                  },
-                  { label: "Pitch", name: "pitch", widget: "string" },
-                  { label: "Originator", name: "originator", widget: "string" },
-                  { label: "Description", name: "description", widget: "text" },
-                  {
-                    label: "Data Source",
-                    name: "data",
-                    widget: "string",
-                    required: false,
-                  },
-                  {
-                    label: "Note",
-                    name: "note_text",
-                    widget: "string",
-                    required: false,
-                  },
-                  {
-                    label: "Show on Page",
-                    name: "show_on_page",
-                    widget: "boolean",
-                    default: false,
-                  },
-                  {
-                    label: "Status",
-                    name: "status",
-                    widget: "select",
-                    options: ["", "WIP", "PUBLISHED"],
-                    required: false,
-                  },
-                ],
-            }
+    folder: "src/content/ideas"
+    create: true
+    slug: "{{date}}-{{slug}}"
+    format: "frontmatter"
+    summary: "{{pitch}} ({{originator}}, {{date}})"
+    fields:
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD",
+          required: true,
+        }
+      - { label: "Pitch", name: "pitch", widget: "string", required: true, hint: "One-line title for the idea" }
+      - { label: "Originator", name: "originator", widget: "string", required: true, hint: "Who came up with this?" }
+      - { label: "Description", name: "description", widget: "text", required: true }
+      - {
+          label: "Data Source",
+          name: "data",
+          widget: "string",
+          required: false,
+          hint: "Links or names of datasets that could power this",
+        }
+      - {
+          label: "Note",
+          name: "note_text",
+          widget: "string",
+          required: false,
+          hint: "Short display note for the ideas page",
+        }
+      - {
+          label: "Show on Page",
+          name: "show_on_page",
+          widget: "boolean",
+          default: true,
+          hint: "Whether this idea is visible on /ideas",
+        }
+      - {
+          label: "Status",
+          name: "status",
+          widget: "select",
+          options: ["", "WIP", "PUBLISHED"],
+          default: "",
+          required: false,
+        }

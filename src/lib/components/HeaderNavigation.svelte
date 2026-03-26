@@ -34,19 +34,18 @@
 	<div class="mx-auto max-w-5xl px-4 py-4">
 		<div class="flex items-center justify-between">
 			<div class="h-13">
-				<div
-					class="{$page.url.pathname === '/' ? 'hidden' : 'flex'} items-center justify-center gap-2"
-				>
-					<a href="/" class="-mt-1">
+				<div class={$page.url.pathname === '/' ? 'hidden' : 'block'}>
+					<a href="/" class="-mt-1 flex items-center justify-center gap-2">
 						<Logo size={55} />
+
+						<div>
+							<span
+								class="m-0 font-serif text-2xl leading-4 font-bold tracking-tight text-foreground md:text-3xl"
+							>
+								Diagram <br /> Chasing
+							</span>
+						</div>
 					</a>
-					<div>
-						<span
-							class="m-0 font-serif text-2xl leading-4 font-bold tracking-tight text-foreground md:text-3xl"
-						>
-							Diagram <br /> Chasing
-						</span>
-					</div>
 				</div>
 			</div>
 

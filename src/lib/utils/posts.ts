@@ -1,4 +1,4 @@
-import type { Post, Author, newsItem } from '../types/content';
+import type { Post, Author, newsItem, Idea } from '../types/content';
 
 // Lazy import modules for better performance
 const postModules = import.meta.glob('/src/content/posts/*.md');
@@ -15,12 +15,14 @@ const postImages = import.meta.glob(
 
 const newsModule = import.meta.glob('/src/content/news.md');
 const supportModule = import.meta.glob('/src/content/support.md');
+const ideaModules = import.meta.glob('/src/content/ideas/*.md');
 
 class PostsAPI {
     private postsCache: Post[] | null = null;
     private authorsCache: Author[] | null = null;
     private newsCache: newsItem[] | null = null;
     private supportFriendsCache: string[] | null = null;
+    private ideasCache: Idea[] | null = null;
 
     async loadPost(slug: string): Promise<Post | null> {
         const path = `/src/content/posts/${slug}.md`;
@@ -200,6 +202,29 @@ class PostsAPI {
         return [];
     }
 
+    async getIdeas(): Promise<Idea[]> {
+        if (this.ideasCache) return this.ideasCache;
+
+        const ideas: Idea[] = [];
+        for (const path in ideaModules) {
+            try {
+                const module = await ideaModules[path]();
+                const metadata = (module as any).metadata;
+                if (metadata) {
+                    ideas.push(metadata as Idea);
+                }
+            } catch (error) {
+                console.error(`Error loading idea ${path}:`, error);
+            }
+        }
+
+        // Sort by date descending
+        ideas.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+        this.ideasCache = ideas;
+        return ideas;
+    }
+
     async searchPosts(term: string): Promise<Post[]> {
         const searchTerm = term.toLowerCase();
         const posts = await this.getAllPosts();
@@ -216,4 +241,4 @@ class PostsAPI {
 export const postsAPI = new PostsAPI();
 
 // Export types for external use
-export type { Post, Author, newsItem };
+export type { Post, Author, newsItem, Idea };

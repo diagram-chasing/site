@@ -18,6 +18,20 @@
 
 	const { posts, news } = data;
 
+	// Group news by source, preserving order of first appearance
+	const newsGrouped = news.reduce(
+		(acc, item) => {
+			const existing = acc.find((g) => g.source === item.source);
+			if (existing) {
+				existing.items.push(item);
+			} else {
+				acc.push({ source: item.source, items: [item] });
+			}
+			return acc;
+		},
+		[] as { source: string; items: typeof news }[]
+	);
+
 	// Helper to find the right logo based on the URL
 	function getLogo(url: string) {
 		try {
@@ -43,12 +57,12 @@
 	<PageDiagram containerEl={pageContainer} />
 
 	<div
-		class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
+		class="mx-auto mb-6 sm:mt-0 flex max-w-5xl flex-col items-center gap-4 px-4 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
 	>
-		<div class="[--logo-size:72px] sm:[--logo-size:150px]">
-			<Sticker radius={3}>
+		<div class="[--logo-size:120px] pointer-events-none sm:[--logo-size:150px]">
+			<!-- <Sticker radius={3}> -->
 				<Logo size={150} />
-			</Sticker>
+			<!-- </Sticker> -->
 		</div>
 
 		<div data-diagram-header class="flex flex-col gap-2">
@@ -105,53 +119,59 @@
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
-						{#each news as item}
-							<Table.Row
-								class="group relative hover:bg-transparent max-sm:block max-sm:border-b max-sm:py-4"
-							>
-								<Table.Cell class="pl-0 max-sm:p-0">
-									<div class="flex items-center gap-3">
-										<div
-											class="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded border border-border bg-white p-px shadow-sm"
-										>
-											{#if getLogo(item.url)}
-												<img
-													src={getLogo(item.url)}
-													alt={item.source}
-													class="h-full w-full object-contain transition-all group-hover:grayscale-0"
-												/>
-											{:else}
-												<span class="text-[10px] font-bold text-muted-foreground/40">
-													{item.source?.charAt(0)}
-												</span>
-											{/if}
-										</div>
-										<span class="font-serif text-base leading-tight font-bold">
-											{item.source}
-										</span>
-									</div>
-								</Table.Cell>
-
-								<Table.Cell
-									class="w-full text-sm leading-relaxed whitespace-normal text-muted-foreground transition-colors group-hover:text-foreground max-sm:mt-1 max-sm:block max-sm:p-0"
+						{#each newsGrouped as group}
+							{#each group.items as item, i}
+								<Table.Row
+									class="group relative hover:bg-transparent max-sm:block max-sm:border-b border-b-border/30 max-sm:py-2"
 								>
-									<a
-										href={item.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="no-underline outline-none after:absolute after:inset-0"
-									>
-										{item.title}
-									</a>
-								</Table.Cell>
+									<Table.Cell class="py-1 pl-0 max-sm:p-0">
+										{#if i === 0}
+											<div class="flex items-center gap-2">
+												<div
+													class="flex size-7 shrink-0 items-center justify-center overflow-hidden rounded bg-white p-px"
+												>
+													{#if getLogo(item.url)}
+														<img
+															src={getLogo(item.url)}
+															alt={item.source}
+															class="h-full w-full object-contain transition-all group-hover:grayscale-0"
+														/>
+													{:else}
+														<span class="text-[9px] font-bold text-muted-foreground/40">
+															{item.source?.charAt(0)}
+														</span>
+													{/if}
+												</div>
+												<span class="font-serif text-sm leading-tight font-bold">
+													{item.source}
+												</span>
+											</div>
+										{:else}
+											<div class="size-7 shrink-0" aria-hidden="true"></div>
+										{/if}
+									</Table.Cell>
 
-								<Table.Cell class="pr-0 text-right max-sm:hidden">
-									<ArrowUpRight
-										size={14}
-										class="ml-auto text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-									/>
-								</Table.Cell>
-							</Table.Row>
+									<Table.Cell
+										class="w-full py-1 text-sm leading-snug group-hover:underline underline-offset-4 whitespace-normal text-muted-foreground transition-colors group-hover:text-foreground max-sm:mt-1 max-sm:block max-sm:p-0"
+									>
+										<a
+											href={item.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="no-underline outline-none after:absolute after:inset-0"
+										>
+											{item.title}
+										</a>
+									</Table.Cell>
+
+									<Table.Cell class="py-1 pr-0 text-right max-sm:hidden">
+										<ArrowUpRight
+											size={12}
+											class="ml-auto text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+										/>
+									</Table.Cell>
+								</Table.Row>
+							{/each}
 						{/each}
 					</Table.Body>
 				</Table.Root>
