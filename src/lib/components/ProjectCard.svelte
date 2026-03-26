@@ -27,7 +27,7 @@
 		{...post.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
 	>
 		<!-- Image -->
-		<div class="aspect-[16/9] overflow-hidden border border-b-0 bg-base-50 sm:aspect-[16/8]">
+		<div class="aspect-[16/9] overflow-hidden border bg-base-50 sm:aspect-[16/8]">
 			<Image
 				src={post.image}
 				alt={post.title}
