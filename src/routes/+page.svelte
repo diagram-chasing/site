@@ -6,9 +6,11 @@
 	import type { PageData } from './$types';
 	import Logo from '$lib/components/Logo.svelte';
 	import Sticker from '$lib/components/Sticker.svelte';
+	import CommutativeDiagram from '$lib/components/CommutativeDiagram.svelte';
+	import VisitorHeatmap from '$lib/components/VisitorHeatmap.svelte';
 	let { data }: { data: PageData } = $props();
 
-	const { posts, news } = data;
+	const { posts, news, diagramTerms } = data;
 
 	const featuredPost = $derived(posts[0]);
 	const remainingPosts = $derived(posts.slice(1));
@@ -49,6 +51,10 @@
 		</p>
 	</div>
 </div>
+<!--
+<div class="mx-auto max-w-5xl px-4 sm:px-0">
+	<CommutativeDiagram terms={diagramTerms} />
+</div> -->
 
 <div class="mx-auto max-w-5xl px-4 pt-6 pb-12">
 	<!-- Featured project -->
@@ -117,4 +123,8 @@
 			</Table.Root>
 		</section>
 	{/if}
+
+	<!-- <div class="mt-16 flex justify-center border-t border-border pt-8">
+		<VisitorHeatmap />
+	</div> -->
 </div>
