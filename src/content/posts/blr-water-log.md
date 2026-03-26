@@ -11,7 +11,7 @@ gallery:
 type: interactive
 date: 2024-11-18T00:00:00.000Z
 tags:
-  - gis
+  - Hydrology
   - flood
   - bangalore
 authors:
@@ -19,4 +19,3 @@ authors:
   - vivek
 code: https://github.com/diagram-chasing/blr-water-log
 ---
-

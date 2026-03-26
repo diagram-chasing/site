@@ -13,10 +13,10 @@ type: stories
 date: 2024-12-03
 tags:
   - elections
+  - elections
   - india
 authors:
   - aman
   - reechik
 code: https://github.com/diagram-chasing/votes-in-a-name
 ---
-

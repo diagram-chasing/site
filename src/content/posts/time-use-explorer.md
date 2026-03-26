@@ -10,11 +10,10 @@ gallery:
 type: interactive
 date: 2025-04-20
 tags:
+  - time use
   - india
-  - time use survey
 authors:
   - aman
   - vivek
 code: https://github.com/diagram-chasing/time-use-explorer
 ---
-

@@ -4,7 +4,6 @@ description: See legislative activity and affidavits of MLAs from the 17th Lok S
 base_url: https://whoismyneta.com
 slug: whoismyneta
 published: true
-external: true
 image: /images/who-1.png
 gallery:
   - /images/who-2.png
@@ -12,12 +11,12 @@ gallery:
 type: interactive
 date: 2024-04-14T00:00:00.000Z
 tags:
+  - parliaments
   - india
-  - elections
 authors:
   - vivek
   - aman
   - pravar
 code: https://github.com/thedivtagguy/whoismyneta
+external: true
 ---
-

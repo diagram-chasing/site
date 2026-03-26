@@ -10,12 +10,11 @@ gallery:
 type: article
 date: 2024-10-10T00:00:00.000Z
 tags:
-  - gis
-  - united states
   - us census
+  - united states
+  - gis
 authors:
   - vivek
   - aman
 code: https://github.com/diagram-chasing/milton
 ---
-

@@ -2,8 +2,8 @@
 title: CBFC Watch
 description: 18k movies, 1 lakh censorship records for movies released in India in a searchable database
 base_url: https://cbfc.watch
+slug: '-'
 published: true
-external: true
 image: /images/cbfc-2.png
 gallery:
   - /images/cbfc-1.png
@@ -12,12 +12,11 @@ gallery:
 type: interactive
 date: 2025-09-14T16:47:00
 tags:
-  - explorer
-  - censorship
+  - Censorship
   - media
 authors:
   - aman
   - vivek
 code: https://github.com/diagram-chasing/cbfc-watch
+external: true
 ---
-

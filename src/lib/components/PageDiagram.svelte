@@ -1,20 +1,24 @@
 <script lang="ts">
 	interface Props {
-		containerEl?: HTMLElement;
+		nodeTags?: string[][];
 	}
-	let { containerEl }: Props = $props();
+	let { nodeTags = [] }: Props = $props();
+
+	let sentinel = $state<HTMLElement | undefined>();
 
 	interface Rect {
 		x: number;
 		y: number;
 		w: number;
 		h: number;
+		idx?: number;
 	}
 
 	let svgW = $state(0);
 	let svgH = $state(0);
 	let relays: { x: number; y: number }[] = $state([]);
 	let edgePaths: string[] = $state([]);
+	let edgeLabels: { x: number; y: number; text: string; vertical: boolean }[] = $state([]);
 
 	let headerPath = $state('');
 	let headerRelays: { x: number; y: number }[] = $state([]);
@@ -22,6 +26,7 @@
 	const uid = Math.random().toString(36).slice(2, 7);
 
 	function measure() {
+		const containerEl = sentinel?.parentElement;
 		if (!containerEl) return;
 
 		svgW = containerEl.offsetWidth;
@@ -33,9 +38,9 @@
 
 		if (cardEls.length < 2) return;
 
-		const rects: Rect[] = cardEls.map((el) => {
+		const rects: Rect[] = cardEls.map((el, i) => {
 			const r = el.getBoundingClientRect();
-			return { x: r.left - cr.left, y: r.top - cr.top, w: r.width, h: r.height };
+			return { x: r.left - cr.left, y: r.top - cr.top, w: r.width, h: r.height, idx: i };
 		});
 
 		let headerRect: Rect | null = null;
@@ -54,24 +59,55 @@
 		const left = (r: Rect) => Math.round(r.x);
 		const right = (r: Rect) => Math.round(r.x + r.w);
 
+		const newLabels: { x: number; y: number; text: string; vertical: boolean }[] = [];
+
+		const pickTags = (tags: string[]) => tags.slice(0, 1).map((t) => t.toUpperCase());
+
+		const labelV = (x: number, y1: number, y2: number, tags: string[]) => {
+			const chosen = pickTags(tags);
+			if (!chosen.length) return;
+			newLabels.push({
+				x: x - 8,
+				y: Math.round((y1 + y2) / 2),
+				text: chosen.join(' · '),
+				vertical: true
+			});
+		};
+
+		const labelH = (x1: number, x2: number, y: number, tags: string[]) => {
+			const chosen = pickTags(tags);
+			if (!chosen.length) return;
+			newLabels.push({
+				x: Math.round((x1 + x2) / 2),
+				y: y - 7,
+				text: chosen.join(' · '),
+				vertical: false
+			});
+		};
+
+		// --- Header path ---
 		if (headerRect && featured) {
 			const hRight = right(headerRect);
 			const fRight = right(featured);
 			const fTop = top(featured);
+			const featuredTags = featured.idx != null ? (nodeTags[featured.idx] ?? []) : [];
 
 			headerRelays = [];
 
 			if (fRight - hRight > 9) {
 				const startY = Math.round(headerRect.y + headerRect.h * 0.45);
 				const startX = hRight - 14;
+				const vx = fRight - fRight * 0.2;
 
-				headerPath = `M${startX - startX * 0.25},${startY} H${fRight - fRight * 0.2} V${fTop}`;
-				headerRelays.push({ x: fRight - fRight * 0.2, y: startY });
+				headerPath = `M${startX - startX * 0.25},${startY} H${vx} V${fTop}`;
+				headerRelays.push({ x: vx, y: startY });
+				labelV(vx, startY, fTop, featuredTags);
 			} else {
 				const startX = cx(headerRect);
 				const startY = bottom(headerRect) + 16;
 
 				headerPath = `M${startX},${startY} V${fTop}`;
+				labelV(startX, startY, fTop, featuredTags);
 			}
 		} else {
 			headerPath = '';
@@ -145,37 +181,52 @@
 		const rX = right(featured) + MARGIN;
 		const lastRow = rows[rows.length - 1];
 
+		// --- Left spine + branch labels ---
 		if (lX > 8) {
 			route(`M${left(featured)},${fMidY} H${lX} V${cy(lastRow[0])}`, [lX, fMidY]);
-			rows.forEach((r) => route(`M${lX},${cy(r[0])} H${left(r[0])}`, [lX, cy(r[0])]));
+			rows.forEach((r) => {
+				const card = r[0];
+				route(`M${lX},${cy(card)} H${left(card)}`, [lX, cy(card)]);
+				const tags = card.idx != null ? (nodeTags[card.idx] ?? []) : [];
+				labelH(lX, left(card), cy(card), tags);
+			});
 		}
+
+		// --- Right spine + branch labels ---
 		if (rX < svgW - 8) {
 			const lastCard = lastRow[lastRow.length - 1];
 			route(`M${right(featured)},${fMidY} H${rX} V${cy(lastCard)}`, [rX, fMidY]);
 			rows.forEach((r) => {
 				const c = r[r.length - 1];
 				route(`M${right(c)},${cy(c)} H${rX}`, [rX, cy(c)]);
+				const tags = c.idx != null ? (nodeTags[c.idx] ?? []) : [];
+				labelH(right(c), rX, cy(c), tags);
 			});
 		}
 
 		relays = newRelays;
 		edgePaths = newPaths;
+		edgeLabels = newLabels;
 	}
 
 	$effect(() => {
+		const containerEl = sentinel?.parentElement;
 		if (!containerEl) return;
+		measure();
 		const ro = new ResizeObserver(() => requestAnimationFrame(measure));
 		ro.observe(containerEl);
-		requestAnimationFrame(measure);
 		return () => ro.disconnect();
 	});
 </script>
+
+<div bind:this={sentinel} aria-hidden="true" style="display:none"></div>
 
 {#if edgePaths.length || headerPath}
 	<svg
 		style="position:absolute;inset:0;width:100%;height:{svgH}px;pointer-events:none;z-index:-1"
 		viewBox="0 0 {svgW} {svgH}"
 		aria-hidden="true"
+		class="diagram-svg"
 	>
 		{#each edgePaths as d}
 			<path {d} stroke="var(--color-base-300)" stroke-width="0.5" fill="none" opacity="0.8" />
@@ -192,6 +243,22 @@
 				opacity="1"
 				stroke-opacity="0.8"
 			/>
+		{/each}
+
+		{#each edgeLabels as lbl}
+			{@const tw = lbl.vertical ? 11 : lbl.text.length * 5 + 10}
+			{@const th = lbl.vertical ? lbl.text.length * 7 + 4 : 11}
+			<rect x={lbl.x - tw / 2} y={lbl.y - th / 2} width={tw} height={th} fill="white" rx="1" />
+			<text
+				x={lbl.x}
+				y={lbl.y}
+				style={lbl.vertical ? 'writing-mode: vertical-lr;' : ''}
+				font-size="10"
+				letter-spacing="0.6"
+				fill="var(--color-base-500)"
+				text-anchor="middle"
+				dominant-baseline="middle">{lbl.text}</text
+			>
 		{/each}
 
 		{#if headerPath}
@@ -217,3 +284,14 @@
 		{/if}
 	</svg>
 {/if}
+
+<style>
+	.diagram-svg {
+		animation: diagram-fade 0.4s ease-out both;
+	}
+
+	@keyframes diagram-fade {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+	}
+</style>

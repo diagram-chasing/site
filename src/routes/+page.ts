@@ -1,7 +1,7 @@
 import { postsAPI } from '$lib/utils/posts';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ data }) => {
+export const load: PageLoad = async () => {
 	try {
 		const [posts, authors, news] = await Promise.all([
 			postsAPI.getPublishedPosts(),
@@ -9,19 +9,9 @@ export const load: PageLoad = async ({ data }) => {
 			postsAPI.getnews()
 		]);
 
-		return {
-			posts,
-			authors,
-			news,
-			diagramTerms: data.diagramTerms
-		};
+		return { posts, authors, news };
 	} catch (error) {
 		console.error('Error loading posts:', error);
-		return {
-			posts: [],
-			authors: [],
-			news: [],
-			diagramTerms: data.diagramTerms
-		};
+		return { posts: [], authors: [], news: [] };
 	}
 };

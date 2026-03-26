@@ -9,10 +9,9 @@
 	import PageDiagram from '$lib/components/PageDiagram.svelte';
 	let { data }: { data: PageData } = $props();
 
-	let pageContainer: HTMLElement | undefined = $state();
 	const logoFiles = import.meta.glob('$lib/assets/logos/*.png', {
 		eager: true,
-		query: '?url',
+		query: { w: 104, format: 'webp' },
 		import: 'default'
 	});
 
@@ -53,8 +52,8 @@
 	keywords="data visualization, india, data journalism, interactive graphics"
 />
 
-<div class="relative isolate" bind:this={pageContainer}>
-	<PageDiagram containerEl={pageContainer} />
+<div class="relative isolate">
+	<PageDiagram nodeTags={posts.map((p) => p.tags)} />
 
 	<div
 		class="mx-auto mb-6 sm:mt-0 flex max-w-5xl flex-col items-center gap-4 px-4 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
