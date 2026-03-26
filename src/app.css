@@ -63,8 +63,13 @@
   --color-stone-*: initial;
 
   /* Specify new default colors. */
-  --color-black: #100F0F;
+  --color-black: #0A0A0A;
   --color-paper: #FFFFFF;
+
+  /* Clean neutral grays for Swiss/modern UI surfaces */
+  --color-gray-50: #F7F7F7;
+  --color-gray-100: #EFEFEF;
+  --color-gray-200: #E0E0E0;
   --color-base-50: #F2F0E5;
   --color-base-100: #E6E4D9;
   --color-base-150: #DAD8CE;
@@ -193,22 +198,22 @@
   --color-card-foreground: var(--color-black);
   --color-popover: var(--color-paper);
   --color-popover-foreground: var(--color-black);
-  --color-primary: var(--color-red-600);
+  --color-primary: var(--color-blue-600);
   --color-primary-foreground: var(--color-paper);
-  --color-secondary: var(--color-base-100);
+  --color-secondary: var(--color-gray-100);
   --color-secondary-foreground: var(--color-black);
-  --color-muted: var(--color-base-50);
-  --color-muted-foreground: var(--color-base-600);
-  --color-accent: var(--color-base-100);
+  --color-muted: var(--color-gray-50);
+  --color-muted-foreground: var(--color-base-500);
+  --color-accent: var(--color-gray-100);
   --color-accent-foreground: var(--color-black);
   --color-destructive: var(--color-red-600);
   --color-destructive-foreground: var(--color-paper);
-  --color-border: var(--color-base-200);
+  --color-border: var(--color-gray-200);
   --color-input: var(--color-paper);
-  --color-ring: var(--color-red-600);
+  --color-ring: var(--color-blue-600);
 
   /* Chart colors */
-  --color-chart-1: var(--color-red-600);
+  --color-chart-1: var(--color-blue-600);
   --color-chart-2: var(--color-orange-600);
   --color-chart-3: var(--color-yellow-600);
   --color-chart-4: var(--color-green-600);
@@ -277,7 +282,7 @@
   --color-card-foreground: var(--color-base-200);
   --color-popover: var(--color-base-900);
   --color-popover-foreground: var(--color-base-200);
-  --color-primary: var(--color-red-400);
+  --color-primary: var(--color-blue-400);
   --color-primary-foreground: var(--color-black);
   --color-secondary: var(--color-base-800);
   --color-secondary-foreground: var(--color-base-200);
@@ -289,7 +294,7 @@
   --color-destructive-foreground: var(--color-black);
   --color-border: var(--color-base-800);
   --color-input: var(--color-base-900);
-  --color-ring: var(--color-red-400);
+  --color-ring: var(--color-blue-400);
 
   /* Dark mode shadows */
   --shadow-xs: 0px 2px 4px -1px hsl(0 0% 0% / 0.10);

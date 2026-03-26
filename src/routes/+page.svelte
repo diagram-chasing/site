@@ -2,10 +2,10 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
+	import { SiGithub } from '@icons-pack/svelte-simple-icons';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import type { PageData } from './$types';
 	import Logo from '$lib/components/Logo.svelte';
-	import Sticker from '$lib/components/Sticker.svelte';
 	import PageDiagram from '$lib/components/PageDiagram.svelte';
 	let { data }: { data: PageData } = $props();
 
@@ -56,11 +56,11 @@
 	<PageDiagram nodeTags={posts.map((p) => p.tags)} />
 
 	<div
-		class="mx-auto mb-6 sm:mt-0 flex max-w-5xl flex-col items-center gap-4 px-4 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
+		class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
 	>
-		<div class="[--logo-size:120px] pointer-events-none sm:[--logo-size:150px]">
+		<div class="pointer-events-none [--logo-size:120px] sm:[--logo-size:150px]">
 			<!-- <Sticker radius={3}> -->
-				<Logo size={150} />
+			<Logo size={150} />
 			<!-- </Sticker> -->
 		</div>
 
@@ -121,7 +121,7 @@
 						{#each newsGrouped as group}
 							{#each group.items as item, i}
 								<Table.Row
-									class="group relative hover:bg-transparent max-sm:block max-sm:border-b border-b-border/30 max-sm:py-2"
+									class="group relative border-b-border/30 hover:bg-transparent max-sm:block max-sm:border-b max-sm:py-2"
 								>
 									<Table.Cell class="py-1 pl-0 max-sm:p-0">
 										{#if i === 0}
@@ -151,7 +151,7 @@
 									</Table.Cell>
 
 									<Table.Cell
-										class="w-full py-1 text-sm leading-snug group-hover:underline underline-offset-4 whitespace-normal text-muted-foreground transition-colors group-hover:text-foreground max-sm:mt-1 max-sm:block max-sm:p-0"
+										class="w-full py-1 text-sm leading-snug whitespace-normal text-muted-foreground underline-offset-4 transition-colors group-hover:text-foreground group-hover:underline max-sm:mt-1 max-sm:block max-sm:p-0"
 									>
 										<a
 											href={item.url}
@@ -176,6 +176,35 @@
 				</Table.Root>
 			</section>
 		{/if}
+		<div class="mt-16 overflow-hidden border border-border">
+			<a
+				href="/support"
+				class="group relative flex items-center justify-between gap-1 bg-foreground/5 p-5 no-underline"
+			>
+				<div>
+					<p
+						class="text-center text-xl leading-[1.3] -tracking-wide text-balance
+									sm:text-left sm:text-[22px] sm:leading-[1.4]
+									lg:text-[20px]"
+					>
+						We are an independent publication <span
+							class="font-bold underline underline-offset-[0.12em]"
+						>
+							made possible by readers like you</span
+						>
+					</p>
+				</div>
+				<div
+					class="flex w-fit items-center gap-2 border border-transparent bg-card-foreground p-2 text-sm text-background transition-colors group-hover:border-border group-hover:bg-white group-hover:text-card-foreground"
+				>
+					<span>Support our work</span>
+					<ArrowUpRight
+						size={12}
+						class="ml-auto shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+					/>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
 <!-- end pageContainer -->
