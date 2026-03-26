@@ -10,8 +10,24 @@
 	let { data }: { data: PageData } = $props();
 
 	let pageContainer: HTMLElement | undefined = $state();
+	const logoFiles = import.meta.glob('$lib/assets/logos/*.png', {
+		eager: true,
+		query: '?url',
+		import: 'default'
+	});
 
-	const { posts, news, diagramTerms } = data;
+	const { posts, news } = data;
+
+	// Helper to find the right logo based on the URL
+	function getLogo(url: string) {
+		try {
+			const domain = new URL(url).hostname.replace('www.', '').replace(/\./g, '-');
+			const path = `/src/lib/assets/logos/${domain}.png`;
+			return (logoFiles[path] as string) || null;
+		} catch {
+			return null;
+		}
+	}
 
 	const featuredPost = $derived(posts[0]);
 	const remainingPosts = $derived(posts.slice(1));
@@ -78,12 +94,11 @@
 
 		<!-- news & Talks -->
 		{#if news.length > 0}
-			<section class="mt-16 border-t border-border pt-6">
-				<h2 class="my-4 font-serif font-bold uppercase">Seen Around</h2>
+			<section class="mt-16">
+				<h2 class="my-4 text-center font-serif text-2xl font-bold uppercase">As seen in</h2>
 				<Table.Root class="overflow-clip">
 					<Table.Header class="hidden">
 						<Table.Row class="m-0 h-0 border-none p-0 hover:bg-transparent">
-							<Table.Head class="pl-0 text-xs tracking-wide uppercase"></Table.Head>
 							<Table.Head class="text-xs tracking-wide uppercase"></Table.Head>
 							<Table.Head class="w-full text-xs tracking-wide uppercase"></Table.Head>
 							<Table.Head></Table.Head>
@@ -92,18 +107,31 @@
 					<Table.Body>
 						{#each news as item}
 							<Table.Row
-								class="group relative hover:bg-transparent max-sm:block max-sm:border-b max-sm:py-3"
+								class="group relative hover:bg-transparent max-sm:block max-sm:border-b max-sm:py-4"
 							>
-								<Table.Cell
-									class="pl-0 text-xs font-medium tracking-wide text-muted-foreground uppercase max-sm:inline-block max-sm:p-0 max-sm:pr-3"
-								>
-									{item.type ?? 'news'}
+								<Table.Cell class="pl-0 max-sm:p-0">
+									<div class="flex items-center gap-3">
+										<div
+											class="flex size-10 shrink-0 items-center justify-center overflow-hidden rounded border border-border bg-white p-px shadow-sm"
+										>
+											{#if getLogo(item.url)}
+												<img
+													src={getLogo(item.url)}
+													alt={item.source}
+													class="h-full w-full object-contain transition-all group-hover:grayscale-0"
+												/>
+											{:else}
+												<span class="text-[10px] font-bold text-muted-foreground/40">
+													{item.source?.charAt(0)}
+												</span>
+											{/if}
+										</div>
+										<span class="font-serif text-base leading-tight font-bold">
+											{item.source}
+										</span>
+									</div>
 								</Table.Cell>
-								<Table.Cell
-									class="font-serif text-base leading-tight font-bold max-sm:inline-block max-sm:p-0"
-								>
-									{item.source}
-								</Table.Cell>
+
 								<Table.Cell
 									class="w-full text-sm leading-relaxed whitespace-normal text-muted-foreground transition-colors group-hover:text-foreground max-sm:mt-1 max-sm:block max-sm:p-0"
 								>
@@ -111,11 +139,12 @@
 										href={item.url}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="no-underline after:absolute after:inset-0"
+										class="no-underline outline-none after:absolute after:inset-0"
 									>
 										{item.title}
 									</a>
 								</Table.Cell>
+
 								<Table.Cell class="pr-0 text-right max-sm:hidden">
 									<ArrowUpRight
 										size={14}

@@ -66,6 +66,7 @@
 		"d3-scale": "^4.0.2",
 		"d3-shape": "^3.2.0",
 		"feed": "^5.1.0",
+		"js-yaml": "^4.1.1",
 		"svelte-action-balancer": "^1.0.4"
 	}
 }
