@@ -5,6 +5,7 @@
 	import * as Table from '$lib/components/ui/table/index.js';
 	import type { PageData } from './$types';
 	import Logo from '$lib/components/Logo.svelte';
+	import Sticker from '$lib/components/Sticker.svelte';
 	let { data }: { data: PageData } = $props();
 
 	const { posts, news } = data;
@@ -23,7 +24,9 @@
 	class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
 >
 	<div class="[--logo-size:72px] sm:[--logo-size:150px]">
-		<Logo size={150} />
+		<Sticker>
+			<Logo size={150} />
+		</Sticker>
 	</div>
 
 	<div class="flex flex-col gap-2">

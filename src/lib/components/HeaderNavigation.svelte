@@ -42,7 +42,7 @@
 					</a>
 					<div>
 						<span
-							class="m-0 font-serif text-2xl leading-0 font-bold tracking-tight text-foreground md:text-3xl"
+							class="m-0 font-serif text-2xl leading-4 font-bold tracking-tight text-foreground md:text-3xl"
 						>
 							Diagram <br /> Chasing
 						</span>

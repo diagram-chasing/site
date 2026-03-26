@@ -34,6 +34,7 @@
 		</mask>
 	</defs>
 
+	<circle cx="68" cy="68" r="64" fill="white" />
 	<circle cx="68" cy="68" r="64" fill="none" stroke="#050e29" stroke-width="2" />
 	<circle cx="68" cy="68" r="48" fill="none" stroke="#050e29" stroke-width="2" />
 	<circle cx="68" cy="68" r="46" fill="none" stroke="#050e29" stroke-width="1" />
