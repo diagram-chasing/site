@@ -44,8 +44,8 @@
 						  sm:text-left sm:text-[22px] sm:leading-[1.4]
 						  lg:text-[28px]"
 		>
-			Data-driven <span class="font-bold underline underline-offset-[0.12em]">visual stories</span>,
-			<span class="font-bold underline underline-offset-[0.12em]">tools</span> and
+			Data-driven <span class="font-bold underline underline-offset-[0.12em]">visual stories</span> and
+			<span class="font-bold underline underline-offset-[0.12em]">tools</span>, with
 			<span class="font-bold underline underline-offset-[0.12em]">datasets</span>
 			of public interest
 		</p>
