@@ -33,7 +33,8 @@
 				alt={post.title}
 				class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
 				loading="eager"
-				sizes="100vw"
+				fetchpriority="high"
+				sizes="min(1024px, 100vw)"
 			/>
 		</div>
 
@@ -67,7 +68,7 @@
 				alt={post.title}
 				class="h-full w-full   object-cover transition-transform duration-300 group-hover:scale-[1.02]"
 				loading="lazy"
-				sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+				sizes="(max-width: 640px) 100vw, 512px"
 			/>
 		</div>
 

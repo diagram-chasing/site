@@ -16,7 +16,7 @@
 >
 	<!-- Logo -->
 	<div class="mb-3.5 flex justify-center">
-		<a href="/" class="inline-flex flex-col items-center gap-2 text-foreground no-underline">
+		<a href="/" aria-label="Diagram Chasing — home" class="inline-flex flex-col items-center gap-2 text-foreground no-underline">
 			<Logo size={100} />
 			<!-- <span class="font-serimakf text-xl font-bold tracking-tight">Diagram Chasing</span> -->
 		</a>

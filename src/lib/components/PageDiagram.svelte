@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	interface Props {
 		nodeTags?: string[][];
 	}
 	let { nodeTags = [] }: Props = $props();
 
-	let sentinel = $state<HTMLElement | undefined>();
+	let sentinel: HTMLElement | undefined;
 
 	interface Rect {
 		x: number;
@@ -209,7 +211,7 @@
 		edgeLabels = newLabels;
 	}
 
-	$effect(() => {
+	onMount(() => {
 		const containerEl = sentinel?.parentElement;
 		if (!containerEl) return;
 		measure();

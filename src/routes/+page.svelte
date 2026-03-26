@@ -132,7 +132,7 @@
 													{#if getLogo(item.url)}
 														<img
 															src={getLogo(item.url)}
-															alt={item.source}
+															alt=""
 															class="h-full w-full object-contain transition-all group-hover:grayscale-0"
 														/>
 													{:else}
