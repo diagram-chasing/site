@@ -15,9 +15,7 @@
 	<!-- Heading + narrative -->
 	<div class="mb-12 max-w-2xl">
 		<h1 class="font-serif text-display leading-none font-bold tracking-tight">Support</h1>
-		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-			We're are independently produced and reader-supported
-		</p>
+
 		<div class="page-prose mt-6">
 			<p>
 				Diagram Chasing creates data-driven stories, interactive tools, and open datasets of public

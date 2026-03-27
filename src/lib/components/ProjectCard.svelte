@@ -23,7 +23,7 @@
 	<!-- Featured: full-bleed image with text box breaking out below -->
 	<a
 		href={postUrl}
-		class="group block no-underline active:scale-[0.995] transition-transform duration-150 ease-out {className}"
+		class="group block no-underline transition-transform duration-150 ease-out active:scale-[0.995] {className}"
 		{...post.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
 	>
 		<!-- Image -->
@@ -42,7 +42,9 @@
 		<div
 			class="relative mx-0 mt-0 border border-border bg-background p-5 sm:mx-8 sm:-mt-14 sm:p-8 md:mx-12 md:-mt-20 md:p-10"
 		>
-			<span class="text-xs font-medium tracking-widest text-muted-foreground uppercase tabular-nums">
+			<span
+				class="text-xs font-medium tracking-widest text-muted-foreground uppercase tabular-nums"
+			>
 				{year}
 			</span>
 			<h2
@@ -50,7 +52,7 @@
 			>
 				{post.title}
 			</h2>
-			<p class="mt-3 text-sm leading-relaxed sm:text-base md:text-lg">
+			<p class="page-prose mt-1 leading-relaxed sm:text-base md:text-lg">
 				{post.description}
 			</p>
 		</div>
@@ -59,7 +61,7 @@
 	<!-- Standard card -->
 	<a
 		href={postUrl}
-		class="group block no-underline active:scale-[0.995] transition-transform duration-150 ease-out {className}"
+		class="group block no-underline transition-transform duration-150 ease-out active:scale-[0.995] {className}"
 		{...post.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
 	>
 		<div class="aspect-[4/3] overflow-hidden border bg-base-50">
@@ -77,11 +79,11 @@
 				{year}
 			</span>
 			<h2
-				class="mt-0.5 font-serif text-xl leading-tight font-bold text-foreground underline-offset-4 transition-colors group-hover:underline"
+				class="mt-0.5 font-serif text-2xl leading-tight font-bold text-foreground underline-offset-4 transition-colors group-hover:underline"
 			>
 				{post.title}
 			</h2>
-			<p class="mt-1.5 text-sm leading-relaxed">
+			<p class="page-prose mt-1.5 leading-relaxed">
 				{post.description}
 			</p>
 		</div>

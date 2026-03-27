@@ -39,12 +39,6 @@
 			</li>
 		{/each}
 	</ul>
-
-	<!-- Copyright -->
-	<p class="mt-2 p-0 text-base leading-normal text-muted-foreground">
-		&copy; {currentYear} Diagram Chasing
-	</p>
-
 	<!-- Social/connect icon links -->
 	<ul class="mt-3 list-none p-0 px-5 text-center">
 		<li class="mx-1.5 my-0 inline-block p-0 leading-[1.6em]">
@@ -130,4 +124,8 @@
 			</a>
 		</li>
 	</ul>
+	<!-- Copyright -->
+	<p class="mt-2 p-0 text-base leading-normal text-muted-foreground">
+		&copy; {currentYear} Diagram Chasing
+	</p>
 </footer>

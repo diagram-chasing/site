@@ -44,7 +44,7 @@
 		<div class="flex items-center justify-between">
 			<div class="h-13">
 				<div class={$page.url.pathname === '/' ? 'hidden' : 'block'}>
-					<a href="/" class="-mt-1 flex items-center justify-center gap-2">
+					<a href="/" class="-mt-1 flex items-center justify-center gap-2 no-underline">
 						<Logo size={55} />
 
 						<div>

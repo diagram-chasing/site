@@ -1,6 +1,8 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
+	import Image from '$lib/components/ui/Image.svelte';
+	import cafesImg from '$lib/assets/cafes.jpg?enhanced';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -45,28 +47,79 @@
 
 <div class="mx-auto max-w-5xl px-4 py-12">
 	<div class="mb-16">
-		<h1 class="font-serif text-display font-bold leading-none tracking-tight">About</h1>
+		<h1 class="font-serif text-display leading-none font-bold tracking-tight">About</h1>
 
-		<div class="mt-8 max-w-2xl space-y-4 text-lg leading-relaxed">
+		<div class="page-prose mt-8">
 			<p>
-				Diagram Chasing is an independent publication producing data-driven visual stories,
-				interactive tools, and datasets of public interest — focused primarily on India.
+				Diagram Chasing was started by <a href="/authors/aman">Aman</a> and
+				<a href="/authors/vivek">Vivek</a> in 2024 because we had some time on our hands and wanted to
+				build the kind of data-driven stories and tools we wanted to see for ourselves. The name feels
+				apt: our process always starts with a question, an argument, a quip, a theory, or someone's passing
+				annoyance that we decide to 'chase' down with data and visuals.
 			</p>
 			<p>
-				We believe in making data accessible and meaningful. Our work spans investigative data
-				journalism, exploratory data tools, and open datasets that anyone can use.
+				We call it full-stack data journalism because every part of the process makes us feel alive.
+				From assembling new datasets and writing analysis pipelines to designing and developing the
+				final story or application. Transparency is important to us, so all our data and code is
+				released publicly under open licenses.
+			</p>
+		</div>
+
+		<div class="page-prose mt-8 overflow-hidden">
+			<figure class="mb-4 w-full sm:float-right sm:mb-2 sm:ml-8 sm:w-80">
+				<div class="overflow-hidden border border-border">
+					<Image
+						src={cafesImg}
+						alt="Person working on a laptop at a cafe in Bangalore"
+						class="h-full w-full object-cover object-center"
+						loading="lazy"
+					/>
+				</div>
+				<figcaption class="mt-2 text-right text-sm text-balance italic">
+					Every project is made nomadically in random cafes around Bangalore
+				</figcaption>
+			</figure>
+			<p>
+				As far as we can tell, we're the only independent data publication of its kind in India. We
+				want to write stories about our part of the world. We want to understand issues like
+				elections, governance, cities, climate, economics, and bureaucracy that affects our lives.
+				These topics can often feel tedious on the surface, but just like listening to a friend talk
+				excitedly about their latest obsession, we like to think that you'll end up caring about
+				them, too.
 			</p>
 			<p>
-				We are made possible by readers like you. If you find our work valuable, consider <a
-					href="/support">supporting us</a
+				We are slow by design. Our projects develop over weeks and months, and that slowness is a
+				conscious choice. When we do put something out into the world, we want to be absolutely
+				certain about what we're saying, and we want you to feel the care that went into it. To help
+				us do this better, we regularly work alongside illustrators, animators, writers, and
+				talented human collaborators of all kinds.
+			</p>
+
+			<h2 id="funding" class="font-serif text-xl font-bold">Who funds us?</h2>
+			<p>
+				Short answer: mostly us. The money for research, server infrastructure, software tools, and
+				honorariums for our collaborators has usually come straight out of our own pockets. But our
+				long-term goal is to make Diagram Chasing a truly sustainable, independent publication. In
+				2025, we hit a milestone when <a href="/support">reader support</a> covered a real portion of
+				our running costs for the very first time. It's a model we hope to keep growing.
+			</p>
+
+			<h2 id="work-with-us" class="font-serif text-xl font-bold">Work with us</h2>
+			<p>
+				We love building things, and we love helping other people build things. We are always
+				looking to collaborate with fellow creatives on our projects, but we also take on
+				professional commissions. Whether you're a newsroom sitting on a massive, unwieldy dataset,
+				an organization that wants to create data stories or applications, or someone who needs
+				full-stack data nerds to bring an idea to life, we'd love to talk! <strong
+					>Shoot us an email at hello@diagramchasing.fun</strong
 				>.
 			</p>
 		</div>
 	</div>
 
 	{#if news.length > 0}
-		<section>
-			<h2 class="mb-8 font-serif text-2xl font-bold uppercase">As seen in</h2>
+		<section id="press">
+			<h2 class="font-serif text-2xl font-bold uppercase">Press & Talks</h2>
 			<div class="divide-y divide-border/40">
 				{#each newsGrouped as group (group.source)}
 					{#if group.items.length === 1}

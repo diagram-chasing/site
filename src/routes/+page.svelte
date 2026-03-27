@@ -11,7 +11,7 @@
 
 	const logoFiles = import.meta.glob('$lib/assets/logos/*.png', {
 		eager: true,
-		query: { w: 104, format: 'webp' },
+		query: { w: 204, format: 'webp' },
 		import: 'default'
 	});
 
@@ -72,7 +72,8 @@
 {#snippet inlineThumb(images: any[], idx: number)}
 	{#if images.length > 0}
 		<span
-			class="relative mx-1 inline-block h-[40px] w-[90px] shrink-0 overflow-hidden rounded border border-border align-middle sm:h-[52px] sm:w-[108px]"
+			class="relative mx-2.5 my-0.5 inline-block shrink-0 overflow-hidden rounded border border-border align-middle"
+			style="height: 1.8em; width: 3.8em;"
 			aria-hidden="true"
 		>
 			{#each images as img, i (i)}
@@ -99,7 +100,7 @@
 	<div
 		class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
 	>
-		<div class="pointer-events-none [--logo-size:120px] sm:[--logo-size:150px]">
+		<div class="pointer-events-none shrink-0">
 			<!-- <Sticker radius={3}> -->
 			<Logo size={150} />
 			<!-- </Sticker> -->
@@ -107,24 +108,21 @@
 
 		<div data-diagram-header class="flex flex-col gap-2">
 			<p
-				class="m-0 mx-auto w-fit font-serif text-[34px] leading-none
-					 font-bold tracking-tight sm:mx-0 sm:text-[50px]
-					 lg:text-[54px]"
+				class="m-0 mx-auto w-fit font-serif leading-none font-bold tracking-tight sm:mx-0"
+				style="font-size: clamp(2rem, 3.5vw + 1.2rem, 3.375rem);"
 			>
 				Diagram Chasing
 			</p>
 			<p
-				class="mx-auto max-w-[450px] pl-6 text-xl leading-[2] -tracking-wide sm:mx-0 sm:w-2/3 sm:max-w-none sm:pl-0
-					  sm:text-[22px] sm:leading-[1.6]
-					  lg:text-[28px]"
+				class="mx-auto max-w-[450px] text-center leading-8 -tracking-wide sm:mx-0 sm:max-w-none sm:pl-0 sm:text-left"
+				style="font-size: clamp(1.28rem, 1.5vw + 0.6rem, 1.75rem);  text-wrap: balance;"
 			>
-				Data-driven <span class="font-bold underline underline-offset-[0.12em]">visual stories</span
-				>{@render inlineThumb(storyImages, storyIdx)}
-				and
+				<span class="font-bold underline underline-offset-[0.12em]">Visual stories</span
+				>{@render inlineThumb(storyImages, storyIdx)} <br class="sm:hidden" />and
 				<span class="font-bold underline underline-offset-[0.12em]">tools</span
-				>{@render inlineThumb(toolImages, toolIdx)}, with
-				<span class="font-bold underline underline-offset-[0.12em]">datasets</span>
-				of public interest
+				>{@render inlineThumb(toolImages, toolIdx)} for <br class="sm:hidden" />
+				<span class="font-bold underline underline-offset-[0.12em]">public data</span>
+				worth looking at
 			</p>
 		</div>
 	</div>
@@ -151,13 +149,15 @@
 		{#if news.length > 0}
 			{@const seenSources = [...new Map(news.map((n) => [n.source, n])).values()]}
 			<section class="mt-16">
-				<h2 class="mb-5 text-center font-serif text-xl font-bold uppercase">As seen in</h2>
-				<a href="/about" class="no-underline">
-					<div class="flex flex-wrap items-center justify-center gap-3">
+				<h2 class="mb-6 text-center font-serif text-2xl text-muted-foreground/80 lowercase italic">
+					...seen in places like
+				</h2>
+				<a href="/about#press" class="no-underline">
+					<div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
 						{#each seenSources as item (item.source)}
 							{@const logo = getLogo(item.url)}
 							<div
-								class="flex h-20 w-auto max-w-30 items-center justify-center overflow-hidden rounded bg-white p-1.5 opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+								class="flex h-14 w-auto max-w-24 items-center justify-center overflow-hidden rounded bg-white p-1 opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0 sm:h-20 sm:max-w-30 sm:p-1.5"
 								title={item.source}
 							>
 								{#if logo}
@@ -174,23 +174,21 @@
 		<div class="mt-8 overflow-hidden border border-border">
 			<a
 				href="/support"
-				class="group relative flex items-center justify-between gap-1 bg-foreground/5 p-5 no-underline"
+				class="group relative flex flex-col items-center gap-4 bg-foreground/5 p-5 no-underline sm:flex-row sm:items-center sm:justify-between"
 			>
-				<div>
-					<p
-						class="text-center text-xl leading-[1.3] -tracking-wide text-balance
-								sm:text-left sm:text-[22px] sm:leading-[1.4]
-								lg:text-[20px]"
+				<p
+					class="text-center text-xl leading-[1.3] -tracking-wide text-balance
+						sm:text-left sm:text-[22px] sm:leading-[1.4]
+						lg:text-[20px]"
+				>
+					We are an independent publication <span
+						class="font-bold underline underline-offset-[0.12em]"
 					>
-						We are an independent publication <span
-							class="font-bold underline underline-offset-[0.12em]"
-						>
-							made possible by readers like you</span
-						>
-					</p>
-				</div>
+						made possible by readers like you</span
+					>
+				</p>
 				<div
-					class="flex w-fit items-center gap-2 border border-transparent bg-card-foreground p-2 text-sm text-background transition-colors"
+					class="flex w-fit shrink-0 items-center gap-2 border border-transparent bg-card-foreground p-2 text-sm text-background transition-colors"
 				>
 					<span>Support our work</span>
 					<ArrowUpRight

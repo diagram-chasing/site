@@ -25,12 +25,7 @@
 />
 
 <div class="mx-auto max-w-5xl px-4 py-12">
-	<div class="mb-12">
-		<h1 class="font-serif text-display leading-none font-bold tracking-tight">Community</h1>
-		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-			Collaborate with us on data journalism and visualization projects
-		</p>
-	</div>
+	<h1 class="font-serif text-display leading-none font-bold tracking-tight">Community</h1>
 
 	<iframe
 		data-tally-src="https://tally.so/embed/nGNPl2?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"

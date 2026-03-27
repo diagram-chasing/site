@@ -41,4 +41,9 @@ news:
     url: https://www.thehindu.com/news/cities/bangalore/a-data-visualisation-project-attempts-to-read-between-bengalurus-metro-lines/article70140238.ece
     date: 2025-10-09
     type: news
+  - title: Editorial on CBFC overreach and the shrinking space for artistic freedom
+    source: The Telegraph
+    url: https://www.telegraphindia.com/opinion/moral-board-editorial-on-cbfc-overreach-and-the-shrinking-space-for-artistic-freedom-prnt/cid/2125912
+    date: 2025-10-03
+    type: news
 ---
