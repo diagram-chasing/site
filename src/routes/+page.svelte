@@ -98,7 +98,7 @@
 	<PageDiagram />
 
 	<div
-		class="mx-auto -mt-[56px] flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:mb-6 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
+		class="mx-auto -mt-[56px] flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:mb-6 sm:flex-row sm:items-center sm:px-0 sm:py-0"
 	>
 		<div class="logo-home-wrapper pointer-events-none shrink-0">
 			<!-- <Sticker radius={3}> -->
