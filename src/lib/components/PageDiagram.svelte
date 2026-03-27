@@ -53,33 +53,21 @@
 		const cx = (r: Rect) => Math.round(r.x + r.w / 2);
 		const cy = (r: Rect) => Math.round(r.y + r.h / 2);
 		const top = (r: Rect) => Math.round(r.y);
-		const bottom = (r: Rect) => Math.round(r.y + r.h);
 		const left = (r: Rect) => Math.round(r.x);
 		const right = (r: Rect) => Math.round(r.x + r.w);
 
 		// --- Header path ---
 		if (headerRect && featured) {
 			const hRight = right(headerRect);
-			const fRight = right(featured);
 			const fTop = top(featured);
+			const vx = cx(featured);
+			const startY = Math.round(headerRect.y + headerRect.h * 0.55);
 
-			headerRelays = [];
-
-			if (fRight - hRight > 9) {
-				const startY = Math.round(headerRect.y + headerRect.h * 0.45);
-				const startX = hRight - 14;
-				const vx = fRight - fRight * 0.2;
-
-				headerPath = `M${startX - startX * 0.25},${startY} H${vx} V${fTop}`;
-				headerRelays.push({ x: vx, y: startY });
-			} else {
-				const startX = cx(headerRect);
-				const startY = bottom(headerRect) + 16;
-
-				headerPath = `M${startX},${startY} V${fTop}`;
-			}
+			headerPath = `M${vx + vx * 0.3},${startY} H${vx * 1.5} V${fTop}`;
+			headerRelays = [{ x: vx + vx * 0.3, y: startY }];
 		} else {
 			headerPath = '';
+			headerRelays = [];
 		}
 
 		const rows: Rect[][] = [];
@@ -147,7 +135,7 @@
 		style="position:absolute;inset:0;width:100%;height:{svgH}px;pointer-events:none;z-index:-1"
 		viewBox="0 0 {svgW} {svgH}"
 		aria-hidden="true"
-		class="diagram-svg"
+		class="diagram-svg hidden lg:block"
 	>
 		{#each edgePaths as d}
 			<path {d} stroke="var(--color-base-300)" stroke-width="0.5" fill="none" opacity="0.8" />
@@ -166,7 +154,7 @@
 			/>
 		{/each}
 
-{#if headerPath}
+		{#if headerPath}
 			<path
 				d={headerPath}
 				stroke="var(--color-base-300)"
@@ -196,7 +184,11 @@
 	}
 
 	@keyframes diagram-fade {
-		from { opacity: 0; }
-		to   { opacity: 1; }
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
 	}
 </style>

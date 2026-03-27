@@ -98,9 +98,9 @@
 	<PageDiagram />
 
 	<div
-		class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
+		class="mx-auto -mt-[56px] flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:mb-6 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"
 	>
-		<div class="pointer-events-none shrink-0">
+		<div class="logo-home-wrapper pointer-events-none shrink-0">
 			<!-- <Sticker radius={3}> -->
 			<Logo size={150} />
 			<!-- </Sticker> -->
@@ -109,16 +109,16 @@
 		<div data-diagram-header class="flex flex-col gap-2">
 			<p
 				class="m-0 mx-auto w-fit font-serif leading-none font-bold tracking-tight sm:mx-0"
-				style="font-size: clamp(2rem, 3.5vw + 1.2rem, 3.375rem);"
+				style="font-size: clamp(2.2rem, 3.5vw + 1.2rem, 3.375rem);"
 			>
 				Diagram Chasing
 			</p>
 			<p
-				class="mx-auto max-w-[450px] text-center leading-8 -tracking-wide sm:mx-0 sm:max-w-none sm:pl-0 sm:text-left"
-				style="font-size: clamp(1.28rem, 1.5vw + 0.6rem, 1.75rem);  text-wrap: balance;"
+				class="mx-auto max-w-[450px] leading-8 -tracking-wide sm:mx-0 sm:max-w-none sm:pl-0 sm:text-left"
+				style="font-size: clamp(1.35rem, 1.5vw + 0.6rem, 1.75rem);  text-wrap: balance;"
 			>
 				<span class="font-bold underline underline-offset-[0.12em]">Visual stories</span
-				>{@render inlineThumb(storyImages, storyIdx)} <br class="sm:hidden" />and
+				>{@render inlineThumb(storyImages, storyIdx)}<br class="sm:hidden" />and
 				<span class="font-bold underline underline-offset-[0.12em]">tools</span
 				>{@render inlineThumb(toolImages, toolIdx)} for <br class="sm:hidden" />
 				<span class="font-bold underline underline-offset-[0.12em]">public data</span>
@@ -200,3 +200,11 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	@media (max-width: 639px) {
+		.logo-home-wrapper {
+			--logo-size: 100px;
+		}
+	}
+</style>

@@ -42,14 +42,14 @@
 <header class="w-full bg-background {className}">
 	<div class="mx-auto max-w-5xl px-4 py-4">
 		<div class="flex items-center justify-between">
-			<div class="h-13">
+			<div class="h-auto">
 				<div class={$page.url.pathname === '/' ? 'hidden' : 'block'}>
-					<a href="/" class="-mt-1 flex items-center justify-center gap-2 no-underline">
+					<a href="/" class="flex items-center justify-center gap-2 no-underline">
 						<Logo size={55} />
 
 						<div>
 							<span
-								class="m-0 font-serif text-2xl leading-4 font-bold tracking-tight text-foreground md:text-3xl"
+								class="m-0 p-0 font-serif text-2xl leading-4 font-bold tracking-tight text-foreground md:text-3xl"
 							>
 								Diagram <br /> Chasing
 							</span>
@@ -77,7 +77,7 @@
 
 				<!-- Mobile: menu icon trigger -->
 				<Sheet.Trigger
-					class="flex size-10 items-center justify-center text-foreground transition-transform active:scale-95 md:hidden"
+					class="relative z-10 flex size-10 items-center justify-center text-foreground transition-transform active:scale-95 md:hidden"
 					aria-label="Open menu"
 				>
 					<Menu size={22} />

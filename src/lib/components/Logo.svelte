@@ -8,81 +8,122 @@
 	 */
 	export let size = 130;
 
-	// Generate a unique ID for this specific component instance
 	const uid = Math.random().toString(36).slice(2, 11);
 
-	// Create unique references
-	const maskId = `circle-mask-${uid}`;
-	const pathTopId = `text-path-top-${uid}`;
-	const pathBottomId = `text-path-bottom-${uid}`;
+	const maskId = `mask-${uid}`;
+	const vignetteMaskId = `vig-mask-${uid}`;
+	const vignetteGradId = `vig-grad-${uid}`;
+	const grainId = `grain-${uid}`;
+	const pathTopId = `arc-top-${uid}`;
+	const pathBottomId = `arc-bot-${uid}`;
 </script>
 
 <svg
-	class="logo-svg"
-	viewBox="0 0 136 136"
+	class="dc-logo"
+	viewBox="0 0 200 200"
 	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
 	style="width: var(--logo-size, {size}px); height: var(--logo-size, {size}px);"
 >
 	<defs>
-		<path id={pathTopId} d="M 16 68 a 52 52 0 1 1 104 0" fill="none" />
-
-		<path id={pathBottomId} d="M 16 68 a 52 52 0 0 0 104 0" fill="none" />
+		<path id={pathTopId} d="M 23 100 a 77 77 0 1 1 154 0" fill="none" />
+		<path id={pathBottomId} d="M 23 100 a 77 77 0 0 0 154 0" fill="none" />
 
 		<mask id={maskId}>
-			<circle cx="68" cy="68" r="46" fill="white" />
+			<circle cx="100" cy="100" r="92" fill="white" />
 		</mask>
+
+		<radialGradient id={vignetteGradId} cx="50%" cy="50%" r="50%">
+			<stop offset="95%" stop-color="white" stop-opacity="1" />
+			<stop offset="100%" stop-color="white" stop-opacity="0" />
+		</radialGradient>
+		<mask id={vignetteMaskId}>
+			<circle cx="100" cy="100" r="72" fill="url(#{vignetteGradId})" />
+		</mask>
+
+		<filter id={grainId} x="0" y="0" width="100%" height="100%">
+			<feTurbulence
+				type="fractalNoise"
+				baseFrequency="0.75"
+				numOctaves="3"
+				stitchTiles="stitch"
+				result="n"
+			/>
+			<feColorMatrix type="saturate" values="0" in="n" result="g" />
+			<feComponentTransfer in="g" result="a">
+				<feFuncA type="linear" slope="0.08" />
+			</feComponentTransfer>
+			<feBlend in="SourceGraphic" in2="a" mode="multiply" />
+		</filter>
 	</defs>
 
-	<circle cx="68" cy="68" r="64" fill="white" />
-	<circle cx="68" cy="68" r="64" fill="none" stroke="#050e29" stroke-width="2" />
-	<circle cx="68" cy="68" r="48" fill="none" stroke="#050e29" stroke-width="2" />
-	<circle cx="68" cy="68" r="46" fill="none" stroke="#050e29" stroke-width="1" />
+	<circle cx="100" cy="100" r="99" fill="#fcfcfc" />
+
+	<circle cx="100" cy="100" r="97" fill="none" stroke="#050e29" stroke-width="3.5" />
+
+	<circle cx="100" cy="100" r="93" fill="none" stroke="#050e29" stroke-width="0.7" opacity="1" />
+
+	<circle cx="100" cy="100" r="73" fill="none" stroke="#050e29" stroke-width="2.2" />
 
 	<image
 		href={Logo}
-		x="22"
-		y="22"
-		width="92"
-		height="92"
+		x="28"
+		y="28"
+		width="144"
+		height="144"
 		preserveAspectRatio="xMidYMid slice"
-		mask="url(#{maskId})"
+		mask="url(#{vignetteMaskId})"
+		class="dc-logo__image"
 	/>
 
-	<g
-		font-family="'Atkinson Hyperlegible', sans-serif"
-		font-size="11"
-		font-weight="700"
-		fill="#050e29"
-	>
-		<text dy="0">
-			<textPath
-				xlink:href="#{pathTopId}"
-				startOffset="50%"
-				text-anchor="middle"
-				letter-spacing="1.5"
-			>
+	<g class="dc-logo__text" fill="#050e29">
+		<text dy="-2">
+			<textPath href="#{pathTopId}" startOffset="50%" text-anchor="middle" letter-spacing="2">
 				DIAGRAM CHASING
 			</textPath>
 		</text>
 
-		<text dy="8">
-			<textPath
-				xlink:href="#{pathBottomId}"
-				startOffset="50%"
-				text-anchor="middle"
-				letter-spacing="1.5"
-			>
-				• EST 2024 •
+		<text dy="11">
+			<textPath href="#{pathBottomId}" startOffset="51%" text-anchor="middle" letter-spacing="2">
+				EST. 2024
 			</textPath>
 		</text>
 	</g>
+
+	<circle cx="100" cy="100" r="97" fill="#f0ece4" opacity="0.06" filter="url(#{grainId})" />
 </svg>
 
 <style>
-	.logo-svg {
+	.dc-logo {
 		display: block;
 		max-width: 100%;
 		shape-rendering: geometricPrecision;
+		transition: all 0.3s ease;
+	}
+
+	.dc-logo__image {
+		mix-blend-mode: multiply;
+	}
+
+	.dc-logo__text {
+		font-family: 'Atkinson Hyperlegible', 'Georgia', serif;
+		font-size: 12px;
+		font-weight: 900;
+	}
+
+	/*
+   * Below ~48px the curved text becomes illegible mud.
+   * A proper seal system drops text and relies on the iconic mark alone.
+   */
+	@container (max-width: 208px) {
+		.dc-logo__text {
+			opacity: 0;
+		}
+	}
+
+	/* Fallback for environments without container queries */
+	@media (max-width: 48px) {
+		.dc-logo__text {
+			opacity: 0;
+		}
 	}
 </style>
