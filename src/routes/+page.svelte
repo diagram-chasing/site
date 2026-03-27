@@ -2,11 +2,11 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
-	import { SiGithub } from '@icons-pack/svelte-simple-icons';
-	import * as Table from '$lib/components/ui/table/index.js';
 	import type { PageData } from './$types';
 	import Logo from '$lib/components/Logo.svelte';
 	import PageDiagram from '$lib/components/PageDiagram.svelte';
+	import Image from '$lib/components/ui/Image.svelte';
+
 	let { data }: { data: PageData } = $props();
 
 	const logoFiles = import.meta.glob('$lib/assets/logos/*.png', {
@@ -16,20 +16,6 @@
 	});
 
 	const { posts, news } = data;
-
-	// Group news by source, preserving order of first appearance
-	const newsGrouped = news.reduce(
-		(acc, item) => {
-			const existing = acc.find((g) => g.source === item.source);
-			if (existing) {
-				existing.items.push(item);
-			} else {
-				acc.push({ source: item.source, items: [item] });
-			}
-			return acc;
-		},
-		[] as { source: string; items: typeof news }[]
-	);
 
 	// Helper to find the right logo based on the URL
 	function getLogo(url: string) {
@@ -44,7 +30,62 @@
 
 	const featuredPost = $derived(posts[0]);
 	const remainingPosts = $derived(posts.slice(1));
+
+	// Inline thumbnail cycling — gallery images only (excludes main thumbnail)
+	const storyImages = $derived(
+		posts
+			.filter((p) => p.type === 'stories' || p.type === 'article')
+			.flatMap((p) => p.gallery ?? [])
+			.filter(Boolean)
+	);
+	const toolImages = $derived(
+		posts
+			.filter((p) => p.type === 'interactive')
+			.flatMap((p) => p.gallery ?? [])
+			.filter(Boolean)
+	);
+
+	// Two separate ticks, staggered by half a cycle
+	let storyTick = $state(0);
+	let toolTick = $state(0);
+	const storyIdx = $derived(storyImages.length > 0 ? storyTick % storyImages.length : 0);
+	const toolIdx = $derived(toolImages.length > 0 ? toolTick % toolImages.length : 0);
+
+	$effect(() => {
+		const t1 = setInterval(() => {
+			storyTick++;
+		}, 2500);
+		let t2: ReturnType<typeof setInterval>;
+		const offset = setTimeout(() => {
+			t2 = setInterval(() => {
+				toolTick++;
+			}, 2500);
+		}, 1250);
+		return () => {
+			clearInterval(t1);
+			clearInterval(t2);
+			clearTimeout(offset);
+		};
+	});
 </script>
+
+{#snippet inlineThumb(images: any[], idx: number)}
+	{#if images.length > 0}
+		<span
+			class="relative mx-1 inline-block h-[40px] w-[90px] shrink-0 overflow-hidden rounded border border-border align-middle sm:h-[52px] sm:w-[108px]"
+			aria-hidden="true"
+		>
+			{#each images as img, i (i)}
+				<span
+					class="absolute inset-0 transition-opacity duration-700"
+					style:opacity={i === idx ? 1 : 0}
+				>
+					<Image src={img} alt="" class="h-full w-full object-cover" loading="lazy" />
+				</span>
+			{/each}
+		</span>
+	{/if}
+{/snippet}
 
 <SEO
 	title="Diagram Chasing"
@@ -67,20 +108,21 @@
 		<div data-diagram-header class="flex flex-col gap-2">
 			<p
 				class="m-0 mx-auto w-fit font-serif text-[34px] leading-none
-						 font-bold tracking-tight sm:mx-0 sm:text-[50px]
-						 lg:text-[54px]"
+					 font-bold tracking-tight sm:mx-0 sm:text-[50px]
+					 lg:text-[54px]"
 			>
 				Diagram Chasing
 			</p>
 			<p
-				class="text-center text-xl leading-[1.3] -tracking-wide text-balance sm:w-2/3
-						  sm:text-left sm:text-[22px] sm:leading-[1.4]
-						  lg:text-[28px]"
+				class="mx-auto max-w-[450px] pl-6 text-xl leading-[2] -tracking-wide sm:mx-0 sm:w-2/3 sm:max-w-none sm:pl-0
+					  sm:text-[22px] sm:leading-[1.6]
+					  lg:text-[28px]"
 			>
 				Data-driven <span class="font-bold underline underline-offset-[0.12em]">visual stories</span
-				>
+				>{@render inlineThumb(storyImages, storyIdx)}
 				and
-				<span class="font-bold underline underline-offset-[0.12em]">tools</span>, with
+				<span class="font-bold underline underline-offset-[0.12em]">tools</span
+				>{@render inlineThumb(toolImages, toolIdx)}, with
 				<span class="font-bold underline underline-offset-[0.12em]">datasets</span>
 				of public interest
 			</p>
@@ -97,7 +139,7 @@
 		<!-- Rest of the grid -->
 		{#if remainingPosts.length > 0}
 			<div class="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2">
-				{#each remainingPosts as post}
+				{#each remainingPosts as post (post.slug)}
 					<div data-diagram-node>
 						<ProjectCard {post} />
 					</div>
@@ -105,78 +147,31 @@
 			</div>
 		{/if}
 
-		<!-- news & Talks -->
+		<!-- As seen in — logo wall -->
 		{#if news.length > 0}
+			{@const seenSources = [...new Map(news.map((n) => [n.source, n])).values()]}
 			<section class="mt-16">
-				<h2 class="my-4 text-center font-serif text-2xl font-bold uppercase">As seen in</h2>
-				<Table.Root class="overflow-clip">
-					<Table.Header class="hidden">
-						<Table.Row class="m-0 h-0 border-none p-0 hover:bg-transparent">
-							<Table.Head class="text-xs tracking-wide uppercase"></Table.Head>
-							<Table.Head class="w-full text-xs tracking-wide uppercase"></Table.Head>
-							<Table.Head></Table.Head>
-						</Table.Row>
-					</Table.Header>
-					<Table.Body>
-						{#each newsGrouped as group}
-							{#each group.items as item, i}
-								<Table.Row
-									class="group relative border-b-border/30 hover:bg-transparent max-sm:block max-sm:border-b max-sm:py-2"
-								>
-									<Table.Cell class="py-1 pl-0 max-sm:p-0">
-										{#if i === 0}
-											<div class="flex items-center gap-2">
-												<div
-													class="flex size-7 shrink-0 items-center justify-center overflow-hidden rounded bg-white p-px"
-												>
-													{#if getLogo(item.url)}
-														<img
-															src={getLogo(item.url)}
-															alt=""
-															class="h-full w-full object-contain transition-all group-hover:grayscale-0"
-														/>
-													{:else}
-														<span class="text-[9px] font-bold text-muted-foreground/40">
-															{item.source?.charAt(0)}
-														</span>
-													{/if}
-												</div>
-												<span class="font-serif text-sm leading-tight font-bold">
-													{item.source}
-												</span>
-											</div>
-										{:else}
-											<div class="size-7 shrink-0" aria-hidden="true"></div>
-										{/if}
-									</Table.Cell>
-
-									<Table.Cell
-										class="w-full py-1 text-sm leading-snug whitespace-normal text-muted-foreground underline-offset-4 transition-colors group-hover:text-foreground group-hover:underline max-sm:mt-1 max-sm:block max-sm:p-0"
-									>
-										<a
-											href={item.url}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="no-underline outline-none after:absolute after:inset-0"
-										>
-											{item.title}
-										</a>
-									</Table.Cell>
-
-									<Table.Cell class="py-1 pr-0 text-right max-sm:hidden">
-										<ArrowUpRight
-											size={12}
-											class="ml-auto text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-										/>
-									</Table.Cell>
-								</Table.Row>
-							{/each}
+				<h2 class="mb-5 text-center font-serif text-xl font-bold uppercase">As seen in</h2>
+				<a href="/about" class="no-underline">
+					<div class="flex flex-wrap items-center justify-center gap-3">
+						{#each seenSources as item (item.source)}
+							{@const logo = getLogo(item.url)}
+							<div
+								class="flex h-20 w-auto max-w-30 items-center justify-center overflow-hidden rounded bg-white p-1.5 opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+								title={item.source}
+							>
+								{#if logo}
+									<img src={logo} alt={item.source} class="h-full w-full object-contain" />
+								{:else}
+									<span class="text-[10px] font-bold text-muted-foreground">{item.source}</span>
+								{/if}
+							</div>
 						{/each}
-					</Table.Body>
-				</Table.Root>
+					</div>
+				</a>
 			</section>
 		{/if}
-		<div class="mt-16 overflow-hidden border border-border">
+		<div class="mt-8 overflow-hidden border border-border">
 			<a
 				href="/support"
 				class="group relative flex items-center justify-between gap-1 bg-foreground/5 p-5 no-underline"
@@ -184,8 +179,8 @@
 				<div>
 					<p
 						class="text-center text-xl leading-[1.3] -tracking-wide text-balance
-									sm:text-left sm:text-[22px] sm:leading-[1.4]
-									lg:text-[20px]"
+								sm:text-left sm:text-[22px] sm:leading-[1.4]
+								lg:text-[20px]"
 					>
 						We are an independent publication <span
 							class="font-bold underline underline-offset-[0.12em]"
@@ -195,7 +190,7 @@
 					</p>
 				</div>
 				<div
-					class="flex w-fit items-center gap-2 border border-transparent bg-card-foreground p-2 text-sm text-background transition-colors group-hover:border-border group-hover:bg-white group-hover:text-card-foreground"
+					class="flex w-fit items-center gap-2 border border-transparent bg-card-foreground p-2 text-sm text-background transition-colors"
 				>
 					<span>Support our work</span>
 					<ArrowUpRight
@@ -207,4 +202,3 @@
 		</div>
 	</div>
 </div>
-<!-- end pageContainer -->

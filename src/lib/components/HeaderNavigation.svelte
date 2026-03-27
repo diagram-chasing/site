@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import Logo from './Logo.svelte';
 	import Menu from '@lucide/svelte/icons/menu';
 	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
 
 	interface Props {
 		class?: string;
@@ -17,8 +19,15 @@
 		sheetOpen = false;
 	});
 
-	const links = [
-		{ href: '/', label: 'Work' },
+	const primaryLinks = [
+		{ href: '/', label: 'Home' },
+		{ href: '/about', label: 'About' },
+		{ href: '/support', label: 'Support' }
+	];
+
+	const allLinks = [
+		{ href: '/', label: 'Home' },
+		{ href: '/about', label: 'About' },
 		{ href: '/authors', label: 'Authors' },
 		{ href: '/support', label: 'Support' },
 		{ href: '/community', label: 'Community' }
@@ -49,17 +58,10 @@
 				</div>
 			</div>
 
-			<!-- Mobile: Sheet trigger -->
 			<Sheet.Root bind:open={sheetOpen}>
-				<Sheet.Trigger
-					class="flex size-10 items-center justify-center text-foreground transition-transform active:scale-95 md:hidden"
-					aria-label="Open menu"
-				>
-					<Menu size={22} />
-				</Sheet.Trigger>
-				<Sheet.Content side="right" class=" px-6" preventScroll={false}>
+				<Sheet.Content side="right" class="px-6" preventScroll={false}>
 					<nav class="flex flex-col pt-6">
-						{#each links as link}
+						{#each allLinks as link}
 							<a
 								href={link.href}
 								class="border-b border-border py-4 text-sm font-bold tracking-wide uppercase no-underline transition-colors active:opacity-60
@@ -72,22 +74,48 @@
 						{/each}
 					</nav>
 				</Sheet.Content>
-			</Sheet.Root>
 
-			<!-- Desktop nav -->
-			<nav class="hidden items-center gap-6 md:flex">
-				{#each links as link}
-					<a
-						href={link.href}
-						class="text-sm font-bold tracking-wide uppercase no-underline transition-colors active:opacity-60
-							{isActive(link.href, $page.url.pathname)
-							? 'text-foreground underline underline-offset-4'
-							: 'text-muted-foreground hover:text-foreground'}"
-					>
-						{link.label}
-					</a>
-				{/each}
-			</nav>
+				<!-- Mobile: menu icon trigger -->
+				<Sheet.Trigger
+					class="flex size-10 items-center justify-center text-foreground transition-transform active:scale-95 md:hidden"
+					aria-label="Open menu"
+				>
+					<Menu size={22} />
+				</Sheet.Trigger>
+
+				<!-- Desktop nav -->
+				<nav class="hidden items-center gap-6 md:flex">
+					{#each primaryLinks as link}
+						<a
+							href={link.href}
+							class="text-sm font-bold tracking-wide uppercase no-underline transition-colors active:opacity-60
+								{isActive(link.href, $page.url.pathname)
+								? 'text-foreground underline underline-offset-4'
+								: 'text-muted-foreground hover:text-foreground'}"
+						>
+							{link.label}
+						</a>
+					{/each}
+					<DropdownMenu.Root>
+						<DropdownMenu.Trigger
+							class="flex size-8 items-center justify-center text-muted-foreground transition-colors hover:text-foreground active:scale-95"
+							aria-label="More pages"
+						>
+							<Menu size={18} />
+						</DropdownMenu.Trigger>
+						<DropdownMenu.Content align="end" class="w-40">
+							{#each allLinks.filter((l) => !primaryLinks.some((p) => p.href === l.href)) as link}
+								<DropdownMenu.Item
+									onSelect={() => goto(link.href)}
+									class={isActive(link.href, $page.url.pathname) ? 'font-bold' : ''}
+								>
+									{link.label}
+								</DropdownMenu.Item>
+							{/each}
+						</DropdownMenu.Content>
+					</DropdownMenu.Root>
+				</nav>
+			</Sheet.Root>
 		</div>
 	</div>
 </header>

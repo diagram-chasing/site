@@ -24,11 +24,11 @@
 	keywords="data journalism, collaboration, diagram chasing, join community"
 />
 
-<div class="mx-auto max-w-3xl px-4 py-12">
-	<div class="mb-10">
-		<h1 class="font-serif" style="font-size: var(--text-display);">Community</h1>
-		<p class="mt-3 text-lg text-muted-foreground">
-			Collaborate with us on data journalism and visualization projects.
+<div class="mx-auto max-w-5xl px-4 py-12">
+	<div class="mb-12">
+		<h1 class="font-serif text-display leading-none font-bold tracking-tight">Community</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+			Collaborate with us on data journalism and visualization projects
 		</p>
 	</div>
 

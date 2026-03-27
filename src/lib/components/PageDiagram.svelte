@@ -101,49 +101,6 @@
 			});
 		};
 
-		const firstRow = rows[0];
-		const fBot = bottom(featured);
-		const fCx = cx(featured);
-		const topGutter = Math.round(fBot + (top(firstRow[0]) - fBot) / 2);
-
-		firstRow.forEach((card) => {
-			const gcx = cx(card),
-				gTop = top(card);
-			if (Math.abs(fCx - gcx) < 6) {
-				route(`M${gcx},${fBot} V${gTop}`, [gcx, topGutter]);
-			} else {
-				route(`M${fCx},${fBot} V${topGutter} H${gcx} V${gTop}`, [fCx, topGutter], [gcx, topGutter]);
-			}
-		});
-
-		rows.forEach((row, ri) => {
-			for (let i = 0; i < row.length - 1; i++) {
-				const A = row[i],
-					B = row[i + 1];
-				const ay = cy(A),
-					by = cy(B),
-					ax = right(A),
-					bx = left(B);
-				const gx = Math.round((ax + bx) / 2);
-				if (Math.abs(ay - by) < 4) route(`M${ax},${ay} H${bx}`, [gx, ay]);
-				else route(`M${ax},${ay} H${gx} V${by} H${bx}`, [gx, ay], [gx, by]);
-			}
-			const nextRow = rows[ri + 1];
-			if (nextRow) {
-				const maxBot = Math.max(...row.map(bottom));
-				const minTop = Math.min(...nextRow.map(top));
-				const gy = Math.round(maxBot + (minTop - maxBot) / 2);
-				for (let i = 0; i < Math.min(row.length, nextRow.length); i++) {
-					const ax = cx(row[i]),
-						bx = cx(nextRow[i]);
-					const aBot = bottom(row[i]),
-						bTop = top(nextRow[i]);
-					if (Math.abs(ax - bx) < 4) route(`M${ax},${aBot} V${bTop}`, [ax, gy]);
-					else route(`M${ax},${aBot} V${gy} H${bx} V${bTop}`, [ax, gy], [bx, gy]);
-				}
-			}
-		});
-
 		const MARGIN = 140;
 		const fMidY = cy(featured);
 		const lX = left(featured) - MARGIN;

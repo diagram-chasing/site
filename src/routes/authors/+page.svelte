@@ -27,10 +27,10 @@
 />
 
 <div class="mx-auto max-w-5xl px-4 py-12">
-	<div class="mb-10">
-		<h1 class="font-serif" style="font-size: var(--text-display);">Authors</h1>
-		<p class="mt-3 max-w-2xl text-lg text-muted-foreground">
-			People who have contributed to Diagram Chasing.
+	<div class="mb-12">
+		<h1 class="font-serif text-display font-bold leading-none tracking-tight">Authors</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+			People who have contributed to Diagram Chasing
 		</p>
 	</div>
 
@@ -38,17 +38,17 @@
 		{#each authors as author}
 			<a
 				href="/authors/{author.slug}"
-				class="group flex items-start justify-between gap-6 py-8 no-underline first:pt-0"
+				class="group flex items-start justify-between gap-6 py-8 no-underline transition-opacity first:pt-0 active:opacity-70"
 			>
 				<div class="max-w-xl">
 					<h2
-						class="font-serif text-xl font-bold text-foreground transition-colors group-hover:text-primary md:text-2xl"
+						class="font-serif text-xl font-bold text-foreground group-hover:underline group-hover:underline-offset-[0.12em] md:text-2xl"
 					>
 						{author.name}
 					</h2>
 
 					{#if author.description}
-						<p class="mt-2 leading-relaxed text-muted-foreground">
+						<p class="mt-2 text-base leading-relaxed">
 							{author.description}
 						</p>
 					{/if}

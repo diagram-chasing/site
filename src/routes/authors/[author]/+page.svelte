@@ -35,9 +35,9 @@
 <div class="mx-auto max-w-5xl px-4 py-12">
 	<!-- Author header -->
 	<div class="mb-10">
-		<h1 class="font-serif" style="font-size: var(--text-display);">{author.name}</h1>
+		<h1 class="font-serif text-display font-bold leading-none tracking-tight">{author.name}</h1>
 
-		<p class="mt-3 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+		<p class="mt-3 max-w-2xl text-lg leading-relaxed">
 			{author.description}
 		</p>
 
@@ -74,6 +74,6 @@
 			</div>
 		</div>
 	{:else}
-		<p class="text-muted-foreground">No projects yet.</p>
+		<p>No projects yet.</p>
 	{/if}
 </div>

@@ -14,16 +14,17 @@
 <div class="mx-auto max-w-5xl px-4 py-12">
 	<!-- Heading + narrative -->
 	<div class="mb-12 max-w-2xl">
-		<h1 class="font-serif" style="font-size: var(--text-display);">Support</h1>
-
-		<div class="mt-6 space-y-4 text-lg leading-relaxed text-muted-foreground">
+		<h1 class="font-serif text-display leading-none font-bold tracking-tight">Support</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+			We're are independently produced and reader-supported
+		</p>
+		<div class="page-prose mt-6">
 			<p>
-				Diagram Chasing creates data-driven stories, interactive tools, and open datasets of
-				public interest. As of September 2025, we've been building and sharing this work for one
-				year.
+				Diagram Chasing creates data-driven stories, interactive tools, and open datasets of public
+				interest.
 			</p>
-			<p class="text-foreground">
-				In that time, we've
+			<p>
+				In a short span of time, we've
 				<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2024/votes-in-a-name"
 					>uncovered electoral confusion caused by namesake candidates</a
 				>,
@@ -33,8 +34,8 @@
 				<a target="_blank" rel="noopener" href="https://diagramchasing.fun/2025/time-use-explorer"
 					>India's 10-million-row Time Use Survey searchable in any browser</a
 				>. Our project, CBFC Watch, is the largest analyzable dataset of
-				<a target="_blank" rel="noopener" href="https://cbfc.watch">film censorship in India</a
-				>. All our code, data, and methods are published on
+				<a target="_blank" rel="noopener" href="https://cbfc.watch">film censorship in India</a>.
+				All our code, data, and methods are published on
 				<a target="_blank" rel="noopener" href="https://github.com/diagram-chasing">GitHub</a> under
 				open licenses.
 			</p>
@@ -49,8 +50,7 @@
 
 	<!-- Donate CTA -->
 	<div class="mb-16 max-w-sm border border-border p-6">
-		<h2 class="font-serif text-lg font-bold">Support our work</h2>
-		<p class="mt-2 text-sm text-muted-foreground">UPI and all major cards via Razorpay.</p>
+		<h2 class="font-serif text-xl font-bold">Donate to help us create more work</h2>
 		<form class="mt-4">
 			<script
 				src="https://checkout.razorpay.com/v1/payment-button.js"
@@ -63,21 +63,14 @@
 
 	<!-- Friends -->
 	<div>
-		<h2 class="font-serif text-lg font-bold">Friends of Diagram Chasing</h2>
-		<p class="mt-2 mb-6 max-w-2xl text-sm text-muted-foreground">
+		<h2 class="font-serif text-3xl font-bold">Friends of Diagram Chasing</h2>
+		<p class="mt-2 mb-6 max-w-2xl">
 			We're grateful to these people who support independent data journalism in India.
 		</p>
-		<div class="flex flex-wrap gap-2">
+		<div class="flex w-fit flex-col flex-wrap gap-1 space-y-1 divide-y divide-border">
 			{#each friends as friend}
-				<span class="rounded-full border border-border px-3 py-1 text-sm text-foreground">{friend}</span>
+				<span class="pb-1 text-sm text-foreground">{friend}</span>
 			{/each}
 		</div>
 	</div>
 </div>
-
-<style>
-	a {
-		text-decoration: underline;
-		text-underline-offset: 3px;
-	}
-</style>

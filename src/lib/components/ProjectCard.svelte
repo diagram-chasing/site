@@ -50,7 +50,7 @@
 			>
 				{post.title}
 			</h2>
-			<p class="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base md:text-lg">
+			<p class="mt-3 text-sm leading-relaxed sm:text-base md:text-lg">
 				{post.description}
 			</p>
 		</div>
@@ -81,7 +81,7 @@
 			>
 				{post.title}
 			</h2>
-			<p class="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+			<p class="mt-1.5 text-sm leading-relaxed">
 				{post.description}
 			</p>
 		</div>

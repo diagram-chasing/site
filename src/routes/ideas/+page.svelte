@@ -55,9 +55,9 @@
 />
 
 <div class="mx-auto max-w-5xl px-4 py-12">
-	<div class="mb-10 flex max-w-2xl flex-col gap-2">
-		<h1 class="font-serif text-3xl font-bold">Ideas</h1>
-		<p class="text-muted-foreground">
+	<div class="mb-12">
+		<h1 class="font-serif text-display font-bold leading-none tracking-tight">Ideas</h1>
+		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
 			A running backlog of things we'd like to build — data stories, tools, games.
 		</p>
 	</div>
@@ -104,7 +104,7 @@
 							<p class="font-serif text-base font-bold leading-snug">{idea.pitch}</p>
 						</div>
 						{#if idea.description}
-							<p class="mt-1 text-sm leading-relaxed text-muted-foreground">{idea.description}</p>
+							<p class="mt-1 text-sm leading-relaxed">{idea.description}</p>
 						{/if}
 						{#if tokens.length}
 							<p class="mt-1.5 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-muted-foreground/70">
