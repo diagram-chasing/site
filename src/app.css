@@ -308,9 +308,15 @@
 
 body {
   letter-spacing: var(--tracking-normal);
+  /* type-antialiased-on-retina */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* type-no-font-synthesis */
+  font-synthesis: none;
+  /* type-opentype-contextual-alternates */
+  font-feature-settings: "calt" 1;
+  text-rendering: optimizeLegibility;
 }
-
-
 
 .font-serif {
   font-family: 'Cartridge', sans-serif;
@@ -323,5 +329,15 @@ body {
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* type-text-wrap-pretty: reduce orphans in body text */
+  p {
+    text-wrap: pretty;
+  }
+
+  /* type-text-wrap-balance-headings: even line lengths on headings */
+  h1, h2, h3, h4 {
+    text-wrap: balance;
   }
 }

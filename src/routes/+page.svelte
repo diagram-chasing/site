@@ -53,7 +53,7 @@
 />
 
 <div class="relative isolate">
-	<PageDiagram nodeTags={posts.map((p) => p.tags)} />
+	<PageDiagram />
 
 	<div
 		class="mx-auto mb-6 flex max-w-5xl flex-col items-center gap-4 px-4 sm:mt-0 sm:flex-row sm:items-center sm:gap-8 sm:px-0 sm:py-0"

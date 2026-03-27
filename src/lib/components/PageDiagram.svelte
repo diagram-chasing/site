@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	interface Props {
-		nodeTags?: string[][];
-	}
-	let { nodeTags = [] }: Props = $props();
+	// no props needed
 
 	let sentinel: HTMLElement | undefined;
 
@@ -20,7 +17,6 @@
 	let svgH = $state(0);
 	let relays: { x: number; y: number }[] = $state([]);
 	let edgePaths: string[] = $state([]);
-	let edgeLabels: { x: number; y: number; text: string; vertical: boolean }[] = $state([]);
 
 	let headerPath = $state('');
 	let headerRelays: { x: number; y: number }[] = $state([]);
@@ -61,38 +57,11 @@
 		const left = (r: Rect) => Math.round(r.x);
 		const right = (r: Rect) => Math.round(r.x + r.w);
 
-		const newLabels: { x: number; y: number; text: string; vertical: boolean }[] = [];
-
-		const pickTags = (tags: string[]) => tags.slice(0, 1).map((t) => t.toUpperCase());
-
-		const labelV = (x: number, y1: number, y2: number, tags: string[]) => {
-			const chosen = pickTags(tags);
-			if (!chosen.length) return;
-			newLabels.push({
-				x: x - 8,
-				y: Math.round((y1 + y2) / 2),
-				text: chosen.join(' · '),
-				vertical: true
-			});
-		};
-
-		const labelH = (x1: number, x2: number, y: number, tags: string[]) => {
-			const chosen = pickTags(tags);
-			if (!chosen.length) return;
-			newLabels.push({
-				x: Math.round((x1 + x2) / 2),
-				y: y - 7,
-				text: chosen.join(' · '),
-				vertical: false
-			});
-		};
-
 		// --- Header path ---
 		if (headerRect && featured) {
 			const hRight = right(headerRect);
 			const fRight = right(featured);
 			const fTop = top(featured);
-			const featuredTags = featured.idx != null ? (nodeTags[featured.idx] ?? []) : [];
 
 			headerRelays = [];
 
@@ -103,13 +72,11 @@
 
 				headerPath = `M${startX - startX * 0.25},${startY} H${vx} V${fTop}`;
 				headerRelays.push({ x: vx, y: startY });
-				labelV(vx, startY, fTop, featuredTags);
 			} else {
 				const startX = cx(headerRect);
 				const startY = bottom(headerRect) + 16;
 
 				headerPath = `M${startX},${startY} V${fTop}`;
-				labelV(startX, startY, fTop, featuredTags);
 			}
 		} else {
 			headerPath = '';
@@ -183,32 +150,27 @@
 		const rX = right(featured) + MARGIN;
 		const lastRow = rows[rows.length - 1];
 
-		// --- Left spine + branch labels ---
+		// --- Left spine ---
 		if (lX > 8) {
 			route(`M${left(featured)},${fMidY} H${lX} V${cy(lastRow[0])}`, [lX, fMidY]);
 			rows.forEach((r) => {
 				const card = r[0];
 				route(`M${lX},${cy(card)} H${left(card)}`, [lX, cy(card)]);
-				const tags = card.idx != null ? (nodeTags[card.idx] ?? []) : [];
-				labelH(lX, left(card), cy(card), tags);
 			});
 		}
 
-		// --- Right spine + branch labels ---
+		// --- Right spine ---
 		if (rX < svgW - 8) {
 			const lastCard = lastRow[lastRow.length - 1];
 			route(`M${right(featured)},${fMidY} H${rX} V${cy(lastCard)}`, [rX, fMidY]);
 			rows.forEach((r) => {
 				const c = r[r.length - 1];
 				route(`M${right(c)},${cy(c)} H${rX}`, [rX, cy(c)]);
-				const tags = c.idx != null ? (nodeTags[c.idx] ?? []) : [];
-				labelH(right(c), rX, cy(c), tags);
 			});
 		}
 
 		relays = newRelays;
 		edgePaths = newPaths;
-		edgeLabels = newLabels;
 	}
 
 	onMount(() => {
@@ -247,23 +209,7 @@
 			/>
 		{/each}
 
-		{#each edgeLabels as lbl}
-			{@const tw = lbl.vertical ? 11 : lbl.text.length * 5 + 10}
-			{@const th = lbl.vertical ? lbl.text.length * 7 + 4 : 11}
-			<rect x={lbl.x - tw / 2} y={lbl.y - th / 2} width={tw} height={th} fill="white" rx="1" />
-			<text
-				x={lbl.x}
-				y={lbl.y}
-				style={lbl.vertical ? 'writing-mode: vertical-lr;' : ''}
-				font-size="10"
-				letter-spacing="0.6"
-				fill="var(--color-base-500)"
-				text-anchor="middle"
-				dominant-baseline="middle">{lbl.text}</text
-			>
-		{/each}
-
-		{#if headerPath}
+{#if headerPath}
 			<path
 				d={headerPath}
 				stroke="var(--color-base-300)"

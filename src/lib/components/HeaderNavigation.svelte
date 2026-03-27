@@ -52,7 +52,7 @@
 			<!-- Mobile: Sheet trigger -->
 			<Sheet.Root bind:open={sheetOpen}>
 				<Sheet.Trigger
-					class="flex items-center justify-center text-foreground md:hidden"
+					class="flex size-10 items-center justify-center text-foreground transition-transform active:scale-95 md:hidden"
 					aria-label="Open menu"
 				>
 					<Menu size={22} />
@@ -62,7 +62,7 @@
 						{#each links as link}
 							<a
 								href={link.href}
-								class="border-b border-border py-4 text-sm font-bold tracking-wide uppercase no-underline transition-colors
+								class="border-b border-border py-4 text-sm font-bold tracking-wide uppercase no-underline transition-colors active:opacity-60
 									{isActive(link.href, $page.url.pathname)
 									? 'text-foreground'
 									: 'text-muted-foreground hover:text-foreground'}"
@@ -79,7 +79,7 @@
 				{#each links as link}
 					<a
 						href={link.href}
-						class="text-sm font-bold tracking-wide uppercase no-underline transition-colors
+						class="text-sm font-bold tracking-wide uppercase no-underline transition-colors active:opacity-60
 							{isActive(link.href, $page.url.pathname)
 							? 'text-foreground underline underline-offset-4'
 							: 'text-muted-foreground hover:text-foreground'}"
