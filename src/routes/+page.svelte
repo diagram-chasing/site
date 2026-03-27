@@ -115,7 +115,7 @@
 			</p>
 			<p
 				class="mx-auto max-w-[450px] leading-8 -tracking-wide sm:mx-0 sm:max-w-none sm:pl-0 sm:text-left md:max-w-[600px]"
-				style="font-size: clamp(1.35rem, 1.5vw + 0.6rem, 1.75rem);  text-wrap: balance;"
+				style="font-size: clamp(1.35rem, 1.5vw + 0.6rem, 1.75rem);"
 			>
 				<span class="font-bold underline underline-offset-[0.12em]">Visual stories</span
 				>{@render inlineThumb(storyImages, storyIdx)}<br class="sm:hidden" />and
