@@ -1,6 +1,11 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import { SiGithub as GithubIcon, SiX as TwitterIcon, SiInstagram as InstagramIcon } from '@icons-pack/svelte-simple-icons';
+	import Image from '$lib/components/ui/Image.svelte';
+	import {
+		SiGithub as GithubIcon,
+		SiX as TwitterIcon,
+		SiInstagram as InstagramIcon
+	} from '@icons-pack/svelte-simple-icons';
 	import GlobeIcon from '@lucide/svelte/icons/globe';
 	import MailIcon from '@lucide/svelte/icons/mail';
 	import AtSignIcon from '@lucide/svelte/icons/at-sign';
@@ -8,7 +13,7 @@
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-	const { authors } = data;
+	const { authors, imagesByAuthor } = data;
 
 	const socialIcons = {
 		github: GithubIcon,
@@ -28,7 +33,7 @@
 
 <div class="mx-auto max-w-5xl px-4 py-12">
 	<div class="mb-12">
-		<h1 class="font-serif text-display font-bold leading-none tracking-tight">Authors</h1>
+		<h1 class="font-serif text-display leading-none font-bold tracking-tight">Authors</h1>
 		<p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
 			People who have contributed to Diagram Chasing
 		</p>
@@ -36,6 +41,7 @@
 
 	<div class="divide-y divide-border">
 		{#each authors as author}
+			{@const images = imagesByAuthor[author.slug] ?? []}
 			<a
 				href="/authors/{author.slug}"
 				class="group flex items-start justify-between gap-6 py-8 no-underline transition-opacity first:pt-0 active:opacity-70"
@@ -63,6 +69,20 @@
 							{/each}
 						</div>
 					{/if}
+
+					<!-- {#if images.length > 0}
+						<div class="mt-3 flex gap-1.5">
+							{#each images.slice(0, 5) as img}
+								<span
+									class="inline-block shrink-0 overflow-hidden rounded border border-border"
+									style="height: 1.8em; width: 3.8em;"
+									aria-hidden="true"
+								>
+									<Image src={img} alt="" class="h-full w-full object-cover" loading="lazy" />
+								</span>
+							{/each}
+						</div>
+					{/if} -->
 				</div>
 
 				<ArrowRight

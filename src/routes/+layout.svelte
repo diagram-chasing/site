@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import HeaderNavigation from '$lib/components/HeaderNavigation.svelte';
+	import HeaderNavigation from '$lib/components/Navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	let { children } = $props();

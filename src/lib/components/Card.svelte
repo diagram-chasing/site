@@ -27,7 +27,9 @@
 		{...post.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
 	>
 		<!-- Image -->
-		<div class="aspect-[16/9] overflow-hidden border bg-base-50 sm:aspect-[16/8]">
+		<div
+			class="aspect-[16/9] overflow-hidden border border-foreground/50 bg-base-50 sm:aspect-[16/8]"
+		>
 			<Image
 				src={post.image}
 				alt={post.title}
@@ -40,15 +42,13 @@
 
 		<!-- Text block breaking out upward, sticker on top-right corner -->
 		<div
-			class="relative mx-0 mt-0 border border-border bg-background p-5 sm:mx-8 sm:-mt-14 sm:p-8 md:mx-12 md:-mt-20 md:p-10"
+			class="relative mx-0 mt-0 border border-foreground/50 bg-background p-5 sm:mx-8 sm:-mt-14 sm:p-8 md:mx-12 md:-mt-20 md:p-10"
 		>
-			<span
-				class="text-xs font-medium tracking-widest text-muted-foreground uppercase tabular-nums"
-			>
+			<span class="text-xs font-medium tracking-widest text-foreground uppercase tabular-nums">
 				{year}
 			</span>
 			<h2
-				class="mt-2 font-serif text-2xl leading-tight font-bold text-foreground underline-offset-4 transition-colors group-hover:underline sm:text-3xl md:text-4xl"
+				class="font-serif text-2xl leading-tight font-bold text-foreground underline-offset-4 transition-colors group-hover:underline sm:text-3xl md:text-4xl"
 			>
 				{post.title}
 			</h2>
