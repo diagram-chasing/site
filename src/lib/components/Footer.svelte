@@ -23,7 +23,6 @@
 			class="inline-flex flex-col items-center gap-2 text-foreground no-underline"
 		>
 			<Logo size={100} />
-			<!-- <span class="font-serimakf text-xl font-bold tracking-tight">Diagram Chasing</span> -->
 		</a>
 	</div>
 
