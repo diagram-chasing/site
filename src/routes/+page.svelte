@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import ProjectCard from '$lib/components/Card.svelte';
 	import SEO from '$lib/components/SEO.svelte';
 	import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
 	import type { PageData } from './$types';
@@ -136,7 +136,7 @@
 
 		<!-- Rest of the grid -->
 		{#if remainingPosts.length > 0}
-			<div class="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2">
+			<div class="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 [&>div:last-child:nth-child(odd)]:sm:col-span-2 [&>div:last-child:nth-child(odd)]:sm:mx-auto [&>div:last-child:nth-child(odd)]:sm:w-1/2">
 				{#each remainingPosts as post (post.slug)}
 					<div data-diagram-node>
 						<ProjectCard {post} />

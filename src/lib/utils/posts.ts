@@ -118,7 +118,7 @@ class PostsAPI {
             const slug = path.split('/').pop()?.replace('.md', '') || '';
             const author = await this.loadAuthor(slug);
             if (author) {
-                authors.push({ ...author, slug });
+                authors.push({ ...author, slug: author.slug || slug });
             }
         }
 
