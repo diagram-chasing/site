@@ -1,6 +1,5 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
-	import Image from '$lib/components/ui/Image.svelte';
 	import {
 		SiGithub as GithubIcon,
 		SiX as TwitterIcon,
