@@ -4,7 +4,7 @@
 	const currentYear = new Date().getFullYear();
 
 	const pageLinks = [
-		{ name: 'Home', href: '/' },
+		{ name: 'Home', href: 'httpa://diagramchasing.fun' },
 		{ name: 'About', href: '/about' },
 		{ name: 'Authors', href: '/authors' },
 		{ name: 'Support', href: '/support' },

@@ -27,6 +27,7 @@ export interface Author {
         bluesky?: string;
         website?: string;
         instagram?: string;
+        linkedin?: string;
     };
 }
 
