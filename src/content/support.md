@@ -9,4 +9,6 @@ friends:
   - name: Arun Antony
   - name: Varini G
   - name: Dheeraj Rajaram Reddy
+  - name: Anand S
+  - name: Shibi Soundararajan
 ---
