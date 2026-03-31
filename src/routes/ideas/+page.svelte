@@ -71,8 +71,8 @@
 		</button>
 	</div>
 
-	<div class="table-wrap">
-	<Table.Root>
+	<div class="w-full">
+	<Table.Root class="table-fixed">
 		<Table.Header class="hidden">
 			<Table.Row class="m-0 h-0 border-none p-0 hover:bg-transparent">
 				<Table.Head></Table.Head>
@@ -131,8 +131,3 @@
 	</div>
 </div>
 
-<style>
-	.table-wrap :global([data-slot="table-container"]) {
-		overflow-x: visible;
-	}
-</style>

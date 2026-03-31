@@ -11,4 +11,5 @@ friends:
   - name: Dheeraj Rajaram Reddy
   - name: Anand S
   - name: Shibi Soundararajan
+  - name: Harsh Nisar
 ---
