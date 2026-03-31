@@ -51,17 +51,16 @@
 
 		<div class="page-prose mt-8">
 			<p>
-				Diagram Chasing was started by <a href="/authors/aman">Aman</a> and
-				<a href="/authors/vivek">Vivek</a> in 2024 because we had some time on our hands and wanted to
-				build the kind of data-driven stories and tools we wanted to see for ourselves. The name feels
-				apt: our process always starts with a question, an argument, a quip, a theory, or someone's passing
-				annoyance that we decide to 'chase' down with data and visuals.
+				<a href="/authors/aman">Aman</a> and <a href="/authors/vivek">Vivek</a> started Diagram Chasing
+				in 2024 to build the kind of data-driven stories and tools we wished existed for India and our
+				part of the world. The name is apt; everything we create begins with a question, an argument,
+				a passing theory, or a daily annoyance that we decide to 'chase' down using data and design.
 			</p>
 			<p>
-				We call it full-stack data journalism because every part of the process makes us feel alive.
-				From assembling new datasets and writing analysis pipelines to designing and developing the
-				final story or application. Transparency is important to us, so all our data and code is
-				released publicly under open licenses.
+				We practice full-stack data journalism because we genuinely love every step of the process,
+				from collecting datasets and writing analysis pipelines to designing the final interactive
+				experience or story. Because we believe in accessible knowledge and transparency, all our
+				data and code is released publicly under open licenses.
 			</p>
 		</div>
 
@@ -80,37 +79,35 @@
 				</figcaption>
 			</figure>
 			<p>
-				As far as we can tell, we're the only independent data publication of its kind in India. We
-				want to write stories about our part of the world. We want to understand issues like
-				elections, governance, cities, climate, economics, and bureaucracy that affects our lives.
-				These topics can often feel tedious on the surface, but just like listening to a friend talk
-				excitedly about their latest obsession, we like to think that you'll end up caring about
-				them, too.
+				We are proudly independent, and to our knowledge, the only data publication of its kind in
+				India. Our goal is to take often "boring" issues—like elections, climate, economics, and
+				bureaucracy—and make them undeniably cool through visual storytelling. These topics can
+				sometimes feel dry on paper, but we hope our work feels like listening to a friend excitedly
+				explain their latest obsession, and make you care about it too.
 			</p>
 			<p>
-				We are slow by design. Our projects develop over weeks and months, and that slowness is a
-				conscious choice. When we do put something out into the world, we want to be absolutely
-				certain about what we're saying, and we want you to feel the care that went into it. To help
-				us do this better, we regularly work alongside illustrators, animators, writers, and
-				talented human collaborators of all kinds.
+				We are also slow by design. Our projects unfold over weeks and months, ensuring that when we
+				finally publish, we are confident about what we produced. To bring these stories to life
+				with the care they deserve, we regularly collaborate with talented illustrators, animators,
+				writers, and creatives of all kinds.
 			</p>
 
 			<h2 id="funding" class="font-serif text-xl font-bold">Who funds us?</h2>
 			<p>
-				Short answer: mostly us. The money for research, server infrastructure, software tools, and
-				honorariums for our collaborators has usually come straight out of our own pockets. But our
-				long-term goal is to make Diagram Chasing a truly sustainable, independent publication. In
-				2025, we hit a milestone when <a href="/support">reader support</a> covered a real portion of
-				our running costs for the very first time. It's a model we hope to keep growing.
+				So far, it's been mostly us. We've funded the research, infrastructure, software tools, and
+				honorariums for our collaborators straight out of our own pockets. However, our dream is to
+				make Diagram Chasing a truly sustainable, community-backed publication. In 2025, we reached
+				a big milestone where for the very first time, <a href="/support">reader support</a> covered
+				a meaningful portion of our running costs. With your help, it's a model we hope to keep growing.
 			</p>
 
 			<h2 id="work-with-us" class="font-serif text-xl font-bold">Work with us</h2>
 			<p>
-				We love building things, and we love helping other people build things. We are always
-				looking to collaborate with fellow creatives on our projects, but we also take on
-				professional commissions. Whether you're a newsroom sitting on a massive, unwieldy dataset,
-				an organization that wants to create data stories or applications, or someone who needs
-				full-stack data nerds to bring an idea to life, we'd love to talk! <strong
+				We love building, and we love helping others do the same. While we're always eager to
+				collaborate with fellow creatives on our own stories, we also take on professional
+				commissions. Whether you're a newsroom sitting on an unwieldy dataset, an organization
+				looking to build data stories or applications, or simply someone who needs a team of
+				full-stack data nerds to bring an idea to life, we'd love to connect. <strong
 					>Shoot us an email at hello@diagramchasing.fun</strong
 				>.
 			</p>

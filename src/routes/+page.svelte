@@ -118,9 +118,9 @@
 				style="font-size: clamp(1.35rem, 1.5vw + 0.6rem, 1.75rem);"
 			>
 				<span class="font-bold underline underline-offset-[0.12em]">Visual stories</span
-				>{@render inlineThumb(storyImages, storyIdx)}<br class="sm:hidden" />and
+				>{@render inlineThumb(storyImages, storyIdx)}<br class="hidden sm:hidden" />and
 				<span class="font-bold underline underline-offset-[0.12em]">tools</span
-				>{@render inlineThumb(toolImages, toolIdx)} for <br class="sm:hidden" />
+				>{@render inlineThumb(toolImages, toolIdx)} <br class="hidden sm:inline" />that make
 				<span class="font-bold underline underline-offset-[0.12em]">public data</span>
 				worth looking at
 			</p>
@@ -136,7 +136,9 @@
 
 		<!-- Rest of the grid -->
 		{#if remainingPosts.length > 0}
-			<div class="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 [&>div:last-child:nth-child(odd)]:sm:col-span-2 [&>div:last-child:nth-child(odd)]:sm:mx-auto [&>div:last-child:nth-child(odd)]:sm:w-1/2">
+			<div
+				class="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 [&>div:last-child:nth-child(odd)]:sm:col-span-2 [&>div:last-child:nth-child(odd)]:sm:mx-auto [&>div:last-child:nth-child(odd)]:sm:w-1/2"
+			>
 				{#each remainingPosts as post (post.slug)}
 					<div data-diagram-node>
 						<ProjectCard {post} />
