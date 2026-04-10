@@ -54,7 +54,7 @@
           "guid": "rd-fund",
           "status": "active",
           "name": "Research & Development",
-          "description": "Funds independent R&D; new tools, datasets, API costs, and experimental formats that underpin our published work.",
+          "description": "Funds independent R&D; new tools, datasets, infrastructure costs, and experimental formats that underpin our published work.",
           "amount": 5000,
           "currency": "INR",
           "frequency": "monthly",
