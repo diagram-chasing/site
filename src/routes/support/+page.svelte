@@ -88,6 +88,9 @@
 			Donate via
 			<span class="h-4 w-auto [&>svg]:h-full [&>svg]:w-auto group-hover:[&_path]:fill-background group-hover:[&_polygon]:fill-background">{@html RazorpayLogo}</span>
 		</a>
+		<p class="mt-4 text-xs text-muted-foreground italic">
+			Note: These targets help us plan our budget, but you are welcome to contribute for a specific month or as a one-time support of any amount.
+		</p>
 
 		{#if funding.history && funding.history.length > 0}
 		<div class="mt-12">
