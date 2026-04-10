@@ -20,7 +20,8 @@
           "url": "https://diagramchasing.fun"
         },
         "repositoryUrl": {
-          "url": "https://github.com/diagram-chasing"
+            "url": "https://github.com/diagram-chasing",
+            "wellKnown": "https://raw.githubusercontent.com/diagram-chasing/site/refs/heads/main/.well-known/funding-manifest-urls"
         },
         "licenses": [
           "spdx:MIT"
