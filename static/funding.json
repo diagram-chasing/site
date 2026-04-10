@@ -6,7 +6,7 @@
         "role": "maintainer",
         "name": "Diagram Chasing",
         "email": "aman@diagramchasing.fun",
-        "description": "Diagram Chasing is an independent data journalism and visualisation collective based in India. We build interactive stories, maps, and explorables that make public data legible and meaningful — covering elections, urban infrastructure, climate, policy, and everyday Indian life.",
+        "description": "Diagram Chasing is an independent data journalism and visualisation collective based in India. We build interactive stories, maps, and explorables that make public data legible and meaningful, covering elections, urban infrastructure, climate, policy, and other topics from India.",
         "webpageUrl": {
             "url": "https://diagramchasing.fun"
         }
@@ -15,7 +15,7 @@
         {
             "guid": "diagram-chasing",
             "name": "Diagram Chasing",
-            "description": "An independent data journalism and visualisation studio. We produce open, interactive data stories on topics like elections, urban mobility, climate risk, and public health in India. All published work is freely accessible and our code is open source.",
+            "description": "An independent data journalism and visualisation studio. We produce open, interactive data stories on topics like cities, climate, censorship, government data and more from India. All published work is freely accessible and our code is open source.",
             "webpageUrl": {
                 "url": "https://diagramchasing.fun"
             },
@@ -23,16 +23,16 @@
                 "url": "https://github.com/diagram-chasing"
             },
             "licenses": ["spdx:MIT"],
-            "tags": ["data-visualisation", "journalism", "india", "open-data", "maps", "interactive", "civic-tech"]
+            "tags": ["data-visualisation", "journalism", "india", "data","open-data", "maps", "interactive", "civic-tech"]
         }
     ],
     "funding": {
         "channels": [
             {
-                "guid": "email-transfer",
-                "type": "bank",
-                "address": "",
-                "description": "Direct bank transfer (UPI / NEFT / IMPS). Please email aman@diagramchasing.fun to receive payment details."
+                "guid": "razorpay",
+                "type": "payment-provider",
+                "address": "https://razorpay.me/@diagramchasing",
+                "description": "Pay via Razorpay using UPI, debit/credit card, or net banking."
             }
         ],
         "plans": [
@@ -41,10 +41,10 @@
                 "status": "active",
                 "name": "Research & Development",
                 "description": "Funds independent R&D; new tools, datasets, and experimental formats that underpin our published work.",
-                "amount": 100000,
+                "amount": 12000,
                 "currency": "INR",
                 "frequency": "yearly",
-                "channels": ["email-transfer"]
+                "channels": ["razorpay"]
             },
             {
                 "guid": "commissioning-fund",
@@ -54,17 +54,17 @@
                 "amount": 80000,
                 "currency": "INR",
                 "frequency": "yearly",
-                "channels": ["email-transfer"]
+                "channels": ["razorpay"]
             },
             {
                 "guid": "events-fund",
                 "status": "active",
                 "name": "Events",
                 "description": "Covers costs for public events, workshops, and community gatherings around data, journalism, and civic technology.",
-                "amount": 20000,
+                "amount": 10000,
                 "currency": "INR",
                 "frequency": "yearly",
-                "channels": ["email-transfer"]
+                "channels": ["razorpay"]
             },
             {
                 "guid": "general-support",
@@ -74,7 +74,7 @@
                 "amount": 0,
                 "currency": "INR",
                 "frequency": "one-time",
-                "channels": ["email-transfer"]
+                "channels": ["razorpay"]
             }
         ]
     }
