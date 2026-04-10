@@ -22,6 +22,7 @@ class PostsAPI {
     private authorsCache: Author[] | null = null;
     private newsCache: newsItem[] | null = null;
     private supportFriendsCache: string[] | null = null;
+    private supportFundingCache: { url: string; plans: { name: string; amount: number; currency: string; frequency: string; description: string }[] } | null = null;
     private ideasCache: Idea[] | null = null;
 
     async loadPost(slug: string): Promise<Post | null> {
@@ -200,6 +201,31 @@ class PostsAPI {
         }
 
         return [];
+    }
+
+    async getSupportFunding(customFetch?: typeof fetch) {
+        if (this.supportFundingCache) return this.supportFundingCache;
+
+        const f = customFetch || fetch;
+        try {
+            const response = await f('/funding.json');
+            if (response.ok) {
+                const data = await response.json();
+                if (data?.funding) {
+                    const funding = {
+                        url: data.funding.channels?.[0]?.address || '',
+                        plans: data.funding.plans || [],
+                        history: data.funding.history || []
+                    };
+                    this.supportFundingCache = funding;
+                    return this.supportFundingCache;
+                }
+            }
+        } catch (error) {
+            console.error('Error loading support funding from JSON:', error);
+        }
+
+        return null;
     }
 
     async getIdeas(): Promise<Idea[]> {

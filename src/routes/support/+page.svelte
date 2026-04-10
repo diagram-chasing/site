@@ -1,8 +1,14 @@
 <script lang="ts">
 	import SEO from '$lib/components/SEO.svelte';
+	import RazorpayLogo from '$lib/assets/razorpay-logo.svg?raw';
 
 	let { data } = $props();
 	const friends = data.friends;
+	const funding = data.funding;
+
+	function formatAmount(amount: number, currency: string) {
+		return new Intl.NumberFormat('en-IN', { style: 'currency', currency, maximumFractionDigits: 0 }).format(amount);
+	}
 </script>
 
 <SEO
@@ -47,17 +53,62 @@
 	</div>
 
 	<!-- Donate CTA -->
-	<div class="mb-16 max-w-sm border border-border p-6">
-		<h2 class="font-serif text-xl font-bold">Donate to help us create more work</h2>
-		<form class="mt-4">
-			<script
-				src="https://checkout.razorpay.com/v1/payment-button.js"
-				data-payment_button_id="pl_QTZ3rX1jlkGMR8"
-				async
-			>
-			</script>
-		</form>
+	{#if funding}
+	<div class="mb-16 max-w-2xl">
+		<h2 class="font-serif text-3xl font-bold">Fund our work</h2>
+		<p class="mt-2 mb-6 text-muted-foreground">We are raising funds to cover our research, commissioning, and infrastructure costs.</p>
+		<div class="divide-y divide-border border border-border">
+			{#each funding.plans as plan}
+			<div class="flex items-start justify-between gap-4 p-4">
+				<div>
+					<p class="font-medium">{plan.name}</p>
+					<p class="mt-1 text-sm text-muted-foreground">{plan.description}</p>
+				</div>
+				<div class="shrink-0 text-right">
+					<p class="font-mono text-sm font-medium">
+						{#if plan.amount > 0}
+							{formatAmount(plan.amount, plan.currency)}
+						{:else}
+							Pay what you want
+						{/if}
+					</p>
+					<p class="text-[10px] uppercase tracking-wider text-muted-foreground">
+						{plan.frequency === 'yearly' ? 'per year' : plan.frequency === 'monthly' ? 'per month' : plan.frequency}
+					</p>
+				</div>
+			</div>
+			{/each}
+		</div>
+		<a
+			href={funding.url}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="mt-4 inline-flex items-center gap-3 border border-border px-5 py-2.5 text-sm font-medium hover:bg-foreground hover:text-background transition-colors group"
+		>
+			Donate via
+			<span class="h-4 w-auto [&>svg]:h-full [&>svg]:w-auto group-hover:[&_path]:fill-background group-hover:[&_polygon]:fill-background">{@html RazorpayLogo}</span>
+		</a>
+
+		{#if funding.history && funding.history.length > 0}
+		<div class="mt-12">
+			<h3 class="font-serif text-xl font-bold italic">History</h3>
+			<div class="mt-4 space-y-6">
+				{#each funding.history as item}
+				<div class="border-l-2 border-border pl-4">
+					<div class="flex items-baseline justify-between">
+						<span class="font-mono text-sm font-bold">{item.year}</span>
+						<span class="font-mono text-xs text-muted-foreground">
+							In: {formatAmount(item.income, item.currency)} / Out: {formatAmount(item.expenses, item.currency)}
+						</span>
+					</div>
+					<p class="mt-1 text-sm text-muted-foreground leading-relaxed italic">{item.description}</p>
+				</div>
+				{/each}
+			</div>
+		</div>
+		{/if}
 	</div>
+	{/if}
 
 	<!-- Friends -->
 	<div>

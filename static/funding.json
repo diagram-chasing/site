@@ -2,80 +2,110 @@
     "$schema": "https://fundingjson.org/schema/v1.1.0.json",
     "version": "v1.1.0",
     "entity": {
-        "type": "group",
-        "role": "maintainer",
-        "name": "Diagram Chasing",
-        "email": "aman@diagramchasing.fun",
-        "description": "Diagram Chasing is an independent data journalism and visualisation collective based in India. We build interactive stories, maps, and explorables that make public data legible and meaningful, covering elections, urban infrastructure, climate, policy, and other topics from India.",
-        "webpageUrl": {
-            "url": "https://diagramchasing.fun"
-        }
+      "type": "group",
+      "role": "maintainer",
+      "name": "Diagram Chasing",
+      "email": "aman@diagramchasing.fun",
+      "description": "Diagram Chasing is an independent data journalism and visualisation collective based in India. We build interactive stories, maps, and explorables that make public data legible. Covering elections, urban infrastructure, climate, censorship, and policy, all our published work is freely accessible and our code is open-source.",
+      "webpageUrl": {
+        "url": "https://diagramchasing.fun"
+      }
     },
     "projects": [
-        {
-            "guid": "diagram-chasing",
-            "name": "Diagram Chasing",
-            "description": "An independent data journalism and visualisation studio. We produce open, interactive data stories on topics like cities, climate, censorship, government data and more from India. All published work is freely accessible and our code is open source.",
-            "webpageUrl": {
-                "url": "https://diagramchasing.fun"
-            },
-            "repositoryUrl": {
-                "url": "https://github.com/diagram-chasing"
-            },
-            "licenses": ["spdx:MIT"],
-            "tags": ["data-visualisation", "journalism", "india", "data","open-data", "maps", "interactive", "civic-tech"]
-        }
+      {
+        "guid": "diagram-chasing",
+        "name": "Diagram Chasing",
+        "description": "Our primary studio project where we produce open, interactive data stories. We focus on investigating civic issues, culture, and government data, providing free access to our tools, datasets, and experimental formats for the public good.",
+        "webpageUrl": {
+          "url": "https://diagramchasing.fun"
+        },
+        "repositoryUrl": {
+          "url": "https://github.com/diagram-chasing"
+        },
+        "licenses": [
+          "spdx:MIT"
+        ],
+        "tags": [
+            "data-visualization",
+            "data",
+            "maps",
+            "publishing",
+            "web-development",
+            "data-science",
+            "analytics",
+            "design",
+            "journalism",
+            "india"
+      ]
+      }
     ],
     "funding": {
-        "channels": [
-            {
-                "guid": "razorpay",
-                "type": "payment-provider",
-                "address": "https://razorpay.me/@diagramchasing",
-                "description": "Pay via Razorpay using UPI, debit/credit card, or net banking."
-            }
-        ],
-        "plans": [
-            {
-                "guid": "rd-fund",
-                "status": "active",
-                "name": "Research & Development",
-                "description": "Funds independent R&D; new tools, datasets, and experimental formats that underpin our published work.",
-                "amount": 12000,
-                "currency": "INR",
-                "frequency": "yearly",
-                "channels": ["razorpay"]
-            },
-            {
-                "guid": "commissioning-fund",
-                "status": "active",
-                "name": "Commissioning",
-                "description": "Supports commissioning contributors such as writers, designers, and developers to produce data stories and explorables.",
-                "amount": 80000,
-                "currency": "INR",
-                "frequency": "yearly",
-                "channels": ["razorpay"]
-            },
-            {
-                "guid": "events-fund",
-                "status": "active",
-                "name": "Events",
-                "description": "Covers costs for public events, workshops, and community gatherings around data, journalism, and civic technology.",
-                "amount": 10000,
-                "currency": "INR",
-                "frequency": "yearly",
-                "channels": ["razorpay"]
-            },
-            {
-                "guid": "general-support",
-                "status": "active",
-                "name": "General support",
-                "description": "Any amount helps! Please contribute what you can to keep our independent work going",
-                "amount": 0,
-                "currency": "INR",
-                "frequency": "one-time",
-                "channels": ["razorpay"]
-            }
-        ]
+      "channels": [
+        {
+          "guid": "razorpay",
+          "type": "payment-provider",
+          "address": "https://razorpay.me/@diagramchasing",
+          "description": "Pay via Razorpay using UPI, debit/credit card, or net banking."
+        }
+      ],
+      "plans": [
+        {
+          "guid": "rd-fund",
+          "status": "active",
+          "name": "Research & Development",
+          "description": "Funds independent R&D; new tools, datasets, API costs, and experimental formats that underpin our published work.",
+          "amount": 5000,
+          "currency": "INR",
+          "frequency": "monthly",
+          "channels": [
+            "razorpay"
+          ]
+        },
+        {
+          "guid": "commissioning-fund",
+          "status": "active",
+          "name": "Commissioning",
+          "description": "Supports commissioning independent contributors such as writers, designers, and developers at fair rates to produce deep-dive data stories and explorables.",
+          "amount": 100000,
+          "currency": "INR",
+          "frequency": "yearly",
+          "channels": [
+            "razorpay"
+          ]
+        },
+        {
+          "guid": "events-fund",
+          "status": "active",
+          "name": "Events",
+          "description": "Covers costs for public events, workshops, and community gatherings around data, open-source, and civic technology. (Targeting ₹2,500 quarterly)",
+          "amount": 2500,
+          "currency": "INR",
+          "frequency": "other",
+          "channels": [
+            "razorpay"
+          ]
+        },
+        {
+          "guid": "general-support",
+          "status": "active",
+          "name": "General support",
+          "description": "Any amount helps! Please contribute what you can to keep our independent work going.",
+          "amount": 0,
+          "currency": "INR",
+          "frequency": "one-time",
+          "channels": [
+            "razorpay"
+          ]
+        }
+      ],
+      "history": [
+        {
+          "year": 2025,
+          "income": 42000,
+          "expenses": 50000,
+          "currency": "INR",
+          "description": "Bootstrapped the remaining costs. Funds went primarily toward commissioning contributors and covering essential server/infrastructure costs."
+        }
+      ]
     }
-}
+  }
