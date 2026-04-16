@@ -21,7 +21,7 @@
         },
         "repositoryUrl": {
             "url": "https://github.com/diagram-chasing",
-            "wellKnown": "https://raw.githubusercontent.com/diagram-chasing/site/refs/heads/main/.well-known/funding-manifest-urls"
+            "wellKnown": "https://github.com/diagram-chasing/site/raw/refs/heads/main/.well-known/funding-manifest-urls"
         },
         "licenses": [
           "spdx:MIT"
