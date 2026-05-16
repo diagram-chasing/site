@@ -12,4 +12,6 @@ friends:
   - name: Anand S
   - name: Shibi Soundararajan
   - name: Harsh Nisar
+  - name: Arnav Bansal, Lagrange Point
+  - name: Surbhi Bhatia
 ---
