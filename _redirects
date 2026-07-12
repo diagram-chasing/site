@@ -8,3 +8,4 @@
 /2026/portraits-of-population/explore https://portraits-of-population.netlify.app/explore 200
 /2026/pop-datajam https://pop-walkthrough-datajam.netlify.app/ 200
 /2026/emissions https://dc-emissions-methodology.netlify.app 200
+/2026/mapping-clouds/*  https://imd-meteograms.netlify.app/:splat  200
