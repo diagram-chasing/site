@@ -1,7 +1,7 @@
 ---
 title: Who is my neta?
 description: See legislative activity and affidavits of MLAs from the 17th Lok Sabha — or explore candidates contesting in the 2024 elections.
-base_url: https://whoismyneta.com
+base_url: https://whoismyneta.netlify.app/
 slug: whoismyneta
 published: true
 image: /images/who-1.png
