@@ -55,7 +55,7 @@
           "status": "active",
           "name": "Research & Development",
           "description": "Funds independent R&D; new tools, datasets, infrastructure costs, and experimental formats that underpin our published work.",
-          "amount": 5000,
+          "amount": 15000,
           "currency": "INR",
           "frequency": "monthly",
           "channels": [
@@ -79,7 +79,7 @@
           "status": "active",
           "name": "Events",
           "description": "Covers costs for public events, workshops, and community gatherings around data, open-source, and civic technology. (Targeting ₹2,500 quarterly)",
-          "amount": 2500,
+          "amount": 10000,
           "currency": "INR",
           "frequency": "other",
           "channels": [
