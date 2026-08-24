@@ -5,7 +5,10 @@ base_url: ''
 slug: mapping-clouds
 published: true
 image: /images/2026-mapping-clouds.png
-gallery: []
+gallery:
+  - /images/mapping-clouds-auto-1.png
+  - /images/mapping-clouds-auto-2.png
+  - /images/mapping-clouds-auto-3.png
 type: interactive
 date: 2026-08-12T16:23
 tags:
@@ -16,4 +19,5 @@ authors:
   - aman
 code: ''
 external: false
+auto_gallery: true
 ---
