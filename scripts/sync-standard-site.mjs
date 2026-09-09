@@ -20,9 +20,11 @@
  *      `atproto:` so the upstream project apps can emit
  *      <link rel="site.standard.document" href="at://…">.
  *
- * Usage:
+ * Runs automatically as the first step of `pnpm build` (so every Netlify
+ * deploy syncs records) and can be run by hand:
  *   pnpm sync-standard-site            # sync
  *   pnpm sync-standard-site --dry-run  # show the plan, change nothing
+ * Without credentials it warns and skips, so local builds never need them.
  *
  * Env (see .env.example): ATPROTO_HANDLE, ATPROTO_APP_PASSWORD, SITE_ORIGIN?
  */
@@ -141,7 +143,7 @@ async function pdsFor(did) {
 async function login() {
 	const handle = process.env.ATPROTO_HANDLE;
 	const password = process.env.ATPROTO_APP_PASSWORD;
-	if (!handle || !password) throw new Error('Set ATPROTO_HANDLE and ATPROTO_APP_PASSWORD (see .env.example)');
+	if (!handle || !password) return null;
 	const did = handle.startsWith('did:') ? handle : await resolveHandle(handle);
 	const pds = process.env.ATPROTO_PDS ?? (await pdsFor(did));
 	const session = await xrpc(pds, 'com.atproto.server.createSession', {
@@ -257,6 +259,13 @@ function documentRecord(post, pubUri, contributors) {
 async function main() {
 	console.log(`${DRY ? '[dry-run] ' : ''}syncing ${SITE_ORIGIN} → standard.site`);
 	const repo = await login();
+	if (!repo) {
+		console.warn(
+			'⚠︎  ATPROTO_HANDLE / ATPROTO_APP_PASSWORD not set; skipping sync. ' +
+				'The committed publication URI in src/content/standard-site.json is used as-is.'
+		);
+		return;
+	}
 
 	// 1. Publication -----------------------------------------------------------
 	const pubRecord = { $type: PUB_COLLECTION, url: SITE_ORIGIN, ...PUBLICATION };
