@@ -14,4 +14,6 @@ friends:
   - name: Harsh Nisar
   - name: Arnav Bansal, Lagrange Point
   - name: Surbhi Bhatia
+  - name: Aatman Vaidya
+  - name: Srinivas Alavilli, WRI India
 ---

@@ -19,5 +19,4 @@ authors:
   - vivek
 code: https://github.com/diagram-chasing/cbfc-watch
 external: true
-atproto: at://did:plc:pbzkofwfyokqzouibm2bcfo4/site.standard.document/3mv3cvx7sq2r2
 ---

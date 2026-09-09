@@ -206,9 +206,13 @@ function readPosts() {
 			continue;
 		}
 		if (!meta.published) continue;
-		const slug = meta.slug ?? file.replace(/\.md$/, '');
-		const date = new Date(meta.date);
-		posts.push({ file: abs, raw, slug, meta, path: `/${date.getFullYear()}/${slug}` });
+		// External posts live on another domain; they are not documents of this publication.
+		if (meta.external) continue;
+		// Mirror Card.svelte / refresh-galleries: a slug starting with "/" is already a path.
+		const slug = String(meta.slug ?? file.replace(/\.md$/, '')).trim();
+		const year = new Date(meta.date).getUTCFullYear();
+		const path = (slug.startsWith('/') ? slug : `/${year}/${slug}`).replace(/\/+$/, '');
+		posts.push({ file: abs, raw, slug, meta, path });
 	}
 	return posts;
 }

@@ -9,3 +9,8 @@
   for = "/.well-known/atproto-did"
   [headers.values]
     Content-Type = "text/plain"
+
+[[headers]]
+  for = "/.well-known/site.standard.publication"
+  [headers.values]
+    Content-Type = "text/plain"
