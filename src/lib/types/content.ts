@@ -13,6 +13,8 @@ export interface Post {
     authors: string[];
     code?: string;
     body?: string;
+    /** at:// URI of the site.standard.document record, written by scripts/sync-standard-site.mjs */
+    atproto?: string;
 }
 
 export interface Author {

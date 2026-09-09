@@ -3,6 +3,7 @@
 	import HeaderNavigation from '$lib/components/Navigation.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import SEO from '$lib/components/SEO.svelte';
+	import standardSite from '../content/standard-site.json';
 	let { children } = $props();
 </script>
 
@@ -10,6 +11,9 @@
 
 <svelte:head>
 	<link rel="icon" href="/favicon.png" type="image/png" />
+	{#if standardSite.publication}
+		<link rel="site.standard.publication" href={standardSite.publication} />
+	{/if}
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">

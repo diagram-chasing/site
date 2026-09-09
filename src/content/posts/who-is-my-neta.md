@@ -19,4 +19,5 @@ authors:
   - pravar
 code: https://github.com/thedivtagguy/whoismyneta
 external: false
+atproto: at://did:plc:pbzkofwfyokqzouibm2bcfo4/site.standard.document/3mv3cvz56lsgu
 ---

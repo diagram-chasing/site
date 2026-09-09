@@ -4,3 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "24"
+
+[[headers]]
+  for = "/.well-known/atproto-did"
+  [headers.values]
+    Content-Type = "text/plain"

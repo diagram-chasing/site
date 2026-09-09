@@ -19,4 +19,5 @@ authors:
   - aman
   - reechik
 code: https://github.com/diagram-chasing/votes-in-a-name
+atproto: at://did:plc:pbzkofwfyokqzouibm2bcfo4/site.standard.document/3mv3cvyu5js3m
 ---
