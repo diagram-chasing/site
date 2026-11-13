@@ -29,6 +29,7 @@
 		{ href: '/', label: 'Home' },
 		{ href: '/about', label: 'About' },
 		{ href: '/authors', label: 'Authors' },
+		{ href: '/data', label: 'Data' },
 		{ href: '/support', label: 'Support' },
 		{ href: '/community', label: 'Community' }
 	];

@@ -51,3 +51,10 @@ export interface Idea {
     show_on_page: boolean;
     status?: '' | 'WIP' | 'PUBLISHED';
 }
+export interface Dataset {
+    name: string;
+    url: string;
+    description: string;
+    /** slug of the post this dataset was made for, if any */
+    used_in?: string;
+}

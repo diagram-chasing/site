@@ -10,3 +10,5 @@
 /2026/pop-datajam https://pop-walkthrough-datajam.netlify.app/ 200
 /2026/emissions https://dc-emissions-methodology.netlify.app 200
 /2026/mapping-clouds/*  https://imd-meteograms.netlify.app/:splat  200
+/2026/monsoon-gaps/* https://monsoon-gaps.netlify.app/:splat 200
+/2026/karnataka-sir/* https://dc-karnataka-sir.netlify.app/:splat 200

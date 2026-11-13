@@ -1,4 +1,4 @@
-import type { Post, Author, newsItem, Idea } from '../types/content';
+import type { Post, Author, newsItem, Idea, Dataset } from '../types/content';
 
 // Lazy import modules for better performance
 const postModules = import.meta.glob('/src/content/posts/*.md');
@@ -16,6 +16,7 @@ const postImages = import.meta.glob(
 const newsModule = import.meta.glob('/src/content/news.md');
 const supportModule = import.meta.glob('/src/content/support.md');
 const ideaModules = import.meta.glob('/src/content/ideas/*.md');
+const datasetsModule = import.meta.glob('/src/content/datasets.md');
 
 class PostsAPI {
     private postsCache: Post[] | null = null;
@@ -24,6 +25,7 @@ class PostsAPI {
     private supportFriendsCache: string[] | null = null;
     private supportFundingCache: { url: string; plans: { name: string; amount: number; currency: string; frequency: string; description: string }[] } | null = null;
     private ideasCache: Idea[] | null = null;
+    private datasetsCache: Dataset[] | null = null;
 
     async loadPost(slug: string): Promise<Post | null> {
         const path = `/src/content/posts/${slug}.md`;
@@ -251,6 +253,26 @@ class PostsAPI {
         return ideas;
     }
 
+    async getDatasets(): Promise<Dataset[]> {
+        if (this.datasetsCache) return this.datasetsCache;
+
+        const loader = datasetsModule['/src/content/datasets.md'];
+        if (!loader) return [];
+
+        try {
+            const module = await loader();
+            const metadata = (module as any).metadata;
+            if (metadata?.datasets && Array.isArray(metadata.datasets)) {
+                this.datasetsCache = metadata.datasets as Dataset[];
+                return this.datasetsCache;
+            }
+        } catch (error) {
+            console.error('Error loading datasets:', error);
+        }
+
+        return [];
+    }
+
     async searchPosts(term: string): Promise<Post[]> {
         const searchTerm = term.toLowerCase();
         const posts = await this.getAllPosts();
@@ -267,4 +289,4 @@ class PostsAPI {
 export const postsAPI = new PostsAPI();
 
 // Export types for external use
-export type { Post, Author, newsItem, Idea };
+export type { Post, Author, newsItem, Idea, Dataset };
