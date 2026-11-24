@@ -1,8 +1,15 @@
 ---
 title: No eligible citizen is left out (?)
-description: The Election Commission says Karnataka's final voter roll leaves out no eligible citizen and includes no ineligible person. The rolls say otherwise.
+description: The Election Commission says the final voter roll leaves out no eligible citizen and includes no ineligible person. The rolls say otherwise.
 base_url: ''
 slug: karnataka-sir
+link: /2026/sir
+subpages:
+  - label: Karnataka
+    url: /2026/sir/karnataka
+  - label: Uttar Pradesh
+    url: /2026/sir/uttar-pradesh
+    note: New
 published: true
 image: /images/2026-karnataka-sir.jpg
 gallery:

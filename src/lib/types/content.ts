@@ -1,3 +1,11 @@
+/** A page inside a post that has more than one, such as one state of a multi-state story. */
+export interface Subpage {
+    label: string;
+    url: string;
+    /** A word or two shown beside the label, such as "New". */
+    note?: string;
+}
+
 export interface Post {
     title: string;
     description: string;
@@ -15,6 +23,10 @@ export interface Post {
     body?: string;
     /** at:// URI of the site.standard.document record, written by scripts/sync-standard-site.mjs */
     atproto?: string;
+    /** Where the card links, when it is not /{year}/{slug}. */
+    link?: string;
+    /** Pages inside the post, shown as buttons on its card. */
+    subpages?: Subpage[];
 }
 
 export interface Author {

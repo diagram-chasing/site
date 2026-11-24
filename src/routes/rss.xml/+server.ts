@@ -31,7 +31,7 @@ export async function GET() {
 		feed.addItem({
 			title: post.title,
             description: post.description,
-			link: `https://diagramchasing.fun/${new Date(post.date).getFullYear()}/${post.slug}`,
+			link: `https://diagramchasing.fun${post.link ?? `/${new Date(post.date).getFullYear()}/${post.slug}`}`,
 			date: new Date(post.date),
             enclosure: {
                 url: `https://diagramchasing.fun${post.image.sources.avif.split(' ')[0]}`,
